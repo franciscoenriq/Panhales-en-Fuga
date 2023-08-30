@@ -41,6 +41,10 @@ func _set_player_role(value: Game.Role) -> void:
 			player_role.text = "Role A"
 		Game.Role.ROLE_B:
 			player_role.text = "Role B"
+		Game.Role.ROLE_C:
+			player_role.text = "Role C"
+		Game.Role.ROLE_D:
+			player_role.text = "Role_D"
 
 
 func set_ready(value: bool) -> void:

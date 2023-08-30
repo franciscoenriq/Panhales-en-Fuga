@@ -6,7 +6,9 @@ signal player_updated(id)
 enum Role {
 	NONE,
 	ROLE_A,
-	ROLE_B
+	ROLE_B,
+	ROLE_C,
+	ROLE_D
 }
 
 # [ {id: int, name: string, rol: Rol} ]
