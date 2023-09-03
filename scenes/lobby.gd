@@ -241,7 +241,7 @@ func _check_ready() -> void:
 	for player in Game.players:
 		if not player.role in roles and player.role != Game.Role.NONE:
 			roles.push_back(player.role)
-	#ready_toggle.disabled = roles.size() != Game.Role.size() - 1
+	#ready_toggle.disabled = roles.size() != Game.Role.size() - 1  # lo que había antes
 	ready_toggle.disabled = not(roles.size()>1 and Game.Role.NONE not in roles)
 
 
