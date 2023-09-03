@@ -53,3 +53,11 @@ offset_top = 4.0
 offset_right = 36.0
 offset_bottom = 386.0
 fill_mode = 3
+
+[connection signal="button_down" from="AccBTN" to="." method="_on_acc_btn_button_down"]
+[connection signal="button_up" from="AccBTN" to="." method="_on_acc_btn_button_up"]
+[connection signal="pressed" from="AccBTN" to="." method="_on_acc_btn_pressed"]
+[connection signal="button_down" from="FreBTN" to="." method="_on_fre_btn_button_down"]
+[connection signal="button_up" from="FreBTN" to="." method="_on_fre_btn_button_up"]
+[connection signal="button_down" from="EmbBTN" to="." method="_on_emb_btn_button_down"]
+[connection signal="button_up" from="EmbBTN" to="." method="_on_emb_btn_button_up"]
