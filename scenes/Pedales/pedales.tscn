@@ -32,6 +32,7 @@ text = "Frenar"
 
 [node name="ProgressBarFre" type="ProgressBar" parent="FreBTN"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 2.0
 offset_top = 4.0
 offset_right = 36.0
@@ -48,6 +49,7 @@ text = "Embrague"
 
 [node name="ProgressBarEmb" type="ProgressBar" parent="EmbBTN"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 2.0
 offset_top = 4.0
 offset_right = 36.0
