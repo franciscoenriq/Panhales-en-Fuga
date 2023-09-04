@@ -24,6 +24,7 @@ func _ready():
 	
 func _process(delta):
 	
+	
 	###############ACELERADOR#####################
 	if acc_button_pressed ==true:
 		if (ProgressAcc.value <ProgressAcc.max_value):
@@ -48,13 +49,19 @@ func _process(delta):
 	
 	if emb_button_pressed == false:
 		ProgressEmb.value = 0
-			
-			
+				
 	acc_value = ProgressAcc.value
 	fre_value = ProgressFre.value
 	emb_value = ProgressEmb.value
+	
+	GameController.accelerator(name,acc_value)
+	GameController.brake(name,fre_value)
+	GameController.clutch(name,emb_value)
+	
 
-
+	
+	
+	
 
 func _on_acc_btn_button_up():
 	print("acelerador soltado")

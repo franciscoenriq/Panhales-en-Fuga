@@ -1,5 +1,9 @@
 extends Node
 
+var brakePressure
+var accPressure
+var clutchPressure
+
 
 @rpc("any_peer")
 func test(player_role):
@@ -11,19 +15,27 @@ func test(player_role):
 func clutch(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
 	# (que es lo que queremos para la demo 1)
-	Debug.dprint("clutch pressed- player: "+  player_role + " - pressure: " + str(pressure), 30)
+	clutchPressure = pressure
+	if pressure!=0:
+		
+		Debug.dprint("clutch pressed- player: "+  player_role + " - pressure: " + str(pressure), 1)
 
 @rpc("any_peer")
 func accelerator(player_role, pressure):
 	# esta funcion printea la presion puesta en el aceleradoro a  los otros jugadores 
 	# (que es lo que queremos para la demo 1)
-	Debug.dprint("gas pressed- player: "+  player_role + " - pressure: " + str(pressure), 30)
+	accPressure = pressure
+	if pressure!=0:
+		
+		Debug.dprint("gas pressed- player: "+  player_role + " - pressure: " + str(pressure), 1)
 	
 @rpc("any_peer")
 func brake(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
 	# (que es lo que queremos para la demo 1)
-	Debug.dprint("brake pressed- player: "+  player_role + " - pressure: " + str(pressure), 30)
+	brakePressure = pressure
+	if pressure!=0:
+		Debug.dprint("brake pressed- player: "+  player_role + " - pressure: " + str(pressure), 1)
 
 @rpc("any_peer")
 func turn_left(player_role, degree):
