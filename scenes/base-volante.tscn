@@ -72,7 +72,9 @@ mesh = SubResource("BoxMesh_i21yx")
 shape = SubResource("ConcavePolygonShape3D_essja")
 
 [node name="car" type="VehicleBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167203, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770487, 0)
+lock_rotation = true
+freeze = true
 script = ExtResource("2_dxiop")
 
 [node name="car_body" type="MeshInstance3D" parent="car"]
@@ -153,5 +155,5 @@ mesh = SubResource("TorusMesh_gt80a")
 transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 1.38181, -0.801486)
 shape = SubResource("ConvexPolygonShape3D_rn6qw")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, -2.35362e-08, 0.963078, 0.269222, 8.4195e-08, 0.269222, -0.963078, 0, 4.54066, -11.2262)
+[node name="Camera3D" type="Camera3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0, 5.31115, 5.98582)
