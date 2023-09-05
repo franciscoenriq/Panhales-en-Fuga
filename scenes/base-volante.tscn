@@ -75,6 +75,9 @@ shape = SubResource("ConcavePolygonShape3D_essja")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.770487, 0)
 lock_rotation = true
 freeze = true
+engine_force = 200.0
+brake = 5.0
+steering = 0.0872665
 script = ExtResource("2_dxiop")
 
 [node name="car_body" type="MeshInstance3D" parent="car"]
@@ -87,6 +90,8 @@ shape = SubResource("ConvexPolygonShape3D_kbp4v")
 
 [node name="RuedaFI" type="VehicleWheel3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.813, 1.681, 0.567)
+brake = 5.0
+steering = 0.0872665
 use_as_steering = true
 wheel_radius = 0.4
 suspension_stiffness = 50.0
@@ -99,6 +104,8 @@ mesh = SubResource("CylinderMesh_rmcoj")
 
 [node name="RuedaFD" type="VehicleWheel3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1406, 1.681, 0.567)
+brake = 5.0
+steering = 0.0872665
 use_as_steering = true
 wheel_radius = 0.4
 suspension_stiffness = 50.0
@@ -111,6 +118,8 @@ mesh = SubResource("CylinderMesh_rmcoj")
 
 [node name="RuedaTI" type="VehicleWheel3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.812714, 1.681, -1.157)
+engine_force = 200.0
+brake = 5.0
 use_as_traction = true
 wheel_radius = 0.4
 suspension_stiffness = 50.0
@@ -123,6 +132,8 @@ mesh = SubResource("CylinderMesh_rmcoj")
 
 [node name="RuedaTD" type="VehicleWheel3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.141, 1.681, -1.157)
+engine_force = 200.0
+brake = 5.0
 use_as_traction = true
 wheel_radius = 0.4
 suspension_stiffness = 50.0
@@ -156,4 +167,4 @@ transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 
 shape = SubResource("ConvexPolygonShape3D_rn6qw")
 
 [node name="Camera3D" type="Camera3D" parent="car"]
-transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, 1.24868)
+transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 4.67844, 5.25569)
