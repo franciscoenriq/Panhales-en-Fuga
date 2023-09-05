@@ -3,7 +3,7 @@ extends Node
 var brakePressure
 var accPressure
 var clutchPressure
-
+var turnValue
 
 @rpc("any_peer")
 func test(player_role):
@@ -38,15 +38,11 @@ func brake(player_role, pressure):
 		Debug.dprint("brake pressed- player: "+  player_role + " - pressure: " + str(pressure), 1)
 
 @rpc("any_peer")
-func turn_left(player_role, degree):
-	# esta funcion printea grado de giro a la izquierda del volante los otros jugadores 
-	# (que es lo que queremos para la demo 1)
-	Debug.dprint("giro a la izquiera- player: "+  player_role + " - degree: " + str(degree), 30)
+func turn(player_role,value):
+	turnValue = value
+	if turnValue!=0:
+		Debug.dprint("turn executed - player: " + player_role + " - turn " + str(value) , 1)
 	
-@rpc("any_peer")
-func turn_right(player_role, degree):
-	# esta funcion printea grado de giro a la derecha del volante los otros jugadores 
-	# (que es lo que queremos para la demo 1)
-	Debug.dprint("giro a la derecha- player: "+  player_role + " - degree: " + str(degree), 30)
+
 
 
