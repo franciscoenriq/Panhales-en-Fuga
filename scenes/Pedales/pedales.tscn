@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnfk47hf6cu2n"]
+
+[ext_resource type="Script" path="res://scenes/Pedales/pedales.gd" id="1_3ge5y"]
+
+[node name="Pedals" type="Node2D"]
+script = ExtResource("1_3ge5y")
+
+[node name="AccBTN" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 732.0
+offset_top = 169.0
+offset_right = 918.0
+offset_bottom = 555.0
+text = "Acelerar"
+
+[node name="ProgressBarAcc" type="ProgressBar" parent="AccBTN"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 386.0
+fill_mode = 3
+
+[node name="FreBTN" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 457.0
+offset_top = 170.0
+offset_right = 643.0
+offset_bottom = 556.0
+text = "Frenar"
+
+[node name="ProgressBarFre" type="ProgressBar" parent="FreBTN"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 386.0
+fill_mode = 3
+
+[node name="EmbBTN" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 180.0
+offset_top = 174.0
+offset_right = 366.0
+offset_bottom = 560.0
+text = "Embrague"
+
+[node name="ProgressBarEmb" type="ProgressBar" parent="EmbBTN"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 386.0
+fill_mode = 3
+
+[connection signal="button_down" from="AccBTN" to="." method="_on_acc_btn_button_down"]
+[connection signal="button_up" from="AccBTN" to="." method="_on_acc_btn_button_up"]
+[connection signal="pressed" from="AccBTN" to="." method="_on_acc_btn_pressed"]
+[connection signal="button_down" from="FreBTN" to="." method="_on_fre_btn_button_down"]
+[connection signal="button_up" from="FreBTN" to="." method="_on_fre_btn_button_up"]
+[connection signal="button_down" from="EmbBTN" to="." method="_on_emb_btn_button_down"]
+[connection signal="button_up" from="EmbBTN" to="." method="_on_emb_btn_button_up"]
