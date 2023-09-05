@@ -11,7 +11,38 @@ enum Role {
 	SHIFT
 }
 
-# [ {id: int, name: string, rol: Rol} ]
+const role_scene = {
+	"None": "res://scenes/main.tscn",
+	"Driver": "res://scenes/base-volante.tscn",
+	"Pedal": "res://scenes/Pedales/pedales.tscn", 
+	"Shift": "res://scenes/main.tscn",
+	"Shooter": "res://scenes/main.tscn"
+}
+
+func get_role_scene(role: Role):
+	if role == Role.DRIVER:
+		return role_scene["Driver"]
+	elif role == Role.PEDAL:
+		return role_scene["Pedal"]
+	elif role == Role.SHIFT:
+		return role_scene["Shift"]
+	elif role == Role.SHOOTER:
+		return role_scene["Shooter"]
+	else:
+		return "res://scenes/main.tscn"
+
+func role_str(role: Role):
+	if role == Role.DRIVER:
+		return "Driver"
+	elif role == Role.PEDAL:
+		return "Pedal"
+	elif role == Role.SHIFT:
+		return "Shift"
+	elif role == Role.SHOOTER:
+		return "Shooter"
+	else:
+		return "Unknown"
+
 var players: Array[PlayerData] = []
 
 var roles := {}
@@ -97,12 +128,12 @@ class PlayerData:
 	var id: int
 	var name: String
 	var role: Role
-	
+
 	func _init(new_id: int, new_name: String, new_role: Role = Role.NONE) -> void:
 		id = new_id
 		name = new_name
 		role = new_role
-	
+
 	func to_dict() -> Dictionary:
 		return {
 			"id": id,

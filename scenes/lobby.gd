@@ -37,7 +37,6 @@ const PORT = 5409
 
 @export var lobby_player_scene: PackedScene
 
-# { id: true }
 var status = { 1 : false }
 
 var _menu_stack: Array[Control] = []
@@ -234,25 +233,32 @@ func starting_game(value: bool):
 func start_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
-
-
-
+	
+func is_duplicated(list):
+	var new_list = list.duplicate()
+	new_list.sort()
+	for i in range(new_list.size()-1):
+		if new_list[i] == new_list[i+1]:
+			return true
+	return false
+	
 func _check_ready() -> void:
 	var roles = []
+	var cantidad_jugadores = 2
 	for player in Game.players:
 		if not player.role in roles and player.role != Game.Role.NONE:
 			roles.push_back(player.role)
-	#ready_toggle.disabled = roles.size() != Game.Role.size() - 1  # lo que había antes
-	ready_toggle.disabled = not(roles.size()>1 and Game.Role.NONE not in roles)
+	var duplicates = is_duplicated(roles)
+	ready_toggle.disabled = not(roles.size()==cantidad_jugadores and Game.Role.NONE not in roles and not duplicates)
 
 
 func _disconnect():
 	multiplayer.multiplayer_peer.close()
-	
+
 	for player in players.get_children():
 		players.remove_child(player)
 		player.queue_free()
-	
+
 	ready_toggle.disabled = true
 	status = { 1 : false }
 	Game.players = []
