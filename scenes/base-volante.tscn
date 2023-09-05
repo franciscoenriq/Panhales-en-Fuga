@@ -156,4 +156,4 @@ transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 
 shape = SubResource("ConvexPolygonShape3D_rn6qw")
 
 [node name="Camera3D" type="Camera3D" parent="car"]
-transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, -0.0270226)
+transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, 1.24868)
