@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bslhrv3eo36wd"]
+[gd_scene load_steps=4 format=3 uid="uid://bslhrv3eo36wd"]
 
 [ext_resource type="Script" path="res://scenes/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
+[ext_resource type="Theme" uid="uid://33fjrrjpv3ij" path="res://resources/themeword/new_theme.tres" id="3_dh16g"]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -16,6 +17,7 @@ lobby_player_scene = ExtResource("2_060bj")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_dh16g")
 
 [node name="Menus" type="MarginContainer" parent="PanelContainer"]
 unique_name_in_owner = true
@@ -50,6 +52,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Join"
+
+[node name="ButtonBack" type="Button" parent="PanelContainer/Menus/StartMenu/HBoxContainer"]
+layout_mode = 2
+text = "Back Menu"
 
 [node name="JoinMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
 unique_name_in_owner = true
@@ -163,3 +169,5 @@ layout_mode = 2
 text = "5"
 
 [node name="StartTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="PanelContainer/Menus/StartMenu/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
