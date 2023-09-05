@@ -13,10 +13,10 @@ const PORT = 5409
 @onready var back_join: Button = %BackJoin
 @onready var confirm_join: Button = %ConfirmJoin
 
-@onready var role_a: Button = %RoleA
-@onready var role_b: Button = %RoleB
-@onready var role_c: Button = %RoleC
-@onready var role_d: Button = %RoleD
+@onready var driver: Button = %Driver
+@onready var pedal: Button = %Pedal
+@onready var shooter: Button = %Shooter
+@onready var shift: Button = %Shift
 
 @onready var back_ready: Button = %BackReady
 @onready var ready_toggle: Button = %Ready
@@ -60,10 +60,10 @@ func _ready():
 	back_join.pressed.connect(_back_menu)
 	back_ready.pressed.connect(_back_menu)
 	
-	role_a.pressed.connect(func(): Game.set_current_player_role(Game.Role.ROLE_A))
-	role_b.pressed.connect(func(): Game.set_current_player_role(Game.Role.ROLE_B))
-	role_c.pressed.connect(func(): Game.set_current_player_role(Game.Role.ROLE_C))
-	role_d.pressed.connect(func(): Game.set_current_player_role(Game.Role.ROLE_D))
+	driver.pressed.connect(func(): Game.set_current_player_role(Game.Role.DRIVER))
+	pedal.pressed.connect(func(): Game.set_current_player_role(Game.Role.PEDAL))
+	shooter.pressed.connect(func(): Game.set_current_player_role(Game.Role.SHIFT))
+	shift.pressed.connect(func(): Game.set_current_player_role(Game.Role.SHOOTER))
 	
 	ready_toggle.pressed.connect(_on_ready_toggled)
 	
@@ -220,8 +220,8 @@ func set_player_ready(id: int, value: bool):
 
 @rpc("any_peer", "call_local", "reliable")
 func starting_game(value: bool):
-	role_a.disabled = value
-	role_b.disabled = value
+	driver.disabled = value
+	pedal.disabled = value
 	back_ready.disabled = value
 	time_container.visible = value
 	if value:
@@ -233,6 +233,7 @@ func starting_game(value: bool):
 @rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	
 
 
 
@@ -241,7 +242,8 @@ func _check_ready() -> void:
 	for player in Game.players:
 		if not player.role in roles and player.role != Game.Role.NONE:
 			roles.push_back(player.role)
-	ready_toggle.disabled = roles.size() != Game.Role.size() - 1
+	#ready_toggle.disabled = roles.size() != Game.Role.size() - 1  # lo que había antes
+	ready_toggle.disabled = not(roles.size()>1 and Game.Role.NONE not in roles)
 
 
 func _disconnect():
