@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func setup(player: Game.PlayerData) -> void:
 	player_id = player.id
-	name = str(player_id)
+	#name = str(player_id)
 	_update(player)
 	Game.player_updated.connect(_on_player_updated)
 
@@ -36,15 +36,7 @@ func _set_player_name(value: String) -> void:
 
 func _set_player_role(value: Game.Role) -> void:
 	player_role.visible = value != Game.Role.NONE
-	match value:
-		Game.Role.DRIVER:
-			player_role.text = "Driver"
-		Game.Role.PEDAL:
-			player_role.text = "Pedal"
-		Game.Role.SHOOTER:
-			player_role.text = "Shooter"
-		Game.Role.SHIFT:
-			player_role.text = "Shift"
+	player_role.text = Game.role_str(value)
 
 
 func set_ready(value: bool) -> void:

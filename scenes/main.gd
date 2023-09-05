@@ -9,9 +9,10 @@ func _ready() -> void:
 		var player = player_scene.instantiate()
 		players.add_child(player)
 		player.setup(player_data)
+		get_tree().change_scene_to_file(Game.get_role_scene(player_data.role))
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
