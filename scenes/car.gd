@@ -37,4 +37,4 @@ func _process(delta: float) -> void:
 	# Aplicar la rotación al volante
 	var rotation_angle = maxWheelAngle * wheelRotationValue
 	volante.rotation_degrees.y = rotation_angle
-	GameController.turn(name, wheelRotationValue)
+	GameController.turn(name, -wheelRotationValue)
