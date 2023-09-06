@@ -19,19 +19,19 @@ func _input(event: InputEvent) -> void:
 	if is_multiplayer_authority():
 		if event.is_action_pressed("test"):
 			GameController.test.rpc(role, text_time)
-			
+
 		if event.is_action_pressed("clutch"):
 			GameController.clutch.rpc(role, 100)
-	
+
 		if event.is_action_pressed("brake"):
 			GameController.brake.rpc(role, 100)
-		
+
 		if event.is_action_pressed("gas"):
 			GameController.accelerator.rpc(role, 100)
-		
+
 		if event.is_action_pressed("turn_left"):
-			GameController.turn_left.rpc(role, 90)
-		
+			GameController.turn.rpc(role, -1)
+
 		if event.is_action_pressed("turn_right"):
-			GameController.turn_right.rpc(role, 90)
+			GameController.turn.rpc(role, 1)
 

@@ -79,7 +79,7 @@ func _ready():
 	Game.upnp_completed.connect(_on_upnp_completed)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !start_timer.is_stopped():
 		time.text = str(ceil(start_timer.time_left))
 
