@@ -54,9 +54,9 @@ func _process(_delta):
 	fre_value = ProgressFre.value
 	emb_value = ProgressEmb.value
 	
-	GameController.accelerator(name,acc_value)
-	GameController.brake(name,fre_value)
-	GameController.clutch(name,emb_value)
+	GameController.accelerator.rpc("Pedals",acc_value)
+	GameController.brake.rpc("Pedals",fre_value)
+	GameController.clutch.rpc("Pedals",emb_value)
 	
 
 	

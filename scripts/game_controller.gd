@@ -1,13 +1,15 @@
 extends Node
 
-var brakePressure
-var accPressure
-var clutchPressure
-var turnValue
+var brakePressure=0
+var accPressure=0
+var clutchPressure=0
+var turnValue=0
 const debug_print_time = 0.8
 
-var volanteText = "Texto inicial"
-var pedalesText = "Texto inicial"
+var volanteText = "No pedals have been pressed"
+var pedalesText = "Wheel straight"
+
+var car_speed = 0
 
 @rpc("any_peer")
 func test(player_role):
@@ -21,8 +23,12 @@ func clutch(player_role, pressure):
 	# (que es lo que queremos para la demo 1)
 	if clutchPressure != pressure:
 		clutchPressure = pressure
-		#Debug.dprint("clutch pressed- player: "+  player_role + " - pressure: " + str(pressure), debug_print_time)
-		self.volanteText = "clutch pressed- player: "+  player_role + " - pressure: " + str(pressure)
+		if pressure != 0:
+			volanteText = "clutch pressed- player: "+  player_role + " - pressure: " + str(pressure)
+		else:
+			if accPressure+brakePressure+clutchPressure <= 0:
+				volanteText = "No pedals have been pressed"
+		#Debug.dprint(volanteText)
 		
 @rpc("any_peer")
 func accelerator(player_role, pressure):
@@ -30,8 +36,12 @@ func accelerator(player_role, pressure):
 	# (que es lo que queremos para la demo 1)
 	if accPressure!=pressure:
 		accPressure = pressure
-		#Debug.dprint("gas pressed- player: "+  player_role + " - pressure: " + str(pressure), debug_print_time)
-		self.volanteText = "gas pressed- player: "+  player_role + " - pressure: " + str(pressure)
+		if pressure != 0:
+			volanteText = "gas pressed- player: "+  player_role + " - pressure: " + str(pressure)
+		else:
+			if accPressure+brakePressure+clutchPressure <= 0:
+				volanteText = "No pedals have been pressed"
+		#Debug.dprint(volanteText)
 		
 @rpc("any_peer")
 func brake(player_role, pressure):
@@ -39,18 +49,33 @@ func brake(player_role, pressure):
 	# (que es lo que queremos para la demo 1)
 	if pressure != brakePressure:
 		brakePressure = pressure
-		#Debug.dprint("brake pressed- player: "+  player_role + " - pressure: " + str(pressure), debug_print_time)
-		self.volanteText="brake pressed- player: "+  player_role + " - pressure: " + str(pressure)
+		if pressure != 0:
+			volanteText="brake pressed- player: "+  player_role + " - pressure: " + str(pressure)
+		else:
+			if accPressure+brakePressure+clutchPressure <= 0:
+				volanteText = "No pedals have been pressed"
 		#Debug.dprint(volanteText)
+		
+		
+func change_degree_value(value):
+	var originalScale = value
+	var minRange = -1
+	var maxRange = 1
+	var newMin = -90
+	var newMax = 90
+	var scaledValue = ((originalScale - minRange) / (maxRange - minRange)) * (newMax - newMin) + newMin
+	return snapped(scaledValue, 0.1)
 
 @rpc("any_peer")
 func turn(player_role,value):
 	if value != turnValue:
 		turnValue = value
-		#Debug.dprint("turn executed - player: " + player_role + " - turn " + str(value) , debug_print_time)
-		self.pedalesText = "turn executed - player: " + player_role + " - turn " + str(value)
+		if snapped(value,0.1) != 0:
+			var direction = "Left" if value<0 else "Right"
+			pedalesText = "Player: "+player_role+" - Wheel turning: " + str(abs(change_degree_value(value)))+"° "+direction
+		else:
+			pedalesText = "Wheel straight"
 		#Debug.dprint(pedalesText)
-	
 
 
 

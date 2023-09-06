@@ -10,5 +10,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	self.text ="Acceleration: " + str(GameController.accPressure)+"% Brake: " + str(GameController.brakePressure)+"% Clutch: "  + str(GameController.clutchPressure) 
-	#self.text = str(_delta) #testing
+	self.text = GameController.volanteText

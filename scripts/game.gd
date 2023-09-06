@@ -24,25 +24,7 @@ func role_str(role: Role):
 		return "Unknown"
 		
 
-var role_scene = {
-	role_str(Role.NONE): "res://scenes/main.tscn",
-	role_str(Role.DRIVER): "res://scenes/base-volante.tscn",
-	role_str(Role.PEDAL): "res://scenes/Pedales/pedales.tscn", 
-	role_str(Role.SHIFT): "res://scenes/main.tscn",
-	role_str(Role.SHOOTER): "res://scenes/main.tscn"
-}
 
-func get_role_scene(role: Role):
-	if role == Role.DRIVER:
-		return role_scene["Driver"]
-	elif role == Role.PEDAL:
-		return role_scene["Pedal"]
-	elif role == Role.SHIFT:
-		return role_scene["Shift"]
-	elif role == Role.SHOOTER:
-		return role_scene["Shooter"]
-	else:
-		return "res://scenes/main.tscn"
 
 var players: Array[PlayerData] = []
 
