@@ -6,9 +6,9 @@ extends Node2D
 
 func _ready() -> void:
 	for player_data in Game.players:
-		var player = player_scene.instantiate()
-		players.add_child(player)
-		player.setup(player_data)
+#		var player = player_scene.instantiate()
+#		players.add_child(player)
+#		player.setup(player_data)
 		get_tree().change_scene_to_file(Game.get_role_scene(player_data.role))
 	
 

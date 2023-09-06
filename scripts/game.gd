@@ -11,12 +11,25 @@ enum Role {
 	SHIFT
 }
 
-const role_scene = {
-	"None": "res://scenes/main.tscn",
-	"Driver": "res://scenes/base-volante.tscn",
-	"Pedal": "res://scenes/Pedales/pedales.tscn", 
-	"Shift": "res://scenes/main.tscn",
-	"Shooter": "res://scenes/main.tscn"
+func role_str(role: Role):
+	if role == Role.DRIVER:
+		return "Driver"
+	elif role == Role.PEDAL:
+		return "Pedal"
+	elif role == Role.SHIFT:
+		return "Shift"
+	elif role == Role.SHOOTER:
+		return "Shooter"
+	else:
+		return "Unknown"
+		
+
+var role_scene = {
+	role_str(Role.NONE): "res://scenes/main.tscn",
+	role_str(Role.DRIVER): "res://scenes/base-volante.tscn",
+	role_str(Role.PEDAL): "res://scenes/Pedales/pedales.tscn", 
+	role_str(Role.SHIFT): "res://scenes/main.tscn",
+	role_str(Role.SHOOTER): "res://scenes/main.tscn"
 }
 
 func get_role_scene(role: Role):
@@ -30,18 +43,6 @@ func get_role_scene(role: Role):
 		return role_scene["Shooter"]
 	else:
 		return "res://scenes/main.tscn"
-
-func role_str(role: Role):
-	if role == Role.DRIVER:
-		return "Driver"
-	elif role == Role.PEDAL:
-		return "Pedal"
-	elif role == Role.SHIFT:
-		return "Shift"
-	elif role == Role.SHOOTER:
-		return "Shooter"
-	else:
-		return "Unknown"
 
 var players: Array[PlayerData] = []
 

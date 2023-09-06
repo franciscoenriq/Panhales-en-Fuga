@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnfk47hf6cu2n"]
+[gd_scene load_steps=3 format=3 uid="uid://cnfk47hf6cu2n"]
 
 [ext_resource type="Script" path="res://scenes/Pedales/pedales.gd" id="1_3ge5y"]
+[ext_resource type="Script" path="res://scenes/Pedales/InputStatePedales.gd" id="2_t5i6l"]
 
 [node name="Pedals" type="Node2D"]
 script = ExtResource("1_3ge5y")
@@ -55,6 +56,11 @@ offset_top = 4.0
 offset_right = 36.0
 offset_bottom = 386.0
 fill_mode = 3
+
+[node name="InputState" type="Label" parent="."]
+offset_right = 1151.0
+offset_bottom = 75.0
+script = ExtResource("2_t5i6l")
 
 [connection signal="button_down" from="AccBTN" to="." method="_on_acc_btn_button_down"]
 [connection signal="button_up" from="AccBTN" to="." method="_on_acc_btn_button_up"]

@@ -14,24 +14,24 @@ func setup(player_data: Game.PlayerData):
 	Debug.dprint("Ingresa: " + str(data["name"]) + "- Role: "+ Game.role_str(data["role"]), text_time)
 
 
-func _input(event: InputEvent) -> void:
-	var role =  str(current_player_data["name"])
-	if is_multiplayer_authority():
-		if event.is_action_pressed("test"):
-			GameController.test.rpc(role, text_time)
-			
-		if event.is_action_pressed("clutch"):
-			GameController.clutch.rpc(role, 100)
-	
-		if event.is_action_pressed("brake"):
-			GameController.brake.rpc(role, 100)
-		
-		if event.is_action_pressed("gas"):
-			GameController.accelerator.rpc(role, 100)
-		
-		if event.is_action_pressed("turn_left"):
-			GameController.turn_left.rpc(role, 90)
-		
-		if event.is_action_pressed("turn_right"):
-			GameController.turn_right.rpc(role, 90)
+#func _input(event: InputEvent) -> void:
+#	var role =  str(current_player_data["name"])
+#	if is_multiplayer_authority():
+#		if event.is_action_pressed("test"):
+#			GameController.test.rpc(role, text_time)
+#
+#		if event.is_action_pressed("clutch"):
+#			GameController.clutch.rpc(role, 100)
+#
+#		if event.is_action_pressed("brake"):
+#			GameController.brake.rpc(role, 100)
+#
+#		if event.is_action_pressed("gas"):
+#			GameController.accelerator.rpc(role, 100)
+#
+#		if event.is_action_pressed("turn_left"):
+#			GameController.turn_left.rpc(role, 90)
+#
+#		if event.is_action_pressed("turn_right"):
+#			GameController.turn_right.rpc(role, 90)
 
