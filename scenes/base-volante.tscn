@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bv05lp5ihcku2"]
+[gd_scene load_steps=21 format=3 uid="uid://bv05lp5ihcku2"]
 
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_vtehj"]
 [ext_resource type="Script" path="res://scenes/car.gd" id="2_dxiop"]
+[ext_resource type="Script" path="res://scenes/InputStateVolante.gd" id="3_khk2y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvre1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,7 +50,7 @@ height = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oao56"]
 
-[sub_resource type="TorusMesh" id="TorusMesh_gt80a"]
+[sub_resource type="TorusMesh" id="TorusMesh_xvf4u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqsfc"]
 
@@ -151,15 +152,17 @@ transform = Transform3D(0.3, 0, 0, 0, 0.8, 0, 0, 0, 0.3, -0.0207283, 0.67364, -0
 shape = SubResource("CylinderShape3D_oao56")
 
 [node name="Volante" type="AnimatableBody3D" parent="car"]
-unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58409, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="car/Volante"]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 1.38181, -0.801486)
-mesh = SubResource("TorusMesh_gt80a")
+unique_name_in_owner = true
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 1.38181, -0.933853)
+rotation_order = 1
+mesh = SubResource("TorusMesh_xvf4u")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="car/Volante/MeshInstance3D"]
-transform = Transform3D(0.333333, 0, 0, 0, -1.45705e-08, 0.333333, 0, -0.333333, -1.45705e-08, 0, -0.0218685, -0.728848)
+transform = Transform3D(-0.186879, 0, -0.27602, 0.27602, -1.45704e-08, -0.186879, -1.20652e-08, -0.333333, 8.16876e-09, 0, -0.0218685, -0.728848)
+rotation_order = 1
 material_override = SubResource("StandardMaterial3D_aqsfc")
 material_overlay = SubResource("StandardMaterial3D_7ia1w")
 mesh = SubResource("CylinderMesh_q2qod")
@@ -171,3 +174,8 @@ shape = SubResource("ConvexPolygonShape3D_rn6qw")
 
 [node name="Camera3D" type="Camera3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, -0.0270226)
+
+[node name="InputState" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0208702, 2.98448, -2.08705)
+text = "testeando"
+script = ExtResource("3_khk2y")
