@@ -50,3 +50,5 @@ func turn_right(player_role, degree):
 	Debug.dprint("giro a la derecha- player: "+  player_role + " - degree: " + str(degree), 30)
 
 
+
+
