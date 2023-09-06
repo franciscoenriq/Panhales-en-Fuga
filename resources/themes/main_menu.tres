@@ -1,0 +1,57 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bava10k3vd6b1"]
+
+[ext_resource type="FontFile" uid="uid://ca6jc5en6ugp6" path="res://resources/themeword/sadekids/Sadekids-Regular.ttf" id="1_qouir"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbq57"]
+bg_color = Color(0, 0.462745, 0.745098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jeyx7"]
+bg_color = Color(0, 0.662745, 0.835294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o87yt"]
+bg_color = Color(0, 0.345098, 0.65098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kmxl"]
+bg_color = Color(0.301961, 0.611765, 0.952941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vnhx"]
+bg_color = Color(0, 0.627451, 0.992157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdo5y"]
+bg_color = Color(0.513726, 0.490196, 0, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[resource]
+Button/font_sizes/font_size = 20
+Button/fonts/font = ExtResource("1_qouir")
+Button/styles/hover = SubResource("StyleBoxFlat_mbq57")
+Button/styles/normal = SubResource("StyleBoxFlat_jeyx7")
+Button/styles/pressed = SubResource("StyleBoxFlat_o87yt")
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0.486275, 0.521569, 0.568627, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 18
+Label/constants/shadow_offset_y = 12
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_qouir")
+LineEdit/constants/caret_width = 1
+LineEdit/font_sizes/font_size = 25
+LineEdit/fonts/font = ExtResource("1_qouir")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_5kmxl")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_1vnhx")
+LineEdit/styles/read_only = null
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20
+MarginContainerSmall/base_type = &"MarginContainer"
+MarginContainerSmall/constants/margin_bottom = 10
+MarginContainerSmall/constants/margin_left = 10
+MarginContainerSmall/constants/margin_right = 10
+MarginContainerSmall/constants/margin_top = 10
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_qdo5y")
