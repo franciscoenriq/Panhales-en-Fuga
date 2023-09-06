@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/lobby.gd" id="1_g2fmt"]
 [ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
-[ext_resource type="Theme" uid="uid://33fjrrjpv3ij" path="res://resources/themeword/new_theme.tres" id="3_dh16g"]
+[ext_resource type="Theme" uid="uid://33fjrrjpv3ij" path="res://resources/themeword/new_theme.tres" id="3_54e41"]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -14,10 +14,11 @@ script = ExtResource("1_g2fmt")
 lobby_player_scene = ExtResource("2_060bj")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("3_dh16g")
+theme = ExtResource("3_54e41")
 
 [node name="Menus" type="MarginContainer" parent="PanelContainer"]
 unique_name_in_owner = true
