@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://bctm86ub5mlq3"]
+
+[ext_resource type="Script" path="res://scenes/Cambios/cambios.gd" id="1_62rui"]
+[ext_resource type="Texture2D" uid="uid://c52aadbd3vxf8" path="res://scenes/Cambios/pngwing.com.png" id="1_m565l"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_ddqma"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vufvp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdyd7"]
+radius = 25.02
+
+[node name="cambios" type="Node2D"]
+script = ExtResource("1_62rui")
+metadata/_edit_lock_ = true
+
+[node name="Imagen" type="Sprite2D" parent="."]
+position = Vector2(589, 321)
+texture = ExtResource("1_m565l")
+metadata/_edit_lock_ = true
+
+[node name="Palanca" type="Node2D" parent="."]
+position = Vector2(581, 328)
+
+[node name="areaPalanca" type="Area2D" parent="Palanca"]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Palanca/areaPalanca"]
+position = Vector2(1, -1)
+scale = Vector2(0.175781, 0.199219)
+texture = ExtResource("3_ddqma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Palanca/areaPalanca"]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_vufvp")
+
+[node name="AreaCambio" type="Area2D" parent="."]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaCambio"]
+polygon = PackedVector2Array(440, 247, 438, 402, 480, 402, 479, 344, 564, 345, 563, 405, 599, 405, 598, 345, 732, 346, 729, 247, 703, 248, 698, 311, 601, 312, 598, 246, 561, 249, 563, 310, 483, 305, 481, 248)
+metadata/_edit_lock_ = true
+
+[node name="primera" type="Area2D" parent="."]
+position = Vector2(459, 257)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="primera"]
+shape = SubResource("CircleShape2D_jdyd7")
+metadata/_edit_lock_ = true
+
+[node name="segunda" type="Area2D" parent="."]
+position = Vector2(459, 401)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="segunda"]
+shape = SubResource("CircleShape2D_jdyd7")
+metadata/_edit_lock_ = true
+
+[node name="tercera" type="Area2D" parent="."]
+position = Vector2(584, 257)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tercera"]
+shape = SubResource("CircleShape2D_jdyd7")
+metadata/_edit_lock_ = true
+
+[node name="cuarta" type="Area2D" parent="."]
+position = Vector2(584, 401)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cuarta"]
+shape = SubResource("CircleShape2D_jdyd7")
+metadata/_edit_lock_ = true
+
+[node name="quinta" type="Area2D" parent="."]
+position = Vector2(715, 260)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="quinta"]
+shape = SubResource("CircleShape2D_jdyd7")
+metadata/_edit_lock_ = true
+
+[node name="neutro" type="Area2D" parent="."]
+position = Vector2(581, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="neutro"]
+shape = SubResource("CircleShape2D_jdyd7")
+metadata/_edit_lock_ = true
+
+[connection signal="mouse_entered" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_entered"]
+[connection signal="mouse_exited" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_exited"]
+[connection signal="mouse_entered" from="AreaCambio" to="." method="_on_area_cambio_mouse_entered"]
+[connection signal="mouse_exited" from="AreaCambio" to="." method="_on_area_cambio_mouse_exited"]
+[connection signal="area_entered" from="primera" to="." method="_on_primera_area_entered"]
+[connection signal="area_entered" from="segunda" to="." method="_on_segunda_area_entered"]
+[connection signal="area_entered" from="tercera" to="." method="_on_tercera_area_entered"]
+[connection signal="area_entered" from="cuarta" to="." method="_on_cuarta_area_entered"]
+[connection signal="area_entered" from="quinta" to="." method="_on_quinta_area_entered"]
+[connection signal="area_entered" from="neutro" to="." method="_on_neutro_area_entered"]
