@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bctm86ub5mlq3"]
+
+[ext_resource type="Script" path="res://scenes/Cambios/cambios.gd" id="1_62rui"]
+[ext_resource type="Texture2D" uid="uid://c52aadbd3vxf8" path="res://scenes/Cambios/pngwing.com.png" id="1_m565l"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_ddqma"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vufvp"]
+
+[node name="cambios" type="Node2D"]
+script = ExtResource("1_62rui")
+
+[node name="Imagen" type="Sprite2D" parent="."]
+position = Vector2(589, 321)
+texture = ExtResource("1_m565l")
+metadata/_edit_lock_ = true
+
+[node name="Palanca" type="Node2D" parent="."]
+position = Vector2(581, 328)
+
+[node name="areaPalanca" type="Area2D" parent="Palanca"]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Palanca/areaPalanca"]
+position = Vector2(1, -1)
+scale = Vector2(0.175781, 0.199219)
+texture = ExtResource("3_ddqma")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Palanca/areaPalanca"]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_vufvp")
+
+[node name="AreaCambio" type="Area2D" parent="."]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaCambio"]
+polygon = PackedVector2Array(448, 255, 448, 403, 470, 403, 470, 341, 570, 341, 572, 405, 594, 404, 593, 341, 728, 340, 729, 247, 704, 249, 705, 317, 594, 317, 592, 251, 571, 252, 570, 314, 471, 316, 471, 254)
+metadata/_edit_lock_ = true
