@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bctm86ub5mlq3"]
+[gd_scene load_steps=7 format=3 uid="uid://bctm86ub5mlq3"]
 
 [ext_resource type="Script" path="res://scenes/Cambios/cambios.gd" id="1_62rui"]
 [ext_resource type="Texture2D" uid="uid://c52aadbd3vxf8" path="res://scenes/Cambios/pngwing.com.png" id="1_m565l"]
 [ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_ddqma"]
+[ext_resource type="Script" path="res://scenes/Cambios/InputStateShift.gd" id="4_yv17q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vufvp"]
 
@@ -11,7 +12,6 @@ radius = 25.02
 
 [node name="cambios" type="Node2D"]
 script = ExtResource("1_62rui")
-metadata/_edit_lock_ = true
 
 [node name="Imagen" type="Sprite2D" parent="."]
 position = Vector2(589, 321)
@@ -82,6 +82,13 @@ position = Vector2(581, 329)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="neutro"]
 shape = SubResource("CircleShape2D_jdyd7")
 metadata/_edit_lock_ = true
+
+[node name="InputState" type="Label" parent="."]
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 1150.0
+offset_bottom = 72.0
+script = ExtResource("4_yv17q")
 
 [connection signal="mouse_entered" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_entered"]
 [connection signal="mouse_exited" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_exited"]

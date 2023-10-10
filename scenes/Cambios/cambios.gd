@@ -16,25 +16,18 @@ var segunda : bool
 var tercera : bool
 var cuarta : bool
 var quinta : bool
-enum Cambios {
-	NEUTRO,
-	PRIMERO,
-	SEGUNDO,
-	TERCERO,
-	CUARTO,
-	QUINTO
-}
+
 var estadoCambios ={
-	Cambios.NEUTRO:false,
-	Cambios.PRIMERO:false,
-	Cambios.SEGUNDO:false,
-	Cambios.TERCERO:false,
-	Cambios.CUARTO:false,
-	Cambios.QUINTO:false 
+	GameController.Cambios.NEUTRO:false,
+	GameController.Cambios.PRIMERO:false,
+	GameController.Cambios.SEGUNDO:false,
+	GameController.Cambios.TERCERO:false,
+	GameController.Cambios.CUARTO:false,
+	GameController.Cambios.QUINTO:false 
 	}
 func _ready():
 	#######################
-	setCambio(Cambios.NEUTRO)
+	setCambio(GameController.Cambios.NEUTRO)
 	########################
 	areaPalanca = %areaPalanca
 	palanca  = $Palanca
@@ -64,7 +57,8 @@ func _process(delta):
 func setCambio(cambio):
 
 	estadoCambios[cambio] = true
-	for otro_cambio in Cambios.values():
+	GameController.set_gear.rpc("shift", cambio)
+	for otro_cambio in GameController.Cambios.values():
 		if otro_cambio != cambio:
 			estadoCambios[otro_cambio] = false
 	
@@ -78,34 +72,33 @@ func _on_area_cambio_mouse_exited():
 
 func _on_primera_area_entered(area):
 	if area == areaPalanca:
-		setCambio(Cambios.PRIMERO)
+		setCambio(GameController.Cambios.PRIMERO)
 		print("Auto en primera")
 
 func _on_segunda_area_entered(area):
 	if area == areaPalanca:
-		setCambio(Cambios.SEGUNDO)
+		setCambio(GameController.Cambios.SEGUNDO)
 		print("Auto en segunda")
 		
 func _on_tercera_area_entered(area):
 	if area == areaPalanca:
-		setCambio(Cambios.TERCERO)
+		setCambio(GameController.Cambios.TERCERO)
 		print("Auto en tercera")
 		
 		
 func _on_cuarta_area_entered(area):
 	if area == areaPalanca:
-		setCambio(Cambios.CUARTO)
+		setCambio(GameController.Cambios.CUARTO)
 		print("Auto en cuarta")
 		
 func _on_quinta_area_entered(area):
 	if area == areaPalanca:
-		setCambio(Cambios.QUINTO)
+		setCambio(GameController.Cambios.QUINTO)
 		print("Auto en quinta")
 		
 func _on_neutro_area_entered(area):
 	if area == areaPalanca:
-		setCambio(Cambios.NEUTRO)
+		setCambio(GameController.Cambios.NEUTRO)
 		print("Auto en neutro")
-		
 		
 		

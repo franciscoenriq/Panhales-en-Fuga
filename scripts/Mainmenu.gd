@@ -4,9 +4,9 @@ extends CanvasLayer
 
 
 
-
+	
 func _on_button_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	get_tree().change_scene_to_file("res://scenes/Inicio/lobby.tscn")
 
 func _on_button_settings_pressed():
 	main.visible = false

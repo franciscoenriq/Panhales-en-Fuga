@@ -1,34 +1,37 @@
 class_name Player
 extends Node2D
 
+var current_player_data
+
+const text_time = 1
 
 
 func setup(player_data: Game.PlayerData):
 	set_multiplayer_authority(player_data.id)
-	name = str(player_data.id)
-	Debug.dprint(player_data.name, 30)
-	Debug.dprint(player_data.role, 30)
+	#name = str(player_data.id)
+	var data = player_data.to_dict()
+	current_player_data = data
+	Debug.dprint("Ingresa: " + str(data["name"]) + "- Role: "+ Game.role_str(data["role"]), text_time)
 
 
 func _input(event: InputEvent) -> void:
-	
+	var role =  str(current_player_data["name"])
 	if is_multiplayer_authority():
 		if event.is_action_pressed("test"):
-			GameController.test.rpc(name)
-			
-		if event.is_action_pressed("clutch"):
-			GameController.clutch.rpc(name, 100)
-	
-		if event.is_action_pressed("brake"):
-			GameController.brake.rpc(name, 100)
-		
-		if event.is_action_pressed("gas"):
-			GameController.accelerator.rpc(name, 100)
-		
-		if event.is_action_pressed("turn_left"):
-			GameController.turn_left.rpc(name, 90)
-		
-		if event.is_action_pressed("turn_right"):
-			GameController.turn_right.rpc(name, 90)
+			GameController.test.rpc(role, text_time)
 
+		if event.is_action_pressed("clutch"):
+			GameController.clutch.rpc(role, 100)
+
+		if event.is_action_pressed("brake"):
+			GameController.brake.rpc(role, 100)
+
+		if event.is_action_pressed("gas"):
+			GameController.accelerator.rpc(role, 100)
+
+		if event.is_action_pressed("turn_left"):
+			GameController.turn.rpc(role, -1)
+
+		if event.is_action_pressed("turn_right"):
+			GameController.turn.rpc(role, 1)
 

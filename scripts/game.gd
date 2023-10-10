@@ -11,7 +11,21 @@ enum Role {
 	SHIFT
 }
 
-# [ {id: int, name: string, rol: Rol} ]
+func role_str(role: Role):
+	if role == Role.DRIVER:
+		return "Driver"
+	elif role == Role.PEDAL:
+		return "Pedal"
+	elif role == Role.SHIFT:
+		return "Shift"
+	elif role == Role.SHOOTER:
+		return "Shooter"
+	else:
+		return "Unknown"
+		
+
+
+
 var players: Array[PlayerData] = []
 
 var roles := {}
@@ -97,12 +111,12 @@ class PlayerData:
 	var id: int
 	var name: String
 	var role: Role
-	
+
 	func _init(new_id: int, new_name: String, new_role: Role = Role.NONE) -> void:
 		id = new_id
 		name = new_name
 		role = new_role
-	
+
 	func to_dict() -> Dictionary:
 		return {
 			"id": id,

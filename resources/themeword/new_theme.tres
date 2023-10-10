@@ -1,6 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://33fjrrjpv3ij"]
-
-[ext_resource type="FontFile" uid="uid://ca6jc5en6ugp6" path="res://resources/themeword/sadekids/Sadekids-Regular.ttf" id="1_48hm8"]
-
-[resource]
-default_font = ExtResource("1_48hm8")
