@@ -21,7 +21,8 @@ func _ready():
 	pass
 	
 func _process(_delta):
-	
+	# Ahora se pueden presionar los tres pedales a la vez (hay que ver que pasa si presionamos el acelerador
+	#y el freno a la vez
 	if Input.is_action_pressed("forward"):
 		acc_button_pressed = true
 	else:

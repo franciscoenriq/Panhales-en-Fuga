@@ -26,10 +26,17 @@ const str_values = {
 	Cambios.REVERSA:"reversa",
 	Cambios.NONE: "no válido"
 	}
+const fuerza_motor ={
+		Cambios.NEUTRO : 0,
+	Cambios.PRIMERO : 4 , 
+	Cambios.SEGUNDO : 3 , 
+	Cambios.TERCERO : 2 , 
+	Cambios.CUARTO  : 1.5, 
+	Cambios.QUINTO : 1.0
+	}
 	
 var cambioActual = Cambios.NONE
-
-
+var fuerza_motor_actual
 
 var car_speed = 0
 
@@ -71,6 +78,10 @@ func accelerator(player_role, pressure):
 		accPressure = pressure
 		if pressure != 0:
 			change_message("gas pressed- player: "+  player_role + " - pressure: " + str(pressure))
+			#Aquí se debería acelerar al auto dependiendo del cambio en el que estemos.
+			#El cambio primera siempre tiene mas fuerza, el segundo, un 70% de la fuerza y asi sucesivamente en general, los cambios disminuyen la fuerza del motor usando una razón dada
+			#El auto deja de acelerar en el cambio dado cuando se superan las RPM del motor ( por ejemplo, en a mayoría de los autos es a 2000 RPM)
+			#De momento, el auto solo acelerará de una manera fija 
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
 				change_message(default_message)
@@ -110,6 +121,7 @@ func turn(player_role,value):
 func set_gear(player_role, cambio: Cambios):
 	if cambio != cambioActual:
 		cambioActual = cambio
+		fuerza_motor_actual = int(fuerza_motor[cambio])
 		change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
 		
 

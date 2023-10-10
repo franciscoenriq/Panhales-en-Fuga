@@ -38,3 +38,10 @@ func _process(delta: float) -> void:
 	var rotation_angle = maxWheelAngle * wheelRotationValue
 	volante.rotation_degrees.y = rotation_angle
 	GameController.turn.rpc("Driver", -wheelRotationValue)
+	
+	
+	
+	#Ahora debemos mostrar en la pantalla del conductor el movimiento del camino .
+	#Para ello, se realizará lo siguiente:
+	var cambioActual = GameController.cambioActual #recuperamos el valor del cambio actual
+	
