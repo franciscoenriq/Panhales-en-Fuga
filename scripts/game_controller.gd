@@ -4,7 +4,7 @@ var brakePressure=0
 var accPressure=0
 var clutchPressure=0
 var turnValue=0
-
+var velocidad_lateral = 5
 enum Cambios {
 	NEUTRO,
 	PRIMERO,

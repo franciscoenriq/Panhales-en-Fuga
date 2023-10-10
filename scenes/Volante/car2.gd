@@ -1,4 +1,4 @@
-extends AnimatableBody3D
+extends CharacterBody3D
 
 var isTurningLeft: bool
 var isTurningRight: bool
@@ -38,3 +38,14 @@ func _process(delta: float) -> void:
 	var rotation_angle = maxWheelAngle * wheelRotationValue
 	volante.rotation_degrees.y = rotation_angle
 	GameController.turn.rpc("Driver", -wheelRotationValue)
+	
+	#Ahora debemos girar al auto hacia la derecha o izquierda segun corresponda mediante el volante.
+	var turn = -wheelRotationValue
+	if turn:
+		velocity.x = turn*GameController.velocidad_lateral
+	else:
+		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)
+
+	print(global_position)
+	move_and_slide()
+	

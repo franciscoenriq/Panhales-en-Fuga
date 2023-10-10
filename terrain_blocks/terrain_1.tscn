@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvv5plkty1p6k"]
+
+[ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_sqf0e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6y70"]
+albedo_texture = ExtResource("1_sqf0e")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ii76i"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hxoab"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8h1o"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_f6y70")
+mesh = SubResource("PlaneMesh_ii76i")
+
+[node name="Block_0" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.757, 0.5, 5.028)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_0"]
+transform = Transform3D(2.07561, 0, 0, 0, 1, 0, 0, 0, 2.92826, 0, 0, 0)
+mesh = SubResource("BoxMesh_hxoab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_0"]
+shape = SubResource("ConvexPolygonShape3D_u8h1o")
+
+[node name="Block_4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43885, 0.5, 5.028)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_4"]
+transform = Transform3D(2.07561, 0, 0, 0, 1, 0, 0, 0, 2.92826, 0, 0, 0)
+mesh = SubResource("BoxMesh_hxoab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_4"]
+shape = SubResource("ConvexPolygonShape3D_u8h1o")
