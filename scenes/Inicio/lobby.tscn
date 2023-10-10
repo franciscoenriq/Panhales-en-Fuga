@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bslhrv3eo36wd"]
 
-[ext_resource type="Script" path="res://scenes/lobby.gd" id="1_g2fmt"]
-[ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_060bj"]
-[ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="3_tjggb"]
-[ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="4_6prhj"]
+[ext_resource type="Script" path="res://scenes/Inicio/lobby.gd" id="1_ovq7e"]
+[ext_resource type="PackedScene" uid="uid://chbh4lxk8rmmd" path="res://scenes/ui/lobby_player.tscn" id="2_078j4"]
+[ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="3_805qk"]
+[ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="4_hdw06"]
 
 [node name="Lobby" type="MarginContainer"]
 anchors_preset = 15
@@ -11,12 +11,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_g2fmt")
-lobby_player_scene = ExtResource("2_060bj")
+script = ExtResource("1_ovq7e")
+lobby_player_scene = ExtResource("2_078j4")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("3_tjggb")
+texture = ExtResource("3_805qk")
 expand_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -24,7 +24,7 @@ custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("4_6prhj")
+theme = ExtResource("4_hdw06")
 
 [node name="Menus" type="MarginContainer" parent="PanelContainer"]
 unique_name_in_owner = true

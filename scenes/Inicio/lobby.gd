@@ -61,8 +61,8 @@ func _ready():
 	
 	driver.pressed.connect(func(): Game.set_current_player_role(Game.Role.DRIVER))
 	pedal.pressed.connect(func(): Game.set_current_player_role(Game.Role.PEDAL))
-	shooter.pressed.connect(func(): Game.set_current_player_role(Game.Role.SHIFT))
-	shift.pressed.connect(func(): Game.set_current_player_role(Game.Role.SHOOTER))
+	shooter.pressed.connect(func(): Game.set_current_player_role(Game.Role.SHOOTER))
+	shift.pressed.connect(func(): Game.set_current_player_role(Game.Role.SHIFT))
 	
 	ready_toggle.pressed.connect(_on_ready_toggled)
 	
@@ -231,7 +231,7 @@ func starting_game(value: bool):
 
 @rpc("any_peer", "call_local", "reliable")
 func start_game() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/Inicio/main.tscn")
 	
 	
 func is_duplicated(list):
@@ -244,7 +244,7 @@ func is_duplicated(list):
 	
 func _check_ready() -> void:
 	var roles = []
-	var cantidad_jugadores = 2
+	var cantidad_jugadores = 3
 	for player in Game.players:
 		if not player.role in roles and player.role != Game.Role.NONE:
 			roles.push_back(player.role)

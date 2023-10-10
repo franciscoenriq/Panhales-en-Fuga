@@ -1,9 +1,9 @@
 extends Node2D
 
 @export var player_scene: PackedScene
-@onready var driver_scene: PackedScene = preload("res://scenes/base-volante.tscn")
+@onready var driver_scene: PackedScene = preload("res://scenes/Volante/new_volante.tscn")
 @onready var pedal_scene: PackedScene = preload("res://scenes/Pedales/pedales.tscn")
-@onready var shift_scene: PackedScene= preload("res://scenes/dummy.tscn")
+@onready var shift_scene: PackedScene= preload("res://scenes/Cambios/cambios.tscn")
 @onready var shooter_scene: PackedScene= preload("res://scenes/dummy.tscn")
 
 @onready var players: Node2D = $Players
@@ -22,6 +22,10 @@ func _ready() -> void:
 			myscene = driver_scene.instantiate()
 		Game.Role.PEDAL:
 			myscene = pedal_scene.instantiate()
+		Game.Role.SHIFT:
+			myscene = shift_scene.instantiate()
+		Game.Role.SHOOTER:
+			myscene = shooter_scene.instantiate()
 	root.add_child(myscene)
 	
 

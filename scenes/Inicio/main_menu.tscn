@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2aru1tvsijjl"]
 
-[ext_resource type="Script" path="res://scripts/Mainmenu.gd" id="1_r1psj"]
-[ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="1_wwfbl"]
-[ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="3_rqjhr"]
+[ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="1_8o0eg"]
+[ext_resource type="Script" path="res://scripts/Mainmenu.gd" id="2_seneg"]
+[ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="3_fte0h"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,14 +19,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_wwfbl")
+texture = ExtResource("1_8o0eg")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2(1, 0)
 transform = Transform2D(1, 0, 0, 1, 1, 0)
 follow_viewport_scale = 4.075
-script = ExtResource("1_r1psj")
+script = ExtResource("2_seneg")
 
 [node name="Main" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -35,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_rqjhr")
+theme = ExtResource("3_fte0h")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Main"]
 layout_mode = 1
@@ -95,7 +95,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_rqjhr")
+theme = ExtResource("3_fte0h")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Settings"]
 layout_mode = 1

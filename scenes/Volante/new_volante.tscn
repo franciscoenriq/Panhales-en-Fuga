@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://bv5x47g72yeou"]
 
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_1g0xg"]
-[ext_resource type="Script" path="res://car2.gd" id="3_btqju"]
-[ext_resource type="Script" path="res://scenes/InputStateVolante.gd" id="3_rs2qk"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_k2ofs"]
+[ext_resource type="Script" path="res://scenes/Volante/InputStateVolante.gd" id="2_rq372"]
+[ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="3_v83rv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqy2t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,7 +17,7 @@ sky = SubResource("Sky_1lacu")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3r5v"]
-albedo_texture = ExtResource("1_1g0xg")
+albedo_texture = ExtResource("1_k2ofs")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_bsd42"]
@@ -69,12 +69,12 @@ mesh = SubResource("BoxMesh_bsd42")
 shape = SubResource("ConcavePolygonShape3D_xl0nh")
 
 [node name="InputState" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0208702, 2.98448, -2.08705)
+transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 3.5, -2.087)
 text = "testeando"
-script = ExtResource("3_rs2qk")
+script = ExtResource("2_rq372")
 
 [node name="car2" type="AnimatableBody3D" parent="."]
-script = ExtResource("3_btqju")
+script = ExtResource("3_v83rv")
 
 [node name="car_body" type="MeshInstance3D" parent="car2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70746, 0)

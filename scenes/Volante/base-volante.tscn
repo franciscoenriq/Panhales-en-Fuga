@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://bv05lp5ihcku2"]
 
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_vtehj"]
-[ext_resource type="Script" path="res://scenes/car.gd" id="2_dxiop"]
-[ext_resource type="Script" path="res://scenes/InputStateVolante.gd" id="3_khk2y"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_7yfka"]
+[ext_resource type="Script" path="res://scenes/Volante/car.gd" id="2_jo4ql"]
+[ext_resource type="Script" path="res://scenes/Volante/InputStateVolante.gd" id="3_t3td6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rvre1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,7 +17,7 @@ sky = SubResource("Sky_1lacu")
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3r5v"]
-albedo_texture = ExtResource("1_vtehj")
+albedo_texture = ExtResource("1_7yfka")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_i21yx"]
@@ -85,7 +85,7 @@ freeze = true
 engine_force = 200.0
 brake = 5.0
 steering = 0.0872665
-script = ExtResource("2_dxiop")
+script = ExtResource("2_jo4ql")
 
 [node name="car_body" type="MeshInstance3D" parent="car"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70746, 0)
@@ -184,12 +184,8 @@ transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 
 shape = SubResource("ConvexPolygonShape3D_rn6qw")
 
 [node name="Camera3D" type="Camera3D" parent="car"]
-
 transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, -0.0270226)
 
 [node name="InputState" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0208702, 2.98448, -2.08705)
-text = "testeando"
-
-script = ExtResource("3_khk2y")
-
+script = ExtResource("3_t3td6")

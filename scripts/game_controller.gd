@@ -4,57 +4,87 @@ var brakePressure=0
 var accPressure=0
 var clutchPressure=0
 var turnValue=0
-const debug_print_time = 0.8
 
-var volanteText = "No pedals have been pressed"
-var pedalesText = "Wheel straight"
+enum Cambios {
+	NEUTRO,
+	PRIMERO,
+	SEGUNDO,
+	TERCERO,
+	CUARTO,
+	QUINTO,
+	REVERSA,
+	NONE
+}
+
+const str_values = {
+	   Cambios.NEUTRO: "neutro",
+	Cambios.PRIMERO: "primera",
+	Cambios.SEGUNDO: "segunda",
+	Cambios.TERCERO: "tercera",
+	Cambios.CUARTO:"cuarta",
+	Cambios.QUINTO:"quinta",
+	Cambios.REVERSA:"reversa",
+	Cambios.NONE: "no válido"
+	}
+	
+var cambioActual = Cambios.NONE
+
+
 
 var car_speed = 0
 
-@rpc("any_peer")
-func test(player_role):
-	# esta funcion printea el test en los otros jugadores (que es lo que queremos
-	# para la demo 1)
-	Debug.dprint("test - player: %s" % player_role, debug_print_time)
+const debug_print_time = 0.8
+
+var default_message = "No input received"
+var messages = {"driver": default_message,
+				"shift": default_message,
+				"pedal": default_message,
+				"shooter": default_message }
+
+
 
 @rpc("any_peer")
+func test(player_role):
+	Debug.dprint("test - player: %s" % player_role, debug_print_time)
+
+func change_message(message):
+	for clave in messages.keys():
+		messages[clave] = message
+		
+	
+@rpc("any_peer")
 func clutch(player_role, pressure):
-	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
-	# (que es lo que queremos para la demo 1)
+	# esta funcion printea la presion puesta en el freno a  los otros jugadores
 	if clutchPressure != pressure:
 		clutchPressure = pressure
 		if pressure != 0:
-			volanteText = "clutch pressed- player: "+  player_role + " - pressure: " + str(pressure)
+			change_message("clutch pressed- player: "+  player_role + " - pressure: " + str(pressure))
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
-				volanteText = "No pedals have been pressed"
-		#Debug.dprint(volanteText)
+				change_message(default_message)
+				
 		
 @rpc("any_peer")
 func accelerator(player_role, pressure):
 	# esta funcion printea la presion puesta en el aceleradoro a  los otros jugadores 
-	# (que es lo que queremos para la demo 1)
 	if accPressure!=pressure:
 		accPressure = pressure
 		if pressure != 0:
-			volanteText = "gas pressed- player: "+  player_role + " - pressure: " + str(pressure)
+			change_message("gas pressed- player: "+  player_role + " - pressure: " + str(pressure))
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
-				volanteText = "No pedals have been pressed"
-		#Debug.dprint(volanteText)
+				change_message(default_message)
 		
 @rpc("any_peer")
 func brake(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
-	# (que es lo que queremos para la demo 1)
 	if pressure != brakePressure:
 		brakePressure = pressure
 		if pressure != 0:
-			volanteText="brake pressed- player: "+  player_role + " - pressure: " + str(pressure)
+			change_message("brake pressed- player: "+  player_role + " - pressure: " + str(pressure))
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
-				volanteText = "No pedals have been pressed"
-		#Debug.dprint(volanteText)
+				change_message(default_message)
 		
 		
 func change_degree_value(value):
@@ -72,12 +102,16 @@ func turn(player_role,value):
 		turnValue = value
 		if snapped(value,0.1) != 0:
 			var direction = "Left" if value<0 else "Right"
-			pedalesText = "Player: "+player_role+" - Wheel turning: " + str(abs(change_degree_value(value)))+"° "+direction
+			change_message("Player: "+player_role+" - Wheel turning: " + str(abs(change_degree_value(value)))+"° "+direction)
 		else:
-			pedalesText = "Wheel straight"
-		#Debug.dprint(pedalesText)
+			change_message(default_message)
 
-
+@rpc("any_peer")
+func set_gear(player_role, cambio: Cambios):
+	if cambio != cambioActual:
+		cambioActual = cambio
+		change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
+		
 
 
 
