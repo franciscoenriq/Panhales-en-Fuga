@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ggu1ki64l4vq"]
+[gd_scene load_steps=8 format=3 uid="uid://ggu1ki64l4vq"]
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_ja7xx"]
+[ext_resource type="PackedScene" uid="uid://8kql4l7ko285" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/fbx/building_A_withoutBase.fbx" id="2_g6c4r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6y70"]
 albedo_texture = ExtResource("1_ja7xx")
@@ -13,7 +14,12 @@ size = Vector2(20, 20)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8h1o"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_52ind"]
+size = Vector2(40, 20)
+center_offset = Vector3(0, -0.1, 0)
+
 [node name="Terrain_0" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7895, -0.254776, -6.28202)
 material_override = SubResource("StandardMaterial3D_f6y70")
 mesh = SubResource("PlaneMesh_ii76i")
 
@@ -66,3 +72,9 @@ mesh = SubResource("BoxMesh_hxoab")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Block_4"]
 shape = SubResource("ConvexPolygonShape3D_u8h1o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_52ind")
+
+[node name="building_A_withoutBase" parent="." instance=ExtResource("2_g6c4r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3732, 0.254776, 5.8686)
