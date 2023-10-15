@@ -75,6 +75,7 @@ func calc_speed(delta):
 	#limite=100 #sacar
 	var velocidad = max(0, car_speed + calc_aceleracion()*delta)
 	self.car_speed = min(limite, velocidad)
+	self.velocidad_lateral = car_speed/2
 	#self.car_speed += 0.1
 	print("current speed: " + str(car_speed))
 	return self.car_speed #solucion parche
