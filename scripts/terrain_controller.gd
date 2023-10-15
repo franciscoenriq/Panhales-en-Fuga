@@ -44,7 +44,7 @@ func _progress_terrain(delta: float) -> void:
 	var velocidad = GameController.calc_speed(delta) #solucion parche
 	print(velocidad)
 	for block in terrain_belt:
-		block.position.z += GameController.car_speed * delta
+		block.position.z += velocidad * delta
 
 	if terrain_belt[0].position.z >= terrain_belt[0].mesh.size.y*2:
 		var last_terrain = terrain_belt[-1]
