@@ -1,8 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=17 format=3 uid="uid://bv5x47g72yeou"]
 
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="1_k2ofs"]
-[ext_resource type="Script" path="res://scenes/Volante/InputStateVolante.gd" id="2_rq372"]
+[ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
 [ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="3_v83rv"]
+[ext_resource type="PackedScene" uid="uid://b03fwjrmf1jpd" path="res://scenes/Volante/messageBar.tscn" id="4_i5ci0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqy2t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,16 +16,21 @@ background_mode = 2
 sky = SubResource("Sky_1lacu")
 tonemap_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3r5v"]
-albedo_texture = ExtResource("1_k2ofs")
-uv1_triplanar = true
+[sub_resource type="GDScript" id="GDScript_7fw4t"]
+script/source = "extends Label3D
 
-[sub_resource type="BoxMesh" id="BoxMesh_bsd42"]
-material = SubResource("StandardMaterial3D_y3r5v")
-size = Vector3(50, 1, 50)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xl0nh"]
-data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25, 25, -0.5, 25, -25, -0.5, 25, 25, 0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, 0.5, -25, -25, -0.5, -25, 25, -0.5, -25, 25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, -25, 25, -0.5, -25, 25, -0.5, 25, -25, 0.5, -25, -25, 0.5, 25, -25, -0.5, -25, -25, 0.5, 25, -25, -0.5, 25, -25, -0.5, -25, 25, 0.5, 25, -25, 0.5, 25, 25, 0.5, -25, -25, 0.5, 25, -25, 0.5, -25, 25, 0.5, -25, -25, -0.5, 25, 25, -0.5, 25, -25, -0.5, -25, 25, -0.5, 25, 25, -0.5, -25, -25, -0.5, -25)
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	self.text = GameController.messages[\"driver\"]
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
 size = Vector3(1.5, 0.5, 2)
@@ -60,20 +65,18 @@ environment = SubResource("Environment_q40ix")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="piso" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_bsd42")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="piso"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="piso/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_xl0nh")
-
 [node name="InputState" type="Label3D" parent="."]
-transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 3.5, -2.087)
+transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 2, -2.087)
+visible = false
 text = "testeando"
-script = ExtResource("2_rq372")
+script = SubResource("GDScript_7fw4t")
 
-[node name="car2" type="AnimatableBody3D" parent="."]
+[node name="car2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.31823, 0)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_y = true
+motion_mode = 1
 script = ExtResource("3_v83rv")
 
 [node name="car_body" type="MeshInstance3D" parent="car2"]
@@ -95,7 +98,7 @@ mesh = SubResource("CylinderMesh_saawo")
 transform = Transform3D(0.3, 0, 0, 0, 0.8, 0, 0, 0, 0.3, -0.0207283, 0.67364, -0.98729)
 shape = SubResource("CylinderShape3D_mhcuo")
 
-[node name="Volante" type="AnimatableBody3D" parent="car2"]
+[node name="Volante" type="StaticBody3D" parent="car2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58409, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="car2/Volante"]
@@ -118,3 +121,8 @@ shape = SubResource("ConvexPolygonShape3D_wwmwd")
 
 [node name="Camera3D" type="Camera3D" parent="car2"]
 transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, -0.0270226)
+
+[node name="TerrainController" parent="." instance=ExtResource("3_5y2k5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="messageBar" parent="." instance=ExtResource("4_i5ci0")]

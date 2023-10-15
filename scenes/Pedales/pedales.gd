@@ -1,8 +1,6 @@
 extends Node2D
 
-@onready var AccBTN = %AccBTN
-@onready var FreBTN = %FreBTN
-@onready var EmbBTN = %EmbBTN
+
 @onready var ProgressAcc = %ProgressBarAcc
 @onready var ProgressFre = %ProgressBarFre
 @onready var ProgressEmb = %ProgressBarEmb
@@ -23,6 +21,20 @@ func _ready():
 	pass
 	
 func _process(_delta):
+	# embrague se puede presionar siempre pero no se puede acelerar y pisar freno a la vez
+	if Input.is_action_pressed("forward") and not Input.is_action_pressed("brake"):
+		acc_button_pressed = true
+	else:
+		acc_button_pressed = false
+	
+	if Input.is_action_pressed("brake") and not Input.is_action_pressed("forward") :
+		fre_button_pressed = true
+	else:
+		fre_button_pressed = false
+	if Input.is_action_pressed("clutch"):
+		emb_button_pressed = true
+	else:
+		emb_button_pressed = false
 	
 	
 	###############ACELERADOR#####################
@@ -60,33 +72,6 @@ func _process(_delta):
 	
 
 	
-	
+
 	
 
-func _on_acc_btn_button_up():
-	print("acelerador soltado")
-
-	acc_button_pressed = false
-	
-func _on_acc_btn_button_down():
-	print("acelerador presionado")
-	acc_button_pressed = true
-	
-
-func _on_fre_btn_button_up():
-	print("freno soltado")
-	fre_button_pressed = false
-	
-	
-func _on_fre_btn_button_down():
-	print("freno presionado")
-	fre_button_pressed = true
-	
-
-func _on_emb_btn_button_up():
-	print("embrague soltado")
-	emb_button_pressed = false
-	
-func _on_emb_btn_button_down():
-	print("embrague presionado")
-	emb_button_pressed = true
