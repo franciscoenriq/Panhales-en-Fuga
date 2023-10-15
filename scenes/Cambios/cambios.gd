@@ -9,14 +9,6 @@ var initialPosition
 var areaPalanca
 
 # CAMBIOS
-
-var neutro : bool
-var primera : bool
-var segunda : bool
-var tercera : bool
-var cuarta : bool
-var quinta : bool
-
 var estadoCambios ={
 	GameController.Cambios.NEUTRO:false,
 	GameController.Cambios.PRIMERO:false,
@@ -39,13 +31,14 @@ func _on_area_palanca_mouse_entered():
 func _on_area_palanca_mouse_exited():
 	mouseInsideAreaPalanca = false
 	
-func _process(delta):
+func _process(_delta):
 	if mouseInsideAreaPalanca:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			isDragging = true
 		else:
 			isDragging = false
-	if isDragging:
+	if isDragging and GameController.clutchPressure>=GameController.acceptableClutchPressure:
+		# el godot se mueve si está arrastrando y el embrague está apretado
 		var newPosition = get_global_mouse_position()
 		
 		if mouseInsideAreaCambio:
@@ -55,12 +48,15 @@ func _process(delta):
 			
 			
 func setCambio(cambio):
-
-	estadoCambios[cambio] = true
-	GameController.set_gear.rpc("shift", cambio)
-	for otro_cambio in GameController.Cambios.values():
-		if otro_cambio != cambio:
-			estadoCambios[otro_cambio] = false
+	# solo pasamos el cambio si el embrague está presionado
+	if GameController.clutchPressure>=GameController.acceptableClutchPressure:
+		estadoCambios[cambio] = true
+		GameController.set_gear.rpc("shift", cambio)
+		for otro_cambio in GameController.Cambios.values():
+			if otro_cambio != cambio:
+				estadoCambios[otro_cambio] = false
+#	else:
+#		GameController.messages["shift"] = "Debe presionar el embrague para poder pasar los cambios"
 	
 func _on_area_cambio_mouse_entered():
 	mouseInsideAreaCambio = true
