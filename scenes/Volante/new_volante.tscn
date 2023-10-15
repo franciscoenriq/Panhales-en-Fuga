@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=17 format=3 uid="uid://bv5x47g72yeou"]
 
-[ext_resource type="Script" path="res://scenes/Volante/InputStateVolante.gd" id="2_rq372"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
 [ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="3_v83rv"]
+[ext_resource type="PackedScene" uid="uid://b03fwjrmf1jpd" path="res://scenes/Volante/messageBar.tscn" id="4_i5ci0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqy2t"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,6 +15,22 @@ sky_material = SubResource("ProceduralSkyMaterial_kqy2t")
 background_mode = 2
 sky = SubResource("Sky_1lacu")
 tonemap_mode = 2
+
+[sub_resource type="GDScript" id="GDScript_7fw4t"]
+script/source = "extends Label3D
+
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	self.text = GameController.messages[\"driver\"]
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
 size = Vector3(1.5, 0.5, 2)
@@ -50,9 +66,10 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="InputState" type="Label3D" parent="."]
-transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 3.5, -2.087)
+transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 2, -2.087)
+visible = false
 text = "testeando"
-script = ExtResource("2_rq372")
+script = SubResource("GDScript_7fw4t")
 
 [node name="car2" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.31823, 0)
@@ -107,3 +124,5 @@ transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.
 
 [node name="TerrainController" parent="." instance=ExtResource("3_5y2k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
+
+[node name="messageBar" parent="." instance=ExtResource("4_i5ci0")]

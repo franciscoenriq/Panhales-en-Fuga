@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bctm86ub5mlq3"]
+[gd_scene load_steps=8 format=3 uid="uid://bctm86ub5mlq3"]
 
 [ext_resource type="Script" path="res://scenes/Cambios/cambios.gd" id="1_62rui"]
 [ext_resource type="Texture2D" uid="uid://c52aadbd3vxf8" path="res://scenes/Cambios/pngwing.com.png" id="1_m565l"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://icon.svg" id="3_ddqma"]
+[ext_resource type="Texture2D" uid="uid://bcecdbtpdfkr" path="res://Assets/close-up-fabric-texture.jpg" id="2_ph152"]
+[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Assets/icon.svg" id="4_r5c76"]
 [ext_resource type="Script" path="res://scenes/Cambios/InputStateShift.gd" id="4_yv17q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vufvp"]
@@ -13,7 +14,13 @@ radius = 25.02
 [node name="cambios" type="Node2D"]
 script = ExtResource("1_62rui")
 
-[node name="Imagen" type="Sprite2D" parent="."]
+[node name="Close-up-fabric-texture" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.266667)
+position = Vector2(570.325, 323.375)
+scale = Vector2(0.193999, 0.166105)
+texture = ExtResource("2_ph152")
+
+[node name="cambios" type="Sprite2D" parent="."]
 position = Vector2(589, 321)
 texture = ExtResource("1_m565l")
 metadata/_edit_lock_ = true
@@ -27,7 +34,7 @@ unique_name_in_owner = true
 [node name="Sprite2D" type="Sprite2D" parent="Palanca/areaPalanca"]
 position = Vector2(1, -1)
 scale = Vector2(0.175781, 0.199219)
-texture = ExtResource("3_ddqma")
+texture = ExtResource("4_r5c76")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Palanca/areaPalanca"]
 position = Vector2(-1, 1)
@@ -88,7 +95,20 @@ offset_left = -1.0
 offset_top = -3.0
 offset_right = 1150.0
 offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.976471, 0.976471, 0.976471, 1)
+horizontal_alignment = 1
 script = ExtResource("4_yv17q")
+
+[node name="instrucciones" type="Label" parent="."]
+offset_left = 9.0
+offset_top = 608.0
+offset_right = 1148.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0.988235, 0.988235, 0.988235, 1)
+theme_override_colors/font_outline_color = Color(0.972549, 0.972549, 0.972549, 1)
+text = "Arrastra con tu mouse a Godot hacia el cambio deseado"
+horizontal_alignment = 1
 
 [connection signal="mouse_entered" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_entered"]
 [connection signal="mouse_exited" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_exited"]

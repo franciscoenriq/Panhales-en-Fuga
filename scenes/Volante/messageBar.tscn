@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b03fwjrmf1jpd"]
+
+[ext_resource type="Script" path="res://scenes/Volante/InputStateVolante.gd" id="1_ahikr"]
+
+[node name="messageBar" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InputState" type="Label" parent="CanvasLayer"]
+offset_right = 1149.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.960784, 0.960784, 0.960784, 1)
+horizontal_alignment = 1
+script = ExtResource("1_ahikr")
+
+[node name="instrucciones" type="Label" parent="."]
+offset_left = -4.0
+offset_top = 597.0
+offset_right = 1149.0
+offset_bottom = 650.0
+theme_override_colors/font_color = Color(0.992157, 0.992157, 0.992157, 1)
+theme_override_colors/font_outline_color = Color(0.980392, 0.980392, 0.980392, 1)
+text = "Girar izquierda: Flecha izquierda - Girar derecha: Flecha derecha"
+horizontal_alignment = 1

@@ -3,8 +3,14 @@ extends Node
 var brakePressure=0
 var accPressure=0
 var clutchPressure=0
+var acceptableClutchPressure = 85
 var turnValue=0
-var velocidad_lateral = 5
+var cambioActual = Cambios.NONE
+
+var car_speed= 1 # velocidad inicial a la que se mueve la pista en km/h
+var velocidad_lateral = car_speed/2  # velocidad para cambiar de pista en km/h
+const debug_print_time = 0.8
+
 enum Cambios {
 	NEUTRO,
 	PRIMERO,
@@ -17,7 +23,7 @@ enum Cambios {
 }
 
 const str_values = {
-	   Cambios.NEUTRO: "neutro",
+	Cambios.NEUTRO: "neutro",
 	Cambios.PRIMERO: "primera",
 	Cambios.SEGUNDO: "segunda",
 	Cambios.TERCERO: "tercera",
@@ -27,20 +33,25 @@ const str_values = {
 	Cambios.NONE: "no válido"
 	}
 const fuerza_motor ={
-		Cambios.NEUTRO : 0,
-	Cambios.PRIMERO : 4 , 
-	Cambios.SEGUNDO : 3 , 
-	Cambios.TERCERO : 2 , 
-	Cambios.CUARTO  : 1.5, 
-	Cambios.QUINTO : 1.0
+	Cambios.NONE: 0,
+	Cambios.NEUTRO: 0,
+	Cambios.PRIMERO: 4 , 
+	Cambios.SEGUNDO: 3 , 
+	Cambios.TERCERO: 2 , 
+	Cambios.CUARTO: 1.5, 
+	Cambios.QUINTO: 1.0
 	}
 	
-var cambioActual = Cambios.NONE
-var fuerza_motor_actual
-
-var car_speed = 0
-
-const debug_print_time = 0.8
+const limite_velocidad ={
+	Cambios.NONE: 0,
+	Cambios.NEUTRO: 0,
+	Cambios.PRIMERO: 25 , 
+	Cambios.SEGUNDO: 40 , 
+	Cambios.TERCERO: 65, 
+	Cambios.CUARTO: 100, 
+	Cambios.QUINTO: 150
+	}
+	
 
 var default_message = "No input received"
 var messages = {"driver": default_message,
@@ -48,7 +59,25 @@ var messages = {"driver": default_message,
 				"pedal": default_message,
 				"shooter": default_message }
 
+func calc_aceleracion():
+	var fuerza = fuerza_motor[cambioActual]
+	#fuerza =1 #sacar
+	if accPressure>0 and brakePressure<=0:
+		return fuerza * accPressure
+	if accPressure<=0 and brakePressure>0:
+		return fuerza * brakePressure * -1
+	return 0
+	
 
+@rpc("any_peer")
+func calc_speed(delta):
+	var limite = limite_velocidad[cambioActual]
+	#limite=100 #sacar
+	var velocidad = max(0, car_speed + calc_aceleracion()*delta)
+	self.car_speed = min(limite, velocidad)
+	#self.car_speed += 0.1
+	print("current speed: " + str(car_speed))
+	return self.car_speed #solucion parche
 
 @rpc("any_peer")
 func test(player_role):
@@ -119,11 +148,13 @@ func turn(player_role,value):
 
 @rpc("any_peer")
 func set_gear(player_role, cambio: Cambios):
-	if cambio != cambioActual:
-		cambioActual = cambio
-		fuerza_motor_actual = int(fuerza_motor[cambio])
-		change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
-		
+	if clutchPressure>=GameController.acceptableClutchPressure:
+		if cambio != cambioActual:
+			cambioActual = cambio
+			change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
+			
+			return true
+	return false
 
 
 
