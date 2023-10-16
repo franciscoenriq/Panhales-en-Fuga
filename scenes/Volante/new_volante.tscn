@@ -1,20 +1,25 @@
-[gd_scene load_steps=17 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=18 format=3 uid="uid://bv5x47g72yeou"]
 
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
 [ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="3_v83rv"]
 [ext_resource type="PackedScene" uid="uid://b03fwjrmf1jpd" path="res://scenes/Volante/messageBar.tscn" id="4_i5ci0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqy2t"]
+sky_top_color = Color(0.607843, 0.392157, 0.219608, 1)
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sun_angle_max = 0.0
 
 [sub_resource type="Sky" id="Sky_1lacu"]
 sky_material = SubResource("ProceduralSkyMaterial_kqy2t")
+process_mode = 3
 
 [sub_resource type="Environment" id="Environment_q40ix"]
 background_mode = 2
 sky = SubResource("Sky_1lacu")
 tonemap_mode = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_n5wtx"]
 
 [sub_resource type="GDScript" id="GDScript_7fw4t"]
 script/source = "extends Label3D
@@ -60,6 +65,7 @@ points = PackedVector3Array(-0.977441, 0.0497648, -0.183127, 0.977439, 0.0497671
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q40ix")
+camera_attributes = SubResource("CameraAttributesPractical_n5wtx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
