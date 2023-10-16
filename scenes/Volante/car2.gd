@@ -1,5 +1,8 @@
 extends CharacterBody3D
 
+@export var sensitivity = 1000
+@onready var pivoteCamera := $pivoteCamera
+@onready var camera := $pivoteCamera/Camera3D
 var isTurningLeft: bool
 var isTurningRight: bool
 @onready var volante=%MeshInstance3D
@@ -7,6 +10,19 @@ var turningRate: float = 5.0  # Aumenta la velocidad de giro
 var forceFeedback: float = 3.0
 var maxWheelAngle: float = 90.0
 var wheelRotationValue: float
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	elif event.is_action_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
+			pivoteCamera.rotate_y(-event.relative.x * 0.005)
+			camera.rotate_x(-event.relative.y * 0.005)
+			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-30), deg_to_rad(60))
+
+
 
 func _ready() -> void:
 	isTurningLeft = false
@@ -49,3 +65,4 @@ func _process(delta: float) -> void:
 	print(global_position)
 	move_and_slide()
 	
+

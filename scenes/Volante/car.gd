@@ -2,11 +2,17 @@ extends VehicleBody3D
 
 var isTurningLeft: bool
 var isTurningRight: bool
+
 @onready var volante=%MeshInstance3D
+
 var turningRate: float = 5.0  # Aumenta la velocidad de giro
 var forceFeedback: float = 3.0
 var maxWheelAngle: float = 90.0
 var wheelRotationValue: float
+
+
+
+
 
 func _ready() -> void:
 	isTurningLeft = false
@@ -20,6 +26,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_pressed("turn_right"):
 		isTurningRight = true
 		isTurningLeft = false
+	
 	else:
 		isTurningLeft = false
 		isTurningRight = false

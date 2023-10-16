@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=21 format=3 uid="uid://bv5x47g72yeou"]
 
 [ext_resource type="Script" path="res://scenes/Volante/InputStateVolante.gd" id="2_rq372"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
@@ -16,29 +16,65 @@ background_mode = 2
 sky = SubResource("Sky_1lacu")
 tonemap_mode = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
-size = Vector3(1.5, 0.5, 2)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_4xi4q"]
-points = PackedVector3Array(-0.721055, -0.25, -0.956116, 0.690701, 0.25, 0.926237, 0.71311, -0.25, 0.956116, -0.721055, -0.25, 0.956116, 0.71311, -0.25, -0.956116, -0.698647, 0.25, -0.926237, -0.698647, 0.25, 0.926237, 0.690701, 0.25, -0.926237)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_saawo"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 1.5
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_mhcuo"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2fquk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpybj"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ni22n"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhxtw"]
+size = Vector3(5, 3.42976, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wwmwd"]
 points = PackedVector3Array(-0.977441, 0.0497648, -0.183127, 0.977439, 0.0497671, 0.183136, 0.978405, -0.0418249, 0.183316, -0.183514, -0.0418213, 0.978376, -0.11703, -0.244868, -0.79026, 0.258779, 0.248506, -0.719117, -0.143991, 0.248754, 0.748713, -0.380554, -0.244981, 0.702915, 0.767088, -0.21733, -0.412772, -0.590063, 0.22527, -0.619629, 0.523544, -0.2433, 0.610693, 0.559731, 0.224918, 0.647989, -0.78067, 0.16911, 0.510348, -0.85995, -0.218483, 0.118549, 0.395326, 0.0495687, -0.912283, 0.800759, 0.196787, -0.41499, -0.542445, -0.101449, -0.813556, 0.456757, 0.0496339, 0.883249, -0.748718, 0.248754, -0.143969, -0.151993, 0.0799481, -0.97277, -0.813562, -0.101449, 0.542434, 0.74868, 0.248758, 0.143971, -0.702767, -0.244991, -0.380738, 0.120007, -0.161201, -0.930932, 0.850308, -0.0415202, -0.516225, 0.149465, -0.190349, 0.896963, 0.790253, -0.244879, 0.11683, 0.756382, -0.071618, 0.635284, -0.302169, 0.140031, 0.907023, -0.877262, -0.0716078, -0.453794, 0.476762, -0.189752, -0.775055, 0.181609, 0.140292, 0.939131)
+
+[sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
+inner_radius = 1.272
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u2tr0"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
+size = Vector3(1.5, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o62oy"]
+size = Vector3(5, 0.5, 8)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_meowj"]
+size = Vector2(5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1m7n1"]
+size = Vector2(5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ob1h"]
+size = Vector3(0.3, 1.7, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lcg5k"]
+size = Vector3(0.3, 1.7, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqcya"]
+size = Vector3(5, 0.3, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5uwt"]
+size = Vector3(1, 1.4, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hj2yl"]
+size = Vector3(1, 1.4, 9)
+
+[sub_resource type="GDScript" id="GDScript_d3ibs"]
+script/source = "extends Camera3D
+
+var rotate_left:bool 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	rotate_left = false
+
+
+func _input(event):
+	if Input.is_key_pressed(KEY_4):
+		rotate_y(0.1)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+	
+"
 
 [node name="Node3D" type="Node3D"]
 
@@ -62,27 +98,16 @@ axis_lock_angular_y = true
 motion_mode = 1
 script = ExtResource("3_v83rv")
 
-[node name="car_body" type="MeshInstance3D" parent="car2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70746, 0)
-mesh = SubResource("BoxMesh_iajsa")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="car2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70746, 0)
-shape = SubResource("ConvexPolygonShape3D_4xi4q")
-
-[node name="palo" type="StaticBody3D" parent="car2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58409, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="car2/palo"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.709437, -0.970694)
-mesh = SubResource("CylinderMesh_saawo")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="car2/palo"]
-transform = Transform3D(0.3, 0, 0, 0, 0.8, 0, 0, 0, 0.3, -0.0207283, 0.67364, -0.98729)
-shape = SubResource("CylinderShape3D_mhcuo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.868927, 3.22249, -0.501921)
+shape = SubResource("BoxShape3D_nhxtw")
 
 [node name="Volante" type="StaticBody3D" parent="car2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58409, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.86926, 1.4886, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car2/Volante"]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 1.38181, -0.942291)
+shape = SubResource("ConvexPolygonShape3D_wwmwd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="car2/Volante"]
 unique_name_in_owner = true
@@ -91,19 +116,53 @@ rotation_order = 1
 mesh = SubResource("TorusMesh_g54x2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="car2/Volante/MeshInstance3D"]
-transform = Transform3D(-0.186879, 0, -0.27602, 0.27602, -1.45704e-08, -0.186879, -1.20652e-08, -0.333333, 8.16876e-09, 0, -0.0218685, -0.728848)
-rotation_order = 1
-material_override = SubResource("StandardMaterial3D_2fquk")
-material_overlay = SubResource("StandardMaterial3D_lpybj")
-mesh = SubResource("CylinderMesh_ni22n")
+transform = Transform3D(-0.0148347, 0.999889, -4.37065e-08, -0.999889, -0.0148347, 4.43598e-08, 4.37065e-08, 4.43597e-08, 1, 0.0795186, -0.0199213, -0.102635)
+rotation_order = 5
+mesh = SubResource("CylinderMesh_u2tr0")
+skeleton = NodePath("../../CollisionShape3D")
+
+[node name="car_body" type="MeshInstance3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0658567, 1.70746, 0)
+mesh = SubResource("BoxMesh_iajsa")
+
+[node name="floor_car" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793291, 0, 2.95544)
+mesh = SubResource("BoxMesh_o62oy")
+
+[node name="velocimetro" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, -0.939693, 0, 0.939693, 0.34202, 0.779602, 0.675451, -1.20556)
+mesh = SubResource("PlaneMesh_meowj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car2/car_body/velocimetro"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0.0159078, -0.238201, -0.591301)
+mesh = SubResource("PlaneMesh_1m7n1")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="car2/Volante"]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 1.38181, -0.801486)
-shape = SubResource("ConvexPolygonShape3D_wwmwd")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, -1.54675, 1.90564, -1.3313)
+mesh = SubResource("BoxMesh_0ob1h")
 
-[node name="Camera3D" type="Camera3D" parent="car2"]
-transform = Transform3D(1, 0, 0, 0, 0.963163, 0.26892, 0, -0.26892, 0.963163, 0.118358, 3.44368, -0.0270226)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 3.14675, 1.91553, -1.33191)
+mesh = SubResource("BoxMesh_lcg5k")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.760899, 2.66928, 2.67568)
+mesh = SubResource("BoxMesh_tqcya")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20134, 0.438311, 2.63092)
+mesh = SubResource("BoxMesh_k5uwt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="car2/car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74776, 0.545981, 2.87424)
+mesh = SubResource("BoxMesh_hj2yl")
+
+[node name="pivoteCamera" type="Node3D" parent="car2"]
+
+[node name="Camera3D" type="Camera3D" parent="car2/pivoteCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.996318, -0.0857299, 0, 0.0857299, 0.996318, 0.875564, 3.33589, 0.188574)
+script = SubResource("GDScript_d3ibs")
 
 [node name="TerrainController" parent="." instance=ExtResource("3_5y2k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
