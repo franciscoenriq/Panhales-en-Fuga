@@ -32,7 +32,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	self.text = GameController.messages[\"driver\"]
-
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
 size = Vector3(1.5, 0.5, 2)
