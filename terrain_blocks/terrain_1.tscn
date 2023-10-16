@@ -1,6 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvv5plkty1p6k"]
+[gd_scene load_steps=15 format=3 uid="uid://dicse6utj6uni"]
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_sqf0e"]
+[ext_resource type="PackedScene" uid="uid://yygabw7171gf" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/trash_A.gltf" id="2_2egcj"]
+[ext_resource type="PackedScene" uid="uid://csfhl0obhhpt" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_F.gltf" id="3_05ydd"]
+[ext_resource type="PackedScene" uid="uid://bkpqrfvn0xtxm" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_B.gltf" id="4_glna1"]
+[ext_resource type="PackedScene" uid="uid://71c1g4y8np1u" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/bush.gltf" id="6_hh2te"]
+[ext_resource type="PackedScene" uid="uid://bu1uu6wkxy7it" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/base.gltf" id="7_4uo6k"]
+[ext_resource type="PackedScene" uid="uid://cvkbk0upg0m6y" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/firehydrant.gltf" id="7_uoe38"]
+[ext_resource type="PackedScene" uid="uid://b4prwbr34nn38" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_H.gltf" id="8_2g080"]
+[ext_resource type="PackedScene" uid="uid://wglisxxgmfwy" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/bench.gltf" id="8_lu3bq"]
+[ext_resource type="PackedScene" uid="uid://dkekb6cs85d6" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_G.gltf" id="9_3fski"]
+[ext_resource type="PackedScene" uid="uid://bcar58vbd868k" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/streetlight.gltf" id="9_bhob0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6y70"]
 albedo_texture = ExtResource("1_sqf0e")
@@ -8,31 +18,74 @@ albedo_texture = ExtResource("1_sqf0e")
 [sub_resource type="PlaneMesh" id="PlaneMesh_ii76i"]
 size = Vector2(20, 20)
 
-[sub_resource type="BoxMesh" id="BoxMesh_hxoab"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u8h1o"]
-points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+[sub_resource type="PlaneMesh" id="PlaneMesh_52ind"]
+size = Vector2(40, 20)
+center_offset = Vector3(0, -0.1, 0)
 
 [node name="Terrain_0" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_f6y70")
 mesh = SubResource("PlaneMesh_ii76i")
 
-[node name="Block_0" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.757, 0.5, 5.028)
+[node name="trash_A" parent="." instance=ExtResource("2_2egcj")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.5325, 0.0686877, 1.61758)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_0"]
-transform = Transform3D(2.07561, 0, 0, 0, 1, 0, 0, 0, 2.92826, 0, 0, 0)
-mesh = SubResource("BoxMesh_hxoab")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_52ind")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_0"]
-shape = SubResource("ConvexPolygonShape3D_u8h1o")
+[node name="bush" parent="." instance=ExtResource("6_hh2te")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.6175, -1.19209e-07, 9.05576)
 
-[node name="Block_4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43885, 0.5, 5.028)
+[node name="base2" parent="." instance=ExtResource("7_4uo6k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 10, -11.3177, -0.10023, -0.030221)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Block_4"]
-transform = Transform3D(2.07561, 0, 0, 0, 1, 0, 0, 0, 2.92826, 0, 0, 0)
-mesh = SubResource("BoxMesh_hxoab")
+[node name="base" parent="." instance=ExtResource("7_4uo6k")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 10, 12.062, -0.1, 0.033)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Block_4"]
-shape = SubResource("ConvexPolygonShape3D_u8h1o")
+[node name="bench" parent="." instance=ExtResource("8_lu3bq")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -10.1295, 0.212788, -5.75076)
+
+[node name="bench2" parent="." instance=ExtResource("8_lu3bq")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -10.1295, 0.212788, 6.59868)
+
+[node name="streetlight3" parent="." instance=ExtResource("9_bhob0")]
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, -10.1709, -0.0796885, -10.0826)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight3"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="streetlight4" parent="." instance=ExtResource("9_bhob0")]
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, -10.1709, -0.0796885, -0.252015)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight4"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="streetlight5" parent="." instance=ExtResource("9_bhob0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.2314, -0.0796885, -10.0826)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight5"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="streetlight6" parent="." instance=ExtResource("9_bhob0")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.2314, -0.0796885, 0.115921)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight6"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="firehydrant" parent="." instance=ExtResource("7_uoe38")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -9.8058, 0, 9.00905)
+
+[node name="building_H" parent="." instance=ExtResource("8_2g080")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -15.774, -0.371892, 5.91289)
+
+[node name="building_G" parent="." instance=ExtResource("9_3fski")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -13.9397, -0.342002, -4.79499)
+
+[node name="building_F2" parent="." instance=ExtResource("3_05ydd")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 15.6971, -0.28897, -4.63625)
+
+[node name="building_B" parent="." instance=ExtResource("4_glna1")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 15.4414, -0.247105, 5.67202)

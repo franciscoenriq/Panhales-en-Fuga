@@ -2,21 +2,33 @@
 [gd_scene load_steps=20 format=3 uid="uid://bv5x47g72yeou"]
 
 
+[ext_resource type="Texture2D" uid="uid://clnq68ag802k4" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/BlueSkySkybox.png" id="1_vo1pk"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
 [ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="3_v83rv"]
 [ext_resource type="PackedScene" uid="uid://b03fwjrmf1jpd" path="res://scenes/Volante/messageBar.tscn" id="4_i5ci0"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kqy2t"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_28d45"]
+sky_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
+sky_curve = 0.848527
+sky_cover = ExtResource("1_vo1pk")
+ground_curve = 0.00112656
+sun_angle_max = 70.0
 
-[sub_resource type="Sky" id="Sky_1lacu"]
-sky_material = SubResource("ProceduralSkyMaterial_kqy2t")
+[sub_resource type="Sky" id="Sky_xd6s5"]
+sky_material = SubResource("ProceduralSkyMaterial_28d45")
+process_mode = 3
+radiance_size = 0
 
-[sub_resource type="Environment" id="Environment_q40ix"]
+[sub_resource type="Environment" id="Environment_gflx8"]
 background_mode = 2
-sky = SubResource("Sky_1lacu")
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_xd6s5")
+sky_rotation = Vector3(0, -1.82911, 0)
+ambient_light_color = Color(0.8, 0.831373, 0.8, 0.952941)
+reflected_light_source = 2
 tonemap_mode = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uexqk"]
 
 [sub_resource type="GDScript" id="GDScript_7fw4t"]
 script/source = "extends Label3D
@@ -82,10 +94,11 @@ size = Vector3(1, 1.4, 9)
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_q40ix")
+environment = SubResource("Environment_gflx8")
+camera_attributes = SubResource("CameraAttributesPractical_uexqk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 6.98629, 5.6309, -79.194)
 shadow_enabled = true
 
 [node name="InputState" type="Label3D" parent="."]
