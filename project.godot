@@ -13,7 +13,7 @@ config_version=5
 config/name="Jueguito Cc 5409"
 run/main_scene="res://scenes/Inicio/main_menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
-config/icon="res://Assets/icon.svg"
+config/icon="res://icon.svg"
 
 [autoload]
 
@@ -22,15 +22,9 @@ Game="*res://scripts/game.gd"
 GameController="*res://scripts/game_controller.gd"
 CarController="*res://scripts/car_controller.gd"
 
-
-[gui]
-
-theme/custom="res://resources/themes/main_menu.tres"
-
 [filesystem]
 
 import/fbx/enabled=false
-
 
 [input]
 

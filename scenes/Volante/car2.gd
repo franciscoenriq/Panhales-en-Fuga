@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)
 
-	#print(global_position)
+	print(global_position)
 	move_and_slide()
 	
 

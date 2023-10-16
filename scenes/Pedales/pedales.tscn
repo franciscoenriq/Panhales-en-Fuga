@@ -1,17 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnfk47hf6cu2n"]
+[gd_scene load_steps=3 format=3 uid="uid://cnfk47hf6cu2n"]
 
 [ext_resource type="Script" path="res://scenes/Pedales/pedales.gd" id="1_3ge5y"]
-[ext_resource type="Texture2D" uid="uid://bcecdbtpdfkr" path="res://Assets/close-up-fabric-texture.jpg" id="2_m6bm6"]
 [ext_resource type="Script" path="res://scenes/Pedales/InputStatePedales.gd" id="2_t5i6l"]
 
 [node name="Pedals" type="Node2D"]
 script = ExtResource("1_3ge5y")
-
-[node name="Close-up-fabric-texture" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.211765)
-position = Vector2(554.15, 282.25)
-scale = Vector2(0.199051, 0.183146)
-texture = ExtResource("2_m6bm6")
 
 [node name="AccBTN" type="Button" parent="."]
 unique_name_in_owner = true
@@ -67,22 +60,7 @@ fill_mode = 3
 [node name="InputState" type="Label" parent="."]
 offset_right = 1151.0
 offset_bottom = 75.0
-theme_override_colors/font_color = Color(0.976471, 0.976471, 0.976471, 1)
-theme_override_colors/font_outline_color = Color(0.980392, 0.980392, 0.980392, 1)
-horizontal_alignment = 1
 script = ExtResource("2_t5i6l")
-
-[node name="Label" type="Label" parent="."]
-offset_left = 2.0
-offset_top = 592.0
-offset_right = 1148.0
-offset_bottom = 647.0
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-text = "X: Embrague - S: Freno - W: Acelerador"
-horizontal_alignment = 1
-text_overrun_behavior = 3
 
 [connection signal="button_down" from="AccBTN" to="." method="_on_acc_btn_button_down"]
 [connection signal="button_up" from="AccBTN" to="." method="_on_acc_btn_button_up"]

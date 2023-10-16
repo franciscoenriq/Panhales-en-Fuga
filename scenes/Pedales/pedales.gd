@@ -21,13 +21,14 @@ func _ready():
 	pass
 	
 func _process(_delta):
-	# embrague se puede presionar siempre pero no se puede acelerar y pisar freno a la vez
-	if Input.is_action_pressed("forward") and not Input.is_action_pressed("brake"):
+	# Ahora se pueden presionar los tres pedales a la vez (hay que ver que pasa si presionamos el acelerador
+	#y el freno a la vez
+	if Input.is_action_pressed("forward"):
 		acc_button_pressed = true
 	else:
 		acc_button_pressed = false
 	
-	if Input.is_action_pressed("brake") and not Input.is_action_pressed("forward") :
+	if Input.is_action_pressed("brake"):
 		fre_button_pressed = true
 	else:
 		fre_button_pressed = false
