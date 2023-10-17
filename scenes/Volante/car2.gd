@@ -29,7 +29,7 @@ func _ready() -> void:
 	isTurningRight = false
 	wheelRotationValue = 0
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("turn_left"):
 		isTurningLeft = true
 		isTurningRight = false
