@@ -22,15 +22,13 @@ Game="*res://scripts/game.gd"
 GameController="*res://scripts/game_controller.gd"
 CarController="*res://scripts/car_controller.gd"
 
-
-[gui]
-
-theme/custom="res://resources/themes/main_menu.tres"
-
 [filesystem]
 
 import/fbx/enabled=false
 
+[gui]
+
+theme/custom="res://resources/themes/main_menu.tres"
 
 [input]
 

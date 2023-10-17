@@ -65,4 +65,9 @@ func _process(delta: float) -> void:
 	#print(global_position)
 	move_and_slide()
 	
+	
+	var collision = get_last_slide_collision()
+	if collision :
+		print("collided with ",collision.get_collider())
+		get_tree().quit()
 

@@ -21,7 +21,7 @@ size = Vector2(20, 20)
 size = Vector2(40, 20)
 center_offset = Vector3(0, -0.1, 0)
 
-[node name="Terrain_0" type="MeshInstance3D"]
+[node name="Terrain_1" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_f6y70")
 mesh = SubResource("PlaneMesh_ii76i")
 
