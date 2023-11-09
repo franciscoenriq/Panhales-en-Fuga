@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_exgrm"]
 [ext_resource type="PackedScene" uid="uid://yygabw7171gf" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/trash_A.gltf" id="2_d7uym"]
-[ext_resource type="PackedScene" uid="uid://8kql4l7ko285" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/fbx/building_A_withoutBase.fbx" id="5_8wc06"]
+[ext_resource type="PackedScene" uid="uid://dm1ai8vxxdbxb" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A_withoutBase.gltf" id="5_8wc06"]
 [ext_resource type="PackedScene" uid="uid://71c1g4y8np1u" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/bush.gltf" id="6_b1rie"]
 [ext_resource type="PackedScene" uid="uid://bu1uu6wkxy7it" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/base.gltf" id="7_tyfkt"]
 [ext_resource type="PackedScene" uid="uid://5a2042txwtng" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_stationwagon.gltf" id="8_5vpdv"]

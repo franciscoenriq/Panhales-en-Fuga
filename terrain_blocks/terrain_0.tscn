@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://ggu1ki64l4vq"]
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_ja7xx"]
-[ext_resource type="PackedScene" uid="uid://8kql4l7ko285" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/fbx/building_A_withoutBase.fbx" id="2_g6c4r"]
+[ext_resource type="PackedScene" uid="uid://dm1ai8vxxdbxb" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A_withoutBase.gltf" id="2_g6c4r"]
 [ext_resource type="PackedScene" uid="uid://bkpqrfvn0xtxm" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_B.gltf" id="2_kq2ye"]
 [ext_resource type="PackedScene" uid="uid://csfhl0obhhpt" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_F.gltf" id="2_t1yic"]
 [ext_resource type="PackedScene" uid="uid://yygabw7171gf" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/trash_A.gltf" id="2_v8j1w"]
