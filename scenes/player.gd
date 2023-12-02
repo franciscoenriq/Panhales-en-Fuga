@@ -42,6 +42,6 @@ func _process(delta: float) -> void:
 		$AudioInterior.playing = true
 	else:
 		$AudioInterior.playing = false
-	print("pitch del motor=",GameController.set_motor_pitch())
-	$AudioMotor.pitch_scale = GameController.set_motor_pitch()
+	print("pitch del motor=",GameController.set_motor_pitch(delta))
+	$AudioMotor.pitch_scale = GameController.set_motor_pitch(delta)
 	

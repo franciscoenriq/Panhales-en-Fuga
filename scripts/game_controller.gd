@@ -164,7 +164,10 @@ func isDriving()->bool:
 		
 var marcha_anterior = Cambios.NONE
 
-func set_motor_pitch() -> float:
+var transicion_pitch = 1.0
+var velocidad_transicion = 0.1  # Ajusta según tus necesidades
+
+func set_motor_pitch(delta) -> float:
 	var nuevo_pitch = 0.0
 	var pitch_base = 1.0
 
@@ -179,10 +182,22 @@ func set_motor_pitch() -> float:
 
 	# Verificar si se ha cambiado de marcha
 	if cambioActual != marcha_anterior:
-		# Ajustar el pitch según el cambio de marcha
-		nuevo_pitch *= 0.2  # Puedes ajustar este valor según tus necesidades
+		# Ajustar el pitch gradualmente
+		transicion_pitch += velocidad_transicion * delta  # delta es el tiempo desde la última llamada
 
-		# Actualizar la marcha anterior
-		marcha_anterior = cambioActual
+		# Limitar la transición entre 0.0 y 1.0
+		transicion_pitch = clamp(transicion_pitch, 0.0, 1.0)
+
+		# Aplicar el pitch gradualmente
+		nuevo_pitch *= transicion_pitch
+
+		# Si la transición ha llegado a 1.0, el cambio de pitch ha finalizado
+		if transicion_pitch >= 1.0:
+			transicion_pitch = 1.0
+			marcha_anterior = cambioActual
+		else:
+			# Si no ha llegado a 1.0, la transición continúa en la próxima llamada
+			return nuevo_pitch
 
 	return nuevo_pitch
+
