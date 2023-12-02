@@ -157,5 +157,12 @@ func set_gear(player_role, cambio: Cambios):
 			return true
 	return false
 
+func set_motor_pitch() -> float:
+	var velocidad_maxima = limite_velocidad[cambioActual]
+	var velocidad_normalizada = min(1.0, car_speed / velocidad_maxima)
+	var pitch_base = 1.0
+	var nuevo_pitch = lerp(pitch_base, 2.0, velocidad_normalizada)
 
+	return nuevo_pitch
+	
 
