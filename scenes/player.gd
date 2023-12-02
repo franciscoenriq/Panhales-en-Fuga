@@ -45,3 +45,10 @@ func _process(delta: float) -> void:
 	print("pitch del motor=",GameController.set_motor_pitch(delta))
 	$AudioMotor.pitch_scale = GameController.set_motor_pitch(delta)
 	
+	if GameController.ejecutar_sonido_cambio == true:
+		$AudioPalanca.play()
+ 
+
+
+func _on_audio_palanca_finished():
+	GameController.ejecutar_sonido_cambio = false

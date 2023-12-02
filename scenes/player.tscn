@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3mhsy021dqog"]
+[gd_scene load_steps=5 format=3 uid="uid://b3mhsy021dqog"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_xuxkm"]
 [ext_resource type="AudioStream" uid="uid://dtw65s1rmaeqa" path="res://Assets/Vehicle_Essentials_NOX_SOUND/Vehicle_Car/Vehicle_Car_Engine_2000_RPM_Rear_Exterior_Loop.wav" id="2_ryp7m"]
 [ext_resource type="AudioStream" uid="uid://c2lnst8biaqjd" path="res://Assets/Vehicle_Essentials_NOX_SOUND/Vehicle_Car/Vehicle_Car_Drive_Interior_Loop_01.wav" id="3_f6gqk"]
+[ext_resource type="AudioStream" uid="uid://bdkwbw5yj7478" path="res://Assets/Vehicle_Essentials_NOX_SOUND/Vehicle_Car/Vehicle_Car_GloveBox_Interior_02.wav" id="4_tv03x"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_xuxkm")
@@ -13,3 +14,8 @@ volume_db = -10.0
 
 [node name="AudioInterior" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f6gqk")
+
+[node name="AudioPalanca" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tv03x")
+
+[connection signal="finished" from="AudioPalanca" to="." method="_on_audio_palanca_finished"]
