@@ -161,18 +161,28 @@ func isDriving()->bool:
 		return true
 	else:
 		return false
+		
+var marcha_anterior = Cambios.NONE
+
 func set_motor_pitch() -> float:
 	var nuevo_pitch = 0.0
 	var pitch_base = 1.0
 
-	if limite_velocidad[cambioActual]!=0: # Estamos en una marcha distinta de NULL o Neutro
+	if limite_velocidad[cambioActual] != 0:  # Estamos en una marcha distinta de NULL o Neutro
 		var velocidad_maxima = limite_velocidad[cambioActual]
 		var velocidad_normalizada = min(1.0, car_speed / velocidad_maxima)
-		nuevo_pitch = lerp(pitch_base, 2.0, velocidad_normalizada)
+		nuevo_pitch = lerp(pitch_base, 3.0, velocidad_normalizada)
 	else:
-		#Estamos en neutro, pero igual podemos pisar el acelerador, por lo que el pitch 
-		#depende de la presión del pedal del acelerador.
-		nuevo_pitch=lerp(pitch_base,2.0,accPressure/100)
-	return nuevo_pitch
-	
+		# Estamos en neutro, pero igual podemos pisar el acelerador, por lo que el pitch 
+		# depende de la presión del pedal del acelerador.
+		nuevo_pitch = lerp(pitch_base, 3.0, accPressure / 100)
 
+	# Verificar si se ha cambiado de marcha
+	if cambioActual != marcha_anterior:
+		# Ajustar el pitch según el cambio de marcha
+		nuevo_pitch *= 0.2  # Puedes ajustar este valor según tus necesidades
+
+		# Actualizar la marcha anterior
+		marcha_anterior = cambioActual
+
+	return nuevo_pitch
