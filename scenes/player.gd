@@ -36,8 +36,12 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	$AudioMotor.playing=true;
-	$AudioInterior.playing=true;
+
 func _process(delta: float) -> void:
+	if GameController.isDriving()==true:
+		$AudioInterior.playing = true
+	else:
+		$AudioInterior.playing = false
 	print("pitch del motor=",GameController.set_motor_pitch())
 	$AudioMotor.pitch_scale = GameController.set_motor_pitch()
 	

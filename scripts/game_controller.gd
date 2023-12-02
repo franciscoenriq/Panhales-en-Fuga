@@ -156,7 +156,11 @@ func set_gear(player_role, cambio: Cambios):
 			
 			return true
 	return false
-
+func isDriving()->bool:
+	if car_speed>0:
+		return true
+	else:
+		return false
 func set_motor_pitch() -> float:
 	var nuevo_pitch = 0.0
 	var pitch_base = 1.0
