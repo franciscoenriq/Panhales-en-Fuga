@@ -168,7 +168,7 @@ func set_motor_pitch() -> float:
 	else:
 		#Estamos en neutro, pero igual podemos pisar el acelerador, por lo que el pitch 
 		#depende de la presión del pedal del acelerador.
-		nuevo_pitch=lerp(pitch_base,2.0,accPressure)
+		nuevo_pitch=lerp(pitch_base,2.0,accPressure/100)
 	return nuevo_pitch
 	
 

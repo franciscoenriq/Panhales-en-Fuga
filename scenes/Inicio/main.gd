@@ -30,8 +30,4 @@ func _ready() -> void:
 	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	#Manejamos el audio de la escena
-	$AudioMotor.pitch_scale = GameController.set_motor_pitch()
-	
+
