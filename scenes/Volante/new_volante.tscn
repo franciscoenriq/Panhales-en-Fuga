@@ -45,7 +45,6 @@ func _process(_delta):
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhxtw"]
-size = Vector3(2.23776, 3.42976, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
 inner_radius = 1.272
