@@ -173,6 +173,7 @@ mesh = SubResource("BoxMesh_hj2yl")
 
 [node name="Camera3D" type="Camera3D" parent="car2/pivoteCamera"]
 transform = Transform3D(1, 0, 0, 0, 0.996318, -0.0857299, 0, 0.0857299, 0.996318, 0.875564, 3.33589, 0.188574)
+current = true
 
 [node name="TerrainController" parent="." instance=ExtResource("3_5y2k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)

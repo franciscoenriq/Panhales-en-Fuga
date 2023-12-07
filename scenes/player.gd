@@ -13,7 +13,6 @@ func setup(player_data: Game.PlayerData):
 	current_player_data = data
 	Debug.dprint("Ingresa: " + str(data["name"]) + "- Role: "+ Game.role_str(data["role"]), text_time)
 
-
 func _input(event: InputEvent) -> void:
 	var role =  str(current_player_data["name"])
 	if is_multiplayer_authority():
@@ -34,4 +33,22 @@ func _input(event: InputEvent) -> void:
 
 		if event.is_action_pressed("turn_right"):
 			GameController.turn.rpc(role, 1)
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready() -> void:
+	$AudioMotor.playing=true;
 
+func _process(delta: float) -> void:
+	if GameController.isDriving()==true:
+		$AudioInterior.playing = true
+	else:
+		$AudioInterior.playing = false
+	print("pitch del motor=",GameController.set_motor_pitch(delta))
+	$AudioMotor.pitch_scale = GameController.set_motor_pitch(delta)
+	
+	if GameController.ejecutar_sonido_cambio == true:
+		$AudioPalanca.play()
+ 
+
+
+func _on_audio_palanca_finished():
+	GameController.ejecutar_sonido_cambio = false

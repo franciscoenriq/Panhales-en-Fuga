@@ -1,7 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://ggu1ki64l4vq"]
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_ja7xx"]
+
 [ext_resource type="PackedScene" uid="uid://dm1ai8vxxdbxb" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A_withoutBase.gltf" id="2_g6c4r"]
+
+
 [ext_resource type="PackedScene" uid="uid://bkpqrfvn0xtxm" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_B.gltf" id="2_kq2ye"]
 [ext_resource type="PackedScene" uid="uid://csfhl0obhhpt" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_F.gltf" id="2_t1yic"]
 [ext_resource type="PackedScene" uid="uid://yygabw7171gf" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/trash_A.gltf" id="2_v8j1w"]
@@ -10,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bu1uu6wkxy7it" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/base.gltf" id="5_b8600"]
 [ext_resource type="PackedScene" uid="uid://wglisxxgmfwy" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/bench.gltf" id="6_pmr8h"]
 [ext_resource type="PackedScene" uid="uid://b6fidmqnwoii" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_D.gltf" id="9_x71wd"]
+[ext_resource type="PackedScene" uid="uid://dm1ai8vxxdbxb" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A_withoutBase.gltf" id="10_dkj46"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6y70"]
 albedo_texture = ExtResource("1_ja7xx")
@@ -32,13 +36,10 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.5325, 0.0686877, 1.61758)
 transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 14.4086, -0.298266, -4.9481)
 
 [node name="building_B" parent="." instance=ExtResource("2_kq2ye")]
-transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -15.1666, -0.310143, -2.80728)
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -15.1666, -0.310143, -4.57118)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_52ind")
-
-[node name="building_A_withoutBase" parent="." instance=ExtResource("2_g6c4r")]
-transform = Transform3D(-2.99904e-07, 0, 4, 0, 3.501, 0, -6.861, 0, -1.74846e-07, -15.1491, -0.1, 5.66147)
 
 [node name="bush" parent="." instance=ExtResource("4_gkf1d")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.101, -1.19209e-07, 9.05576)
@@ -85,3 +86,9 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.2314, -0.0796885, 0.115921
 [node name="SpotLight3D" type="SpotLight3D" parent="streetlight6"]
 transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
 light_color = Color(0.984314, 1, 0, 1)
+
+[node name="building_A_withoutBase2" parent="." instance=ExtResource("10_dkj46")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -14.8262, 0, 1.81136)
+
+[node name="building_A_withoutBase3" parent="." instance=ExtResource("10_dkj46")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -14.8262, 0, 6.8375)

@@ -35,11 +35,11 @@ const str_values = {
 const fuerza_motor ={
 	Cambios.NONE: 0,
 	Cambios.NEUTRO: 0,
-	Cambios.PRIMERO: 4 , 
-	Cambios.SEGUNDO: 3 , 
-	Cambios.TERCERO: 2 , 
-	Cambios.CUARTO: 1.5, 
-	Cambios.QUINTO: 1.0
+	Cambios.PRIMERO: 2 , 
+	Cambios.SEGUNDO: 1 , 
+	Cambios.TERCERO: 0.5 , 
+	Cambios.CUARTO: 0.25, 
+	Cambios.QUINTO: 0.1
 	}
 	
 const limite_velocidad ={
@@ -156,6 +156,48 @@ func set_gear(player_role, cambio: Cambios):
 			
 			return true
 	return false
+func isDriving()->bool:
+	if car_speed>0:
+		return true
+	else:
+		return false
+		
+var marcha_anterior = Cambios.NONE
 
+var transicion_pitch = 1.0
+var velocidad_transicion = 0.1  # Ajusta según tus necesidades
 
+func set_motor_pitch(delta) -> float:
+	var nuevo_pitch = 0.0
+	var pitch_base = 1.0
+
+	if limite_velocidad[cambioActual] != 0:  # Estamos en una marcha distinta de NULL o Neutro
+		var velocidad_maxima = limite_velocidad[cambioActual]
+		var velocidad_normalizada = min(1.0, car_speed / velocidad_maxima)
+		nuevo_pitch = lerp(pitch_base, 3.0, velocidad_normalizada)
+	else:
+		# Estamos en neutro, pero igual podemos pisar el acelerador, por lo que el pitch 
+		# depende de la presión del pedal del acelerador.
+		nuevo_pitch = lerp(pitch_base, 3.0, accPressure / 100)
+
+	# Verificar si se ha cambiado de marcha
+	if cambioActual != marcha_anterior:
+		# Ajustar el pitch gradualmente
+		transicion_pitch += velocidad_transicion * delta  # delta es el tiempo desde la última llamada
+
+		# Limitar la transición entre 0.0 y 1.0
+		transicion_pitch = clamp(transicion_pitch, 0.0, 1.0)
+
+		# Aplicar el pitch gradualmente
+		nuevo_pitch *= transicion_pitch
+
+		# Si la transición ha llegado a 1.0, el cambio de pitch ha finalizado
+		if transicion_pitch >= 1.0:
+			transicion_pitch = 1.0
+			marcha_anterior = cambioActual
+		else:
+			# Si no ha llegado a 1.0, la transición continúa en la próxima llamada
+			return nuevo_pitch
+
+	return nuevo_pitch
 
