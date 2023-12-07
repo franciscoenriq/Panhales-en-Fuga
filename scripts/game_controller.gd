@@ -10,7 +10,7 @@ var cambioActual = Cambios.NONE
 var car_speed= 1 # velocidad inicial a la que se mueve la pista en km/h
 var velocidad_lateral = car_speed/2  # velocidad para cambiar de pista en km/h
 const debug_print_time = 0.8
-var ejecutar_sonido_cambio = false
+
 enum Cambios {
 	NEUTRO,
 	PRIMERO,
@@ -152,7 +152,6 @@ func set_gear(player_role, cambio: Cambios):
 	if clutchPressure>=GameController.acceptableClutchPressure:
 		if cambio != cambioActual:
 			cambioActual = cambio
-			play_audio_palanca(true) #ejecutamos el sonido de palanca de cambios
 			change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
 			
 			return true
@@ -202,5 +201,3 @@ func set_motor_pitch(delta) -> float:
 
 	return nuevo_pitch
 
-func play_audio_palanca(value):
-	ejecutar_sonido_cambio = value
