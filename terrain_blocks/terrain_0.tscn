@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ggu1ki64l4vq"]
+[gd_scene load_steps=14 format=3 uid="uid://cqnahqqwjxo3x"]
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_ja7xx"]
 [ext_resource type="PackedScene" uid="uid://bkpqrfvn0xtxm" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_B.gltf" id="2_kq2ye"]
