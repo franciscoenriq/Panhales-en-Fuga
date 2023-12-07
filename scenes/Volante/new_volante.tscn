@@ -110,7 +110,7 @@ motion_mode = 1
 script = ExtResource("3_v83rv")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="car2"]
-transform = Transform3D(2.61272, 0, 0, 0, 1, 0, 0, 0, 1, 0.959067, 3.22249, -1.64416)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.959067, 3.22249, -1.64416)
 shape = SubResource("BoxShape3D_nhxtw")
 
 [node name="Volante" type="StaticBody3D" parent="car2"]
