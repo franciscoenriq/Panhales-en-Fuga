@@ -1,0 +1,105 @@
+[gd_scene load_steps=17 format=3 uid="uid://bu3mkddstrlgn"]
+
+[ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_exgrm"]
+[ext_resource type="PackedScene" uid="uid://yygabw7171gf" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/trash_A.gltf" id="2_d7uym"]
+[ext_resource type="PackedScene" uid="uid://71c1g4y8np1u" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/bush.gltf" id="6_b1rie"]
+[ext_resource type="PackedScene" uid="uid://bu1uu6wkxy7it" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/base.gltf" id="7_tyfkt"]
+[ext_resource type="PackedScene" uid="uid://5a2042txwtng" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_stationwagon.gltf" id="8_5vpdv"]
+[ext_resource type="PackedScene" uid="uid://wglisxxgmfwy" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/bench.gltf" id="8_wygog"]
+[ext_resource type="PackedScene" uid="uid://bcar58vbd868k" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/streetlight.gltf" id="9_n1uxg"]
+[ext_resource type="PackedScene" uid="uid://btg4amtrf8vwh" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_sedan.gltf" id="9_qk702"]
+[ext_resource type="PackedScene" uid="uid://b4prwbr34nn38" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_H.gltf" id="10_kcr0x"]
+[ext_resource type="PackedScene" uid="uid://dkekb6cs85d6" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_G.gltf" id="11_fb528"]
+[ext_resource type="PackedScene" uid="uid://d0v6dq6qrhlla" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/dumpster.gltf" id="12_oa1qa"]
+[ext_resource type="PackedScene" uid="uid://dm1ai8vxxdbxb" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A_withoutBase.gltf" id="13_k76in"]
+[ext_resource type="PackedScene" uid="uid://w2juyv71cexv" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_police.gltf" id="13_shwen"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6y70"]
+albedo_texture = ExtResource("1_exgrm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ii76i"]
+size = Vector2(20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_52ind"]
+size = Vector2(40, 20)
+center_offset = Vector3(0, -0.1, 0)
+
+[node name="Terrain_0" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_f6y70")
+mesh = SubResource("PlaneMesh_ii76i")
+
+[node name="trash_A" parent="." instance=ExtResource("2_d7uym")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 10.5325, 0.0686877, 1.61758)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_52ind")
+
+[node name="bush" parent="." instance=ExtResource("6_b1rie")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -10.101, -1.19209e-07, 9.05576)
+
+[node name="base2" parent="." instance=ExtResource("7_tyfkt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 10, -11.3177, -0.10023, -0.030221)
+
+[node name="base" parent="." instance=ExtResource("7_tyfkt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 10, 12.062, -0.1, 0.033)
+
+[node name="bench" parent="." instance=ExtResource("8_wygog")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -10.1295, 0.212788, 5.83386)
+
+[node name="bench2" parent="." instance=ExtResource("8_wygog")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, -10.1295, 0.212788, 2.99802)
+
+[node name="streetlight3" parent="." instance=ExtResource("9_n1uxg")]
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, -10.1709, -0.0796885, -10.0826)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight3"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="streetlight4" parent="." instance=ExtResource("9_n1uxg")]
+transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, -10.1709, -0.0796885, -0.252015)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight4"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="streetlight5" parent="." instance=ExtResource("9_n1uxg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.2314, -0.0796885, -10.0826)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight5"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="streetlight6" parent="." instance=ExtResource("9_n1uxg")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.2314, -0.0796885, 0.115921)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="streetlight6"]
+transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
+light_color = Color(0.984314, 1, 0, 1)
+
+[node name="car_stationwagon" parent="." instance=ExtResource("8_5vpdv")]
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 9.19381, 0.26632, 7.24657)
+
+[node name="car_sedan" parent="." instance=ExtResource("9_qk702")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8.28381, 0.317433, 1.88791)
+
+[node name="building_H" parent="." instance=ExtResource("10_kcr0x")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 16.836, -0.307517, 5.99653)
+
+[node name="building_G" parent="." instance=ExtResource("11_fb528")]
+transform = Transform3D(-1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 14.846, -0.371454, -5.93766)
+
+[node name="dumpster" parent="." instance=ExtResource("12_oa1qa")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -11.7117, 0, -3.04966)
+
+[node name="car_police" parent="." instance=ExtResource("13_shwen")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8.37814, 0.2967, -3.75184)
+
+[node name="building_A_withoutBase" parent="." instance=ExtResource("13_k76in")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -16.142, 0, 7.26587)
+
+[node name="building_A_withoutBase2" parent="." instance=ExtResource("13_k76in")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -16.142, 0, 2.04317)
+
+[node name="building_A_withoutBase3" parent="." instance=ExtResource("13_k76in")]
+transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -16.142, 0, -2.84455)

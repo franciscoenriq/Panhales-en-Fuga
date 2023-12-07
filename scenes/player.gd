@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 	$AudioMotor.pitch_scale = GameController.set_motor_pitch(delta)
 	
 	if GameController.ejecutar_sonido_cambio == true:
-		$AudioPalanca.playing=true
+		$AudioPalanca.play()
  
 
 
