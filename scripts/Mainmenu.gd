@@ -12,8 +12,11 @@ func _on_button_settings_pressed():
 	main.visible = false
 	settings.visible = true
 	
+func _on_button_scoreboard_pressed():
+	get_tree().change_scene_to_file("res://scenes/Inicio/scoreboard.tscn")
+	
 func _on_button_credits_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/Inicio/credits.tscn")
 
 func _on_button_exit_pressed():
 	get_tree().quit()

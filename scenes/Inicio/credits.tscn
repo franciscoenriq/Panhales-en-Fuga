@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7l3hoqqgja8s"]
+
+[ext_resource type="Script" path="res://scenes/Inicio/credits.gd" id="1_xep31"]
+[ext_resource type="Script" path="res://scenes/Inicio/letritas.gd" id="3_gl5l5"]
+[ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="3_vrx31"]
+[ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="4_iqhkt"]
+[ext_resource type="FontFile" uid="uid://c4rnol6ks1ww3" path="res://Assets/RaccoonSerif-Fonts-v3.0/fonts/RaccoonSerif-Bold.ttf" id="4_vn4vk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eiq41"]
+blend_mode = 3
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_pi3st"]
+line_spacing = 6.0
+font = ExtResource("4_vn4vk")
+font_size = 30
+outline_size = 3
+outline_color = Color(0.388235, 0.388235, 0.388235, 1)
+shadow_size = 4
+
+[node name="Lobby" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -869.0
+offset_right = -2.0
+offset_bottom = 1466.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+auto_translate = false
+localize_numeral_system = false
+script = ExtResource("1_xep31")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_eiq41")
+layout_mode = 2
+texture = ExtResource("3_vrx31")
+expand_mode = 1
+
+[node name="Fondo" type="Sprite2D" parent="."]
+modulate = Color(0.913725, 0.847059, 0.811765, 1)
+self_modulate = Color(0.12549, 0.12549, 0.12549, 1)
+position = Vector2(574.5, 1194)
+scale = Vector2(1.12793, 0.630859)
+texture = ExtResource("3_vrx31")
+
+[node name="Letras" type="Sprite2D" parent="Fondo"]
+script = ExtResource("3_gl5l5")
+
+[node name="credits" type="Label" parent="Fondo/Letras"]
+offset_left = -513.773
+offset_top = 350.316
+offset_right = 516.227
+offset_bottom = 1412.32
+text = "Credits:
+
+City Assets 
+Kay Lousberg
+
+Car Idea & Assets
+SRCoder
+Bastiaan Olij
+
+Sounds 
+
+Extra Assets
+emhuo
+
+Creative Team
+Guatón Loyola Gaming 
+Francisco Almeida D.
+Sebastián Monteiro.
+Valentina Montoya Oviedo.
+Valeria Franciscangeli.
+
+Thank you for this amazing semester!!!"
+label_settings = SubResource("LabelSettings_pi3st")
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(1150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_iqhkt")
+
+[node name="Menus" type="MarginContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StartMenu" type="VBoxContainer" parent="PanelContainer/Menus"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Menus/StartMenu"]
+layout_mode = 2
+
+[node name="ButtonBack" type="Button" parent="PanelContainer/Menus/StartMenu/HBoxContainer"]
+layout_mode = 2
+text = "Back Menu"
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="PanelContainer/Menus/StartMenu/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]

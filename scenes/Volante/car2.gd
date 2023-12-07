@@ -29,7 +29,7 @@ func _ready() -> void:
 	isTurningRight = false
 	wheelRotationValue = 0
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("turn_left"):
 		isTurningLeft = true
 		isTurningRight = false
@@ -65,4 +65,9 @@ func _process(delta: float) -> void:
 	#print(global_position)
 	move_and_slide()
 	
+	
+	var collision = get_last_slide_collision()
+	if collision :
+		print("collided with ",collision.get_collider())
+		get_tree().quit()
 

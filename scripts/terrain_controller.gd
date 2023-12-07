@@ -42,6 +42,7 @@ func _init_blocks(number_of_blocks: int) -> void:
 
 func _progress_terrain(delta: float) -> void:
 	var velocidad = GameController.calc_speed(delta) #solucion parche
+
 	print(velocidad)
 	for block in terrain_belt:
 		block.position.z += velocidad * delta
