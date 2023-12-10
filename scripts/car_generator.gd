@@ -1,4 +1,5 @@
 extends Node3D
+class_name car_generator
 
 var velocidad_player = GameController.car_speed
 var safe_distance = 20
@@ -10,13 +11,14 @@ var police_in_lane:Array =[]
 "res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_taxi.gltf"]
 @export var police_path = "res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_police.gltf"
 var average_speed = 10
-
+var player
 @export var cars_spawn_limit_per_lane = 5
 var police_spawner_timer = 10 #Se spawnea un policia cada 10 segundos , se puede modificar
 var is_police_in_lane = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player =get_node("../car2")
 	_load_car_scenes(cars_paths)  # Carga la escena de los autos
 	_load_police_scenes(police_path)
 	_init_cars(cars_spawn_limit_per_lane)
@@ -30,12 +32,20 @@ func _process(delta):
 	police_spawner_timer-=delta
 	var cars_in_lane_count = get_children().size()
 	for car in get_children():
-		#Asignamos velocidad random 
-		var npc_speed = GameController.car_speed-randf_range(-0.3, 1.3) * average_speed
-		car.translate(-Vector3(0,0,npc_speed * delta))
+		if car.name !="police":
+			#Asignamos velocidad random 
+			var npc_speed = GameController.car_speed-randf_range(-0.3, 1.3) * average_speed
+			car.translate(-Vector3(0,0,npc_speed * delta))
+
+		if car.name =="police":
+			var police_speed = average_speed*1.1 # Velocidad mayor para persecución
+			var player_direction = (player.global_transform.origin)
+			car.look_at(player_direction)
+			car.translate(-Vector3(0,0,police_speed*delta))
+			
+			
 		if car.position.z < GameController.distancia_maxima_adelante or car.position.z > GameController.distancia_maxima_atras:
 			car.queue_free()
-	
 	if cars_in_lane_count<cars_spawn_limit_per_lane:
 		spawn_car(GameController.distancia_maxima_atras,false)
 		
@@ -65,6 +75,10 @@ func spawn_car(position, isPolice):
 	collision_shape.shape = BoxShape3D.new()
 	collision_shape.shape.extents = car.scale / 2.0  # Ajusta las dimensiones de la caja de colisión según la escala del auto
 	car.add_child(collision_shape)
+	if isPolice :
+		car.name="police"
+	else:
+		car.name = "car"
 	
 func _load_police_scenes(police_path):
 	police_in_lane.append(load(police_path))
