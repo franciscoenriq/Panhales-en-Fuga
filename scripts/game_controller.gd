@@ -51,7 +51,8 @@ const limite_velocidad ={
 	Cambios.CUARTO: 100, 
 	Cambios.QUINTO: 150
 	}
-	
+var distancia_maxima_adelante = 0
+var distancia_maxima_atras = 0
 
 var default_message = "No input received"
 var messages = {"driver": default_message,
