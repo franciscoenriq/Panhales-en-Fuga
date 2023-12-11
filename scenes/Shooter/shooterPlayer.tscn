@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://q1t0hrd8lpt5"]
+
+[ext_resource type="Script" path="res://scenes/Shooter/shooterPlayer.gd" id="1_3oto8"]
+[ext_resource type="PackedScene" uid="uid://bvatws8xp3j43" path="res://scenes/Shooter/rifle.tscn" id="2_k0rpt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ah1ch"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_trmp2"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12425, 0)
+script = ExtResource("1_3oto8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ah1ch")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_trmp2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.773649, -0.601652, -0.1987, -0.0135283, -0.297841, 0.95452, -0.63347, 0.741151, 0.222285, 0, 3.82989, -3.13432)
+visible = false
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(-0.993111, 0, 0.117173, 0, 1, 0, -0.117173, 0, -0.993111, -0.0460742, 0.944273, -1.45734)
+
+[node name="Rifle" parent="Head/Camera3D" instance=ExtResource("2_k0rpt")]
+transform = Transform3D(0.983438, -0.0120156, 0.180845, 0.012217, 0.999925, 2.28288e-10, -0.180832, 0.00220939, 0.983512, 0.584738, -0.322831, -1.8373)
