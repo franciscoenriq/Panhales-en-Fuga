@@ -73,7 +73,7 @@ func _process(delta):
 		spawn_car(GameController.distancia_maxima_atras,false)
 		
 	if police_spawner_timer<0 && is_police_in_lane ==false:
-		#spawn_police(GameController.distancia_maxima_atras)
+		spawn_police(GameController.distancia_maxima_atras)
 		is_police_in_lane = true
 		police_spawner_timer=5
 		
@@ -126,7 +126,7 @@ func switch_lane(car,lane_id:int,delta):
 	target_position.origin.x = pista_x_pos
 	# Calculamos el desplazamiento total durante la transición
 	var change_lane_speed = average_speed*2 # Ajusta este valor según la velocidad deseada
-
+	target_position.origin.z = change_lane_speed*delta
 	# Actualizamos la posición del automóvil usando el delta
 	car.global_transform.origin = car.global_transform.origin.lerp(target_position.origin,
 	delta*5)
