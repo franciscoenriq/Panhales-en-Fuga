@@ -95,17 +95,14 @@ func calc_distance(delta):
 	var velocidad = max(0, car_speed + calc_aceleracion() * delta)
 	self.car_speed = min(limite, velocidad)
 	self.velocidad_lateral = car_speed / 2
-	# Calcular el tiempo transcurrido desde la última actualización
-	var current_time = time
+	
+	var current_time = time # Calcular el tiempo transcurrido desde la última actualización
 	var elapsed_time = current_time - last_update_time
 	# Calcular la distancia recorrida desde la última actualización
 	var distance_since_last_update = (self.car_speed * elapsed_time) / 3600  # Convertir la velocidad de km/h a km/s
-	# Actualizar la distancia total recorrida
-	distance_traveled += distance_since_last_update
-	# Actualizar el tiempo de la última actualización
-	last_update_time = current_time
-	# Mostrar la distancia recorrida
-	print("Distance Traveled: " + str(distance_traveled) + " m")    
+	distance_traveled += distance_since_last_update # Actualizar la distancia total recorrida
+	last_update_time = current_time 
+	print("Distance Traveled: " + str(distance_traveled) + " m")    # Mostrar la distancia recorrida
 	return self.car_speed
 
 
