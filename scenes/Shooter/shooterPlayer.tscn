@@ -9,6 +9,12 @@
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12425, 0)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_3oto8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -24,7 +30,7 @@ visible = false
 [node name="Head" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(-0.993111, 0, 0.117173, 0, 1, 0, -0.117173, 0, -0.993111, -0.0460742, 0.944273, -1.45734)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.43383, -1)
 
 [node name="Rifle" parent="Head/Camera3D" instance=ExtResource("2_k0rpt")]
-transform = Transform3D(0.983438, -0.0120156, 0.180845, 0.012217, 0.999925, 2.28288e-10, -0.180832, 0.00220939, 0.983512, 0.584738, -0.322831, -1.8373)
+transform = Transform3D(0.999925, -0.012217, 0, 0.012217, 0.999925, 0, 0, 0, 1, 0.791668, -0.439084, -1.8373)

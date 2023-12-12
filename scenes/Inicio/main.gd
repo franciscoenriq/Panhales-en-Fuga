@@ -1,15 +1,18 @@
 extends Node2D
 
 @export var player_scene: PackedScene
-@onready var driver_scene: PackedScene = preload("res://scenes/Volante/new_volante.tscn")
+@onready var driver_scene: PackedScene = preload("res://scenes/Volante/car_2.tscn")
 @onready var pedal_scene: PackedScene = preload("res://scenes/Pedales/pedales.tscn")
 @onready var shift_scene: PackedScene= preload("res://scenes/Cambios/cambios.tscn")
-@onready var shooter_scene: PackedScene= preload("res://scenes/dummy.tscn")
+@onready var shooter_scene: PackedScene= preload("res://scenes/Shooter/shooterPlayer.tscn")
+@onready var mundo_scene = preload("res://scenes/Volante/new_volante.tscn")
+
 
 @onready var players: Node2D = $Players
 @onready var root = $"."
 
 func _ready() -> void:
+	var mundo = mundo_scene.instantiate()
 	for player_data in Game.players:
 		var player = player_scene.instantiate()
 		players.add_child(player)
@@ -18,15 +21,21 @@ func _ready() -> void:
 	var myscene
 	var current_player = Game.get_current_player()
 	match  current_player.role:
-		Game.Role.DRIVER:
+		Game.Role.DRIVER:			
 			myscene = driver_scene.instantiate()
+			mundo.add_child(myscene)
+			root.add_child(mundo)
 		Game.Role.PEDAL:
 			myscene = pedal_scene.instantiate()
+			root.add_child(myscene)
 		Game.Role.SHIFT:
 			myscene = shift_scene.instantiate()
+			root.add_child(myscene)
 		Game.Role.SHOOTER:
 			myscene = shooter_scene.instantiate()
-	root.add_child(myscene)
+			mundo.add_child(myscene)
+			root.add_child(mundo)
+		
 	
 
 
