@@ -1,122 +1,150 @@
-[gd_scene load_steps=8 format=3 uid="uid://bctm86ub5mlq3"]
+[gd_scene load_steps=10 format=3 uid="uid://bctm86ub5mlq3"]
 
 [ext_resource type="Script" path="res://scenes/Cambios/cambios.gd" id="1_62rui"]
-[ext_resource type="Texture2D" uid="uid://c52aadbd3vxf8" path="res://scenes/Cambios/pngwing.com.png" id="1_m565l"]
 [ext_resource type="Texture2D" uid="uid://bcecdbtpdfkr" path="res://Assets/close-up-fabric-texture.jpg" id="2_ph152"]
-[ext_resource type="Texture2D" uid="uid://tw8t38ns0seh" path="res://Assets/icon.svg" id="4_r5c76"]
+[ext_resource type="Texture2D" uid="uid://05y6b8mqilti" path="res://Assets/cambios_final.png" id="3_clvsm"]
+[ext_resource type="Texture2D" uid="uid://bw2yy6x48lgps" path="res://Assets/consola.png" id="3_pnk80"]
+[ext_resource type="Texture2D" uid="uid://blmwx118sjous" path="res://Assets/contorno.png" id="4_6443o"]
 [ext_resource type="Script" path="res://scenes/Cambios/InputStateShift.gd" id="4_yv17q"]
+[ext_resource type="Texture2D" uid="uid://geci4jgi45c6" path="res://Assets/chupete.png" id="5_bpqt0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vufvp"]
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdyd7"]
-radius = 25.02
+radius = 32.0
 
 [node name="cambios" type="Node2D"]
 script = ExtResource("1_62rui")
 
-[node name="Close-up-fabric-texture" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Close-up-fabric-texture" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.266667)
-position = Vector2(570.325, 323.375)
+position = Vector2(572, 330)
 scale = Vector2(0.193999, 0.166105)
 texture = ExtResource("2_ph152")
 
-[node name="cambios" type="Sprite2D" parent="."]
-position = Vector2(589, 321)
-texture = ExtResource("1_m565l")
-metadata/_edit_lock_ = true
+[node name="Consola" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(584, 474)
+scale = Vector2(0.841177, 1)
+texture = ExtResource("3_pnk80")
 
-[node name="Palanca" type="Node2D" parent="."]
-position = Vector2(581, 328)
+[node name="Contorno" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(576, 304)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_6443o")
 
-[node name="areaPalanca" type="Area2D" parent="Palanca"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Palanca/areaPalanca"]
-position = Vector2(1, -1)
-scale = Vector2(0.175781, 0.199219)
-texture = ExtResource("4_r5c76")
+[node name="cambios" type="Sprite2D" parent="CanvasLayer/HBoxContainer"]
+position = Vector2(584, 320)
+scale = Vector2(0.8, 0.801)
+texture = ExtResource("3_clvsm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Palanca/areaPalanca"]
-position = Vector2(-1, 1)
-shape = SubResource("CircleShape2D_vufvp")
-
-[node name="AreaCambio" type="Area2D" parent="."]
-unique_name_in_owner = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AreaCambio"]
-polygon = PackedVector2Array(440, 247, 438, 402, 480, 402, 479, 344, 564, 345, 563, 405, 599, 405, 598, 345, 732, 346, 729, 247, 703, 248, 698, 311, 601, 312, 598, 246, 561, 249, 563, 310, 483, 305, 481, 248)
-metadata/_edit_lock_ = true
-
-[node name="primera" type="Area2D" parent="."]
-position = Vector2(459, 257)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="primera"]
-shape = SubResource("CircleShape2D_jdyd7")
-metadata/_edit_lock_ = true
-
-[node name="segunda" type="Area2D" parent="."]
-position = Vector2(459, 401)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="segunda"]
-shape = SubResource("CircleShape2D_jdyd7")
-metadata/_edit_lock_ = true
-
-[node name="tercera" type="Area2D" parent="."]
-position = Vector2(584, 257)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tercera"]
-shape = SubResource("CircleShape2D_jdyd7")
-metadata/_edit_lock_ = true
-
-[node name="cuarta" type="Area2D" parent="."]
-position = Vector2(584, 401)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="cuarta"]
-shape = SubResource("CircleShape2D_jdyd7")
-metadata/_edit_lock_ = true
-
-[node name="quinta" type="Area2D" parent="."]
-position = Vector2(715, 260)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="quinta"]
-shape = SubResource("CircleShape2D_jdyd7")
-metadata/_edit_lock_ = true
-
-[node name="neutro" type="Area2D" parent="."]
-position = Vector2(581, 329)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="neutro"]
-shape = SubResource("CircleShape2D_jdyd7")
-metadata/_edit_lock_ = true
-
-[node name="InputState" type="Label" parent="."]
-offset_left = -1.0
-offset_top = -3.0
-offset_right = 1150.0
-offset_bottom = 72.0
+[node name="InputState" type="Label" parent="CanvasLayer"]
+offset_left = 241.0
+offset_top = 14.0
+offset_right = 920.0
+offset_bottom = 46.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.976471, 0.976471, 0.976471, 1)
 horizontal_alignment = 1
 script = ExtResource("4_yv17q")
 
-[node name="instrucciones" type="Label" parent="."]
-offset_left = 9.0
-offset_top = 608.0
-offset_right = 1148.0
-offset_bottom = 640.0
-theme_override_colors/font_color = Color(0.988235, 0.988235, 0.988235, 1)
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0.12549, 0.12549, 0.12549, 0.635294)
+offset_left = -16.0
+offset_top = 576.0
+offset_right = 1168.0
+offset_bottom = 688.0
+
+[node name="instrucciones" type="Label" parent="CanvasLayer"]
+offset_left = -16.0
+offset_top = 576.0
+offset_right = 1132.0
+offset_bottom = 646.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.972549, 0.972549, 0.972549, 1)
-text = "Arrastra con tu mouse a Godot hacia el cambio deseado"
+theme_override_font_sizes/font_size = 0
+text = "Arrastra con tu mouse el chupete hacia el cambio deseado
+Recuerda coordinarte con los pedales"
 horizontal_alignment = 1
 
-[connection signal="mouse_entered" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_entered"]
-[connection signal="mouse_exited" from="Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_exited"]
-[connection signal="mouse_entered" from="AreaCambio" to="." method="_on_area_cambio_mouse_entered"]
-[connection signal="mouse_exited" from="AreaCambio" to="." method="_on_area_cambio_mouse_exited"]
-[connection signal="area_entered" from="primera" to="." method="_on_primera_area_entered"]
-[connection signal="area_entered" from="segunda" to="." method="_on_segunda_area_entered"]
-[connection signal="area_entered" from="tercera" to="." method="_on_tercera_area_entered"]
-[connection signal="area_entered" from="cuarta" to="." method="_on_cuarta_area_entered"]
-[connection signal="area_entered" from="quinta" to="." method="_on_quinta_area_entered"]
-[connection signal="area_entered" from="neutro" to="." method="_on_neutro_area_entered"]
+[node name="Palanca" type="Node2D" parent="CanvasLayer"]
+position = Vector2(581, 328)
+
+[node name="areaPalanca" type="Area2D" parent="CanvasLayer/Palanca"]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Palanca/areaPalanca"]
+position = Vector2(3, -8)
+scale = Vector2(0.2, 0.226)
+texture = ExtResource("5_bpqt0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Palanca/areaPalanca"]
+position = Vector2(3, -8)
+shape = SubResource("CircleShape2D_vufvp")
+
+[node name="AreaCambio" type="Area2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/AreaCambio"]
+polygon = PackedVector2Array(456, 216, 456, 424, 496, 424, 496, 336, 568, 336, 568, 424, 608, 424, 608, 336, 712, 336, 712, 216, 672, 216, 672, 296, 608, 296, 608, 216, 568, 216, 568, 296, 496, 296, 496, 216)
+metadata/_edit_lock_ = true
+
+[node name="neutro" type="Area2D" parent="CanvasLayer"]
+position = Vector2(576, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/neutro"]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_jdyd7")
+
+[node name="primera" type="Area2D" parent="CanvasLayer"]
+position = Vector2(459, 257)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/primera"]
+position = Vector2(21, -17)
+shape = SubResource("CircleShape2D_jdyd7")
+
+[node name="segunda" type="Area2D" parent="CanvasLayer"]
+position = Vector2(464, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/segunda"]
+position = Vector2(16, 0)
+shape = SubResource("CircleShape2D_jdyd7")
+
+[node name="tercera" type="Area2D" parent="CanvasLayer"]
+position = Vector2(576, 240)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/tercera"]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_jdyd7")
+
+[node name="cuarta" type="Area2D" parent="CanvasLayer"]
+position = Vector2(584, 401)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/cuarta"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_jdyd7")
+
+[node name="quinta" type="Area2D" parent="CanvasLayer"]
+position = Vector2(715, 260)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/quinta"]
+position = Vector2(-19, -20)
+shape = SubResource("CircleShape2D_jdyd7")
+
+[connection signal="mouse_entered" from="CanvasLayer/Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Palanca/areaPalanca" to="." method="_on_area_palanca_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/AreaCambio" to="." method="_on_area_cambio_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/AreaCambio" to="." method="_on_area_cambio_mouse_exited"]
+[connection signal="area_entered" from="CanvasLayer/neutro" to="." method="_on_neutro_area_entered"]
+[connection signal="area_entered" from="CanvasLayer/primera" to="." method="_on_primera_area_entered"]
+[connection signal="area_entered" from="CanvasLayer/segunda" to="." method="_on_segunda_area_entered"]
+[connection signal="area_entered" from="CanvasLayer/tercera" to="." method="_on_tercera_area_entered"]
+[connection signal="area_entered" from="CanvasLayer/cuarta" to="." method="_on_cuarta_area_entered"]
+[connection signal="area_entered" from="CanvasLayer/quinta" to="." method="_on_quinta_area_entered"]
