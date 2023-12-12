@@ -22,7 +22,7 @@ func _ready():
 	setCambio(GameController.Cambios.NEUTRO)
 	########################
 	areaPalanca = %areaPalanca
-	palanca  = $Palanca
+	palanca  = $CanvasLayer/Palanca
 	initialPosition = palanca.global_position
 	
 func _on_area_palanca_mouse_entered():
