@@ -12,7 +12,7 @@ var police_in_lane:Array =[]
 @export var police_path = "res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_police.gltf"
 
 var player
-@export var cars_spawn_limit_per_lane = 5
+@export var cars_spawn_limit_per_lane = 4
 var police_spawner_timer = 10 #Se spawnea un policia cada 10 segundos , se puede modificar
 var is_police_in_lane = false
 var lanes:Array = []
@@ -38,7 +38,7 @@ func _process(delta):
 
 		#Movemos al auto (se hace en el script de car_npc.gd)
 		#Cambio de carril:
-		if car.get_isSwitchingLane()==false && randf()<lane_change_prob:
+		if car.get_isSwitchingLane()==false && randf()<lane_change_prob && car.get_isPolice()==false:
 			#cambiamos de carril
 			var random_lane_id
 			if car.get_pistaid()> 0:
@@ -53,11 +53,14 @@ func _process(delta):
 				car.set_current_lane_pos(current_lane_pos)
 				car.set_target_lane_pos(target_lane_pos)
 				car.set_isSwitchingLane(true)
-				print("cambiando de carril")
 		if car.position.z < GameController.distancia_maxima_adelante or car.position.z > GameController.distancia_maxima_atras:
 			car.queue_free()
 	if cars_in_lane_count<cars_spawn_limit_per_lane:
 		spawn_car(GameController.distancia_maxima_atras,false)
+		
+	if police_spawner_timer<=0 && is_police_in_lane==false && pista_id>0:
+		spawn_car(GameController.distancia_maxima_atras,true)
+		is_police_in_lane=true
 		
 func _load_car_scenes(cars_paths):
 	for car_path in cars_paths:
@@ -89,8 +92,7 @@ func spawn_car(position, isPolice):
 		car.set_isPolice(true)
 	else:
 		car.set_isPolice(false)
-		var car_script=load(codigo_auto)
-		car.set_script(car_script)
+
 
 	car.set_pistaid(pista_id)
 	
@@ -98,9 +100,6 @@ func _load_police_scenes(police_path):
 	police_in_lane.append(load(police_path))
 	print("loading police scene")
 	
-func spawn_police(position):
-	spawn_car(position,true)
-
 
 
 func get_lanes():	
