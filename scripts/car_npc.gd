@@ -40,7 +40,7 @@ func _process(delta):
 		target_position.origin.x=target_lane_pos.x
 		self.global_transform.origin = self.global_transform.origin.lerp(
 			target_position.origin,delta)
-		if (self.global_transform.origin.x-target_position.origin.x)<abs(0.01):
+		if (self.global_transform.origin.x-target_position.origin.x)<abs(0.1):
 			isSwitchingLane=false
 			target_lane_id=pista_id
 			
@@ -135,12 +135,10 @@ func _on_area_entered(area):
 	if area.name == "coll_auto":
 		isCarNearby = true
 		emit_signal("car_nearby")  # Emitir la señal
-		print("auto entró a la area de colisiones")
+
 func _on_area_exited(area):
 	if area.name == "coll_auto":
 		isCarNearby = false
-		print("auto salió del area de colisiones")
-
 
 
 func getMeshInstance():

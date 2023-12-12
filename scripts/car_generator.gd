@@ -26,8 +26,10 @@ func _ready():
 	_init_cars(cars_spawn_limit_per_lane)
 	get_lanes()
 func _init_cars(number_of_cars: int) -> void:
+
+		
 	for car_index in range(cars_spawn_limit_per_lane):
-		var pos=randf_range(GameController.distancia_maxima_adelante,GameController.distancia_maxima_atras)
+		var pos=randf_range(GameController.distancia_maxima_adelante,0)
 		spawn_car(pos,false)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -69,11 +71,13 @@ func _load_car_scenes(cars_paths):
 		cars_in_lane.append(load(car_path))
 
 func spawn_car(position, isPolice):
-	var car
+	var car = StaticBody3D.new()
 	if isPolice:
-		car = police_in_lane.pick_random().instantiate() 
+		var car_mesh = police_in_lane.pick_random().instantiate()
+		car.add_child(car_mesh) 
 	if not isPolice:
-		car = cars_in_lane.pick_random().instantiate()	
+		var car_mesh = cars_in_lane.pick_random().instantiate()	
+		car.add_child(car_mesh) 
 	car.position.z=position
 	car.position.y = 0.3
 	car.scale= Vector3(4,4,4)
@@ -88,11 +92,15 @@ func spawn_car(position, isPolice):
 	collision_shape.shape = BoxShape3D.new()
 	collision_shape.shape.extents = Vector3(0.2,0.4,0.5)
 
-	
+	var colision_auto = CollisionShape3D.new()
+	colision_auto.shape=BoxShape3D.new()
+	colision_auto.shape.extents=Vector3(1,1,1)
+	car.add_child(colision_auto)
 
 	var area3d_det =Area3D.new()
 	area3d_det.name="deteccion"
 	var collision_shape_detec=CollisionShape3D.new()
+	
 	car.add_child(area3d_det)
 	area3d_det.add_child(collision_shape_detec)
 	collision_shape_detec.global_transform.origin = car.global_transform.origin
