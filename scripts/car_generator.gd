@@ -12,7 +12,7 @@ var police_in_lane:Array =[]
 @export var police_path = "res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_police.gltf"
 
 var player
-@export var cars_spawn_limit_per_lane = 4
+@export var cars_spawn_limit_per_lane = 5
 var police_spawner_timer = 10 #Se spawnea un policia cada 10 segundos , se puede modificar
 var is_police_in_lane = false
 var lanes:Array = []
@@ -53,6 +53,7 @@ func _process(delta):
 				car.set_current_lane_pos(current_lane_pos)
 				car.set_target_lane_pos(target_lane_pos)
 				car.set_isSwitchingLane(true)
+				car.set_target_lane_id(random_lane_id)
 		if car.position.z < GameController.distancia_maxima_adelante or car.position.z > GameController.distancia_maxima_atras:
 			car.queue_free()
 	if cars_in_lane_count<cars_spawn_limit_per_lane:
@@ -78,24 +79,38 @@ func spawn_car(position, isPolice):
 	car.scale= Vector3(4,4,4)
 	car.rotate_y(deg_to_rad(180))
 	add_child(car)
+	var area3d_coll=Area3D.new()
+	area3d_coll.name="coll_auto"
 	var collision_shape = CollisionShape3D.new()
-	collision_shape.transform = car.transform
+	car.add_child(area3d_coll)
+	area3d_coll.add_child(collision_shape)
+	collision_shape.global_transform.origin = car.global_transform.origin
 	collision_shape.shape = BoxShape3D.new()
-	collision_shape.shape.extents = car.scale / 2.0  # Ajusta las dimensiones de la caja de colisión según la escala del auto
-	car.add_child(collision_shape)
+	collision_shape.shape.extents = Vector3(0.2,0.4,0.5)
+
+	
+
+	var area3d_det =Area3D.new()
+	area3d_det.name="deteccion"
+	var collision_shape_detec=CollisionShape3D.new()
+	car.add_child(area3d_det)
+	area3d_det.add_child(collision_shape_detec)
+	collision_shape_detec.global_transform.origin = car.global_transform.origin
+	collision_shape_detec.shape = BoxShape3D.new()
+	collision_shape_detec.shape.extents = Vector3(0.2,0.4,2)
+	if pista_id>0:
+		collision_shape_detec.global_transform.origin.z-=6
+	else:
+		collision_shape_detec.global_transform.origin.z+=6
 	car.set_script(load("res://scripts/car_npc.gd"))
 	car.set_process(true)
 	car._ready()
-	
-	
+	car.set_pistaid(pista_id)
 	if isPolice :
 		car.set_isPolice(true)
 	else:
 		car.set_isPolice(false)
-
-
-	car.set_pistaid(pista_id)
-	
+		
 func _load_police_scenes(police_path):
 	police_in_lane.append(load(police_path))
 	print("loading police scene")
@@ -117,3 +132,9 @@ func get_pista(id_pista:int):
 
 func get_pista_id():
 	return pista_id
+	
+
+func get_target_lane_pos(id:int):
+	var target_lane=get_pista(id)
+	
+	return target_lane.global_transform.origin
