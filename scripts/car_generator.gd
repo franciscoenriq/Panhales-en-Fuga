@@ -17,7 +17,7 @@ var police_spawner_timer = 10 #Se spawnea un policia cada 10 segundos , se puede
 var is_police_in_lane = false
 var lanes:Array = []
 var codigo_auto = "res://scripts/car_npc.gd"
-var lane_change_prob = 0.05
+var lane_change_prob = 0.001
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player =get_node("../car2")
@@ -35,19 +35,25 @@ func _process(delta):
 	var cars_in_lane_count = get_children().size()
 	
 	for car in get_children():
-		car.move()
+
 		#Movemos al auto (se hace en el script de car_npc.gd)
 		#Cambio de carril:
 		if car.get_isSwitchingLane()==false && randf()<lane_change_prob:
 			#cambiamos de carril
 			var random_lane_id
-			if car.get_pista_id()> 0:
+			if car.get_pistaid()> 0:
 				random_lane_id = randi_range(1, 2)
 			else:
 				random_lane_id = randi_range(-2, -1)
-			if random_lane_id!=car.get_pista_id():
-				car.set_target_lane(random_lane_id)
+			if random_lane_id!=car.get_pistaid():
+				var current_lane_pos = get_pista(pista_id)
+				var target_lane_pos= get_pista(random_lane_id)
+				current_lane_pos=current_lane_pos.global_transform.origin
+				target_lane_pos=target_lane_pos.global_transform.origin
+				car.set_current_lane_pos(current_lane_pos)
+				car.set_target_lane_pos(target_lane_pos)
 				car.set_isSwitchingLane(true)
+				print("cambiando de carril")
 		if car.position.z < GameController.distancia_maxima_adelante or car.position.z > GameController.distancia_maxima_atras:
 			car.queue_free()
 	if cars_in_lane_count<cars_spawn_limit_per_lane:

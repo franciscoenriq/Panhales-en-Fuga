@@ -1,10 +1,13 @@
 extends Node
 
 var isSwitchingLane = false
-var current_lane 
-var target_lane
-var change_lane_speed
+var current_lane_pos
+var target_lane_pos
+
 var average_speed = 10
+var change_lane_speed=10*1.4
+
+
 var isPolice
 var pista_id
 var isMoving = true
@@ -17,7 +20,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if isSwitchingLane==true:
-		
+		#Queremos movernos desde la posicion actual hasta la objetivo. El cambio será solo en el eje x
+		var target_position = self.global_transform
+		target_position.origin.x=target_lane_pos.x
+		self.global_transform.origin = self.global_transform.origin.lerp(
+			target_position.origin,delta)
+		if (self.global_transform.origin.x-target_position.origin.x)<abs(0.01):
+			isSwitchingLane=false
+			print("se terminó de cambiar de carril")
 	var npc_speed
 	var objetivo
 	var new_position
@@ -35,6 +45,8 @@ func _process(delta):
 		delta*npc_speed 
 	)
 	self.global_transform.origin = new_position
+	
+
 func get_isSwitchingLane():
 	return isSwitchingLane
 		
@@ -52,5 +64,8 @@ func set_pistaid(value):
 func get_pistaid():
 	return pista_id
 
-func move():
-	isMoving = true
+func set_current_lane_pos(value):
+	current_lane_pos=value
+func set_target_lane_pos(value):
+	target_lane_pos=value
+
