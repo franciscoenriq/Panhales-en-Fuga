@@ -46,8 +46,7 @@ func _process(_delta):
 	self.text = GameController.messages[\"driver\"]
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1o6cj"]
-size = Vector3(10, 2, 2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhxtw"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
 inner_radius = 1.272
@@ -108,8 +107,8 @@ axis_lock_angular_y = true
 motion_mode = 1
 script = ExtResource("3_v83rv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="car2"]
-shape = SubResource("BoxShape3D_1o6cj")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="car2"]
+shape = SubResource("BoxShape3D_nhxtw")
 
 [node name="Volante" type="StaticBody3D" parent="car2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258702, 0.525607, -0.219965)
