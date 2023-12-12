@@ -119,7 +119,7 @@ func change_message(message):
 	for clave in messages.keys():
 		messages[clave] = message
 		
-"""
+
 @rpc("any_peer")
 func clutch(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores
@@ -157,7 +157,7 @@ func brake(player_role, pressure):
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
 				change_message(default_message)
-"""		
+	
 		
 		
 func change_degree_value(value):

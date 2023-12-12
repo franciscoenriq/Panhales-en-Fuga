@@ -110,6 +110,7 @@ script = ExtResource("3_v83rv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="car2"]
 shape = SubResource("BoxShape3D_1o6cj")
+disabled = true
 
 [node name="Volante" type="StaticBody3D" parent="car2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258702, 0.525607, -0.219965)
