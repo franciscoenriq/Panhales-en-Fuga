@@ -15,6 +15,7 @@ var pista_id
 var isMoving = true
 signal car_nearby
 var deteccion:Area3D
+var auto:MeshInstance3D
 @onready var lane = self.get_parent()
 
 # Called when the node enters the scene tree for the first time.
@@ -23,14 +24,15 @@ func _ready():
 	deteccion = $deteccion
 	deteccion.area_entered.connect(self._on_area_entered)
 	deteccion.area_exited.connect(self._on_area_exited)
-	
+	auto = getMeshInstance()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var npc_speed
+	var objetivo
+	var new_position
 
-		
-	
 	if isSwitchingLane==true:
 
 		#Queremos movernos desde la posicion actual hasta la objetivo. El cambio será solo en el eje x
@@ -42,10 +44,8 @@ func _process(delta):
 			isSwitchingLane=false
 			target_lane_id=pista_id
 			
-	var npc_speed
-	var objetivo
-	var new_position
-	if not isPolice: #Si no es policia, se mueve de forma normal
+
+	if not isPolice : #Si no es policia, se mueve de forma normal
 		if pista_id>0:
 			#velocidad relativa 
 			npc_speed= GameController.car_speed-randf_range(-0.5, 1.5) * average_speed * 5	
@@ -60,15 +60,16 @@ func _process(delta):
 	if isPolice:
 		#la policia debe perseguir al player. Para ello, su velocidad será mayor hasta alcanzar 
 		#al jugador.		
+		#El policía quiere alcanzar la posicion en z del player. Para ello, quiere alcanzar la posicion 
+		#
 		npc_speed= GameController.car_speed-randf_range(-0.3, 1.3) * average_speed * 7
 		objetivo = -Vector3(0, 0, npc_speed*delta)
-
+	
+	
 		
-	new_position = self.global_transform.origin.lerp(
-		self.global_transform.origin + objetivo,
-		delta*npc_speed
-	)
 	if isCarNearby && isSwitchingLane==false:
+		npc_speed=npc_speed*0.8
+
 		#Hay un auto en frente. Debemos cambiar de pista el auto.
 		if pista_id==1:
 			isSwitchingLane=true
@@ -89,13 +90,18 @@ func _process(delta):
 			isSwitchingLane=true
 			target_lane_id=-1
 			target_lane_pos=lane.get_target_lane_pos(target_lane_id)
+
+
 	
-			
-			
 	
+		
+	new_position = self.global_transform.origin.lerp(
+		self.global_transform.origin + objetivo,
+		delta*npc_speed
+	)	
+		
 	self.global_transform.origin = new_position
-	
-	
+
 
 
 
@@ -134,3 +140,10 @@ func _on_area_exited(area):
 	if area.name == "coll_auto":
 		isCarNearby = false
 		print("auto salió del area de colisiones")
+
+
+
+func getMeshInstance():
+	for nodo in self.get_children():
+		if nodo is MeshInstance3D:
+			return nodo
