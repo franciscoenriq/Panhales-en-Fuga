@@ -189,6 +189,10 @@ func set_gear(player_role, cambio: Cambios):
 			
 			return true
 	return false
+@rpc("any_peer")
+func quit_game():
+	#aquí debería de ir el código para devolverse al menú principal
+	pass
 func isDriving()->bool:
 	if car_speed>0:
 		return true

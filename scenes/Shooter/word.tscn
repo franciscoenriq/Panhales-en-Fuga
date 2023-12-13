@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4qpwfwjm458o"]
+
+[ext_resource type="PackedScene" uid="uid://q1t0hrd8lpt5" path="res://scenes/Shooter/shooterPlayer.tscn" id="1_32bam"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v2de0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_30kd1"]
+sky_material = SubResource("ProceduralSkyMaterial_v2de0")
+
+[sub_resource type="Environment" id="Environment_codq8"]
+background_mode = 2
+sky = SubResource("Sky_30kd1")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_codq8")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118108, -0.124886, 0.00841093)
+use_collision = true
+collision_layer = 3
+collision_mask = 7
+size = Vector3(10, 0.05, 10)
+
+[node name="Player" parent="." instance=ExtResource("1_32bam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.92253, 0)
+collision_mask = 3
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0828778, 0.99656, 0, -0.99656, -0.0828778, 0, 6.34885, 0)
