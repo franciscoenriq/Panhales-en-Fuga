@@ -6,7 +6,7 @@ var clutchPressure=0
 var acceptableClutchPressure = 85
 var turnValue=0
 var cambioActual = Cambios.NONE
-
+var current_turn
 var car_speed= 1 # velocidad inicial a la que se mueve la pista en km/h
 var velocidad_lateral = car_speed/2  # velocidad para cambiar de pista en km/h
 const debug_print_time = 0.8
@@ -115,7 +115,7 @@ func brake(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
 	if pressure != brakePressure:
 		brakePressure = pressure
-		
+
 		
 func change_degree_value(value):
 	var originalScale = value
@@ -138,7 +138,7 @@ func set_gear(player_role, cambio: Cambios):
 			cambioActual = cambio
 			return true
 	return false
-	
+
 func isDriving()->bool:
 	if car_speed>0:
 		return true
@@ -184,9 +184,17 @@ func set_motor_pitch(delta) -> float:
 
 	return nuevo_pitch
 
-
-
 @rpc("any_peer")
 func fin_de_juego():
 	get_tree().change_scene_to_file("res://scenes/game_end.tscn")
 	
+func get_speed()->String:
+	return str(car_speed)
+func get_bra_pressure()->String:
+	return str(brakePressure)
+func get_clutch_pressure()->String:
+	return str(clutchPressure)
+func get_gas_pressure()->String:
+	return str(accPressure)
+func get_gear()->String:
+	return str_values[cambioActual]

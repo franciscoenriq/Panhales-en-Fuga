@@ -1,0 +1,186 @@
+[gd_scene load_steps=17 format=3 uid="uid://2wmpab3yvmaj"]
+
+[ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="1_hv2jl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0dhgr"]
+sky_horizon_color = Color(0.614877, 0.66448, 0.676716, 1)
+sky_energy_multiplier = 2.15
+ground_bottom_color = Color(0.0745098, 0.203922, 0.156863, 1)
+ground_horizon_color = Color(0.614877, 0.66448, 0.676716, 1)
+
+[sub_resource type="Sky" id="Sky_cuig8"]
+sky_material = SubResource("ProceduralSkyMaterial_0dhgr")
+
+[sub_resource type="Environment" id="Environment_hvoxv"]
+background_mode = 2
+sky = SubResource("Sky_cuig8")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhxtw"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
+inner_radius = 1.272
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u2tr0"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
+size = Vector3(1.5, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o62oy"]
+size = Vector3(5, 0.5, 8)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_meowj"]
+size = Vector2(5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1m7n1"]
+size = Vector2(5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ob1h"]
+size = Vector3(0.3, 1.7, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lcg5k"]
+size = Vector3(0.3, 1.7, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqcya"]
+size = Vector3(5, 0.3, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5uwt"]
+size = Vector3(1, 1.4, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hj2yl"]
+size = Vector3(1, 1.4, 9)
+
+[node name="car2" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6663, 0.11841, -0.531515)
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_y = true
+motion_mode = 1
+script = ExtResource("1_hv2jl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hvoxv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.492404, 0.0868241, 0, 0.173648, 0.984808, -0.5, 0.852868, -0.150384, 0, 1.41646, 0)
+shadow_enabled = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nhxtw")
+
+[node name="Volante" type="StaticBody3D" parent="."]
+transform = Transform3D(0.623796, 0, 0, 0, 0.652274, 0, 0, 0, 1, -0.193473, 0.423831, -0.620497)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Volante"]
+unique_name_in_owner = true
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, -0.3, 0, 0.3, -1.31134e-08, 0, 0, 0)
+rotation_order = 1
+mesh = SubResource("TorusMesh_g54x2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Volante/MeshInstance3D"]
+transform = Transform3D(-0.0148347, 0.999889, -4.37065e-08, -0.999889, -0.0148347, 4.43598e-08, 4.37065e-08, 4.43597e-08, 1, 0, 0, 0)
+rotation_order = 5
+mesh = SubResource("CylinderMesh_u2tr0")
+skeleton = NodePath("")
+
+[node name="car_body" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.440728, 0, 0, 0, 0.613541, 0, 0, 0, 0.574301, 0, 0, 0)
+mesh = SubResource("BoxMesh_iajsa")
+
+[node name="floor_car" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.793291, 0, 2.95544)
+mesh = SubResource("BoxMesh_o62oy")
+
+[node name="velocimetro" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, -0.939693, 0, 0.939693, 0.34202, 0.779602, 0.675451, -1.20556)
+mesh = SubResource("PlaneMesh_meowj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car_body/velocimetro"]
+transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0.0159078, -0.238201, -0.591301)
+mesh = SubResource("PlaneMesh_1m7n1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, -1.54675, 1.90564, -1.3313)
+mesh = SubResource("BoxMesh_0ob1h")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, -0.34202, 0, 0.34202, 0.939693, 3.14675, 1.91553, -1.33191)
+mesh = SubResource("BoxMesh_lcg5k")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.760899, 2.66928, 2.67568)
+mesh = SubResource("BoxMesh_tqcya")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20134, 0.438311, 2.63092)
+mesh = SubResource("BoxMesh_k5uwt")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74776, 0.545981, 2.87424)
+mesh = SubResource("BoxMesh_hj2yl")
+
+[node name="pivoteCamera" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202343, 0.445208, -0.202462)
+
+[node name="Control" type="Control" parent="pivoteCamera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 177.0
+offset_bottom = 40.0
+
+[node name="Vel" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 534.0
+offset_right = 635.0
+offset_bottom = 601.0
+text = "SPD
+
+"
+horizontal_alignment = 1
+justification_flags = 171
+
+[node name="BRA" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 595.0
+offset_right = 182.0
+offset_bottom = 627.0
+text = "BRAKES PRESS:
+"
+
+[node name="CLU" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 547.0
+offset_right = 190.0
+offset_bottom = 579.0
+text = "CLUTCH PRESS:"
+
+[node name="GAS" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 509.0
+offset_right = 143.0
+offset_bottom = 541.0
+text = "GAS PRESS:"
+
+[node name="GEAR" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 895.0
+offset_top = 569.0
+offset_right = 1070.0
+offset_bottom = 601.0
+text = "CURRENT GEAR
+"
+
+[node name="Camera3D" type="Camera3D" parent="pivoteCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.996318, -0.0857299, 0, 0.0857299, 0.996318, 0, 0, 0)
+current = true

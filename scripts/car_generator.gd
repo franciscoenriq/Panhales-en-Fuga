@@ -146,3 +146,4 @@ func get_target_lane_pos(id:int):
 	var target_lane=get_pista(id)
 	
 	return target_lane.global_transform.origin
+## debemos hacer las colisiones de las balas .

@@ -9,7 +9,7 @@ script = ExtResource("1_xuxkm")
 
 [node name="AudioMotor" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ryp7m")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="AudioInterior" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f6gqk")
