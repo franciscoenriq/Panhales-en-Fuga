@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=23 format=3 uid="uid://bv5x47g72yeou"]
 
 [ext_resource type="Texture2D" uid="uid://clnq68ag802k4" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/BlueSkySkybox.png" id="1_vo1pk"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
@@ -29,22 +29,6 @@ reflected_light_source = 2
 tonemap_mode = 2
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uexqk"]
-
-[sub_resource type="GDScript" id="GDScript_7fw4t"]
-script/source = "extends Label3D
-
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	self.text = GameController.messages[\"driver\"]
-"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1o6cj"]
 size = Vector3(10, 2, 2)
@@ -93,12 +77,6 @@ camera_attributes = SubResource("CameraAttributesPractical_uexqk")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 6.98629, 5.6309, -79.194)
 shadow_enabled = true
-
-[node name="InputState" type="Label3D" parent="."]
-transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 2, -2.087)
-visible = false
-text = "testeando"
-script = SubResource("GDScript_7fw4t")
 
 [node name="car2" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79779, 0, 0)

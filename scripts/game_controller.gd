@@ -113,23 +113,23 @@ func calc_distance(delta):
 
 @rpc("any_peer")
 func test(player_role):
-	Debug.dprint("test - player: %s" % player_role, debug_print_time)
+	print("test - player: %s" % player_role, debug_print_time)
 
 func change_message(message):
 	for clave in messages.keys():
 		messages[clave] = message
 		
-"""
+		
 @rpc("any_peer")
 func clutch(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores
 	if clutchPressure != pressure:
 		clutchPressure = pressure
-		if pressure != 0:
-			change_message("clutch pressed- player: "+  player_role + " - pressure: " + str(pressure))
-		else:
-			if accPressure+brakePressure+clutchPressure <= 0:
-				change_message(default_message)
+#		if pressure != 0:
+#			change_message("clutch pressed- player: "+  player_role + " - pressure: " + str(pressure))
+#		else:
+#			if accPressure+brakePressure+clutchPressure <= 0:
+#				change_message(default_message)
 				
 	
 @rpc("any_peer")
@@ -137,27 +137,27 @@ func accelerator(player_role, pressure):
 	# esta funcion printea la presion puesta en el aceleradoro a  los otros jugadores 
 	if accPressure!=pressure:
 		accPressure = pressure
-		if pressure != 0:
-			change_message("gas pressed- player: "+  player_role + " - pressure: " + str(pressure))
-			#Aquí se debería acelerar al auto dependiendo del cambio en el que estemos.
-			#El cambio primera siempre tiene mas fuerza, el segundo, un 70% de la fuerza y asi sucesivamente en general, los cambios disminuyen la fuerza del motor usando una razón dada
-			#El auto deja de acelerar en el cambio dado cuando se superan las RPM del motor ( por ejemplo, en a mayoría de los autos es a 2000 RPM)
-			#De momento, el auto solo acelerará de una manera fija 
-		else:
-			if accPressure+brakePressure+clutchPressure <= 0:
-				change_message(default_message)
+#		if pressure != 0:
+#			change_message("gas pressed- player: "+  player_role + " - pressure: " + str(pressure))
+#			#Aquí se debería acelerar al auto dependiendo del cambio en el que estemos.
+#			#El cambio primera siempre tiene mas fuerza, el segundo, un 70% de la fuerza y asi sucesivamente en general, los cambios disminuyen la fuerza del motor usando una razón dada
+#			#El auto deja de acelerar en el cambio dado cuando se superan las RPM del motor ( por ejemplo, en a mayoría de los autos es a 2000 RPM)
+#			#De momento, el auto solo acelerará de una manera fija 
+#		else:
+#			if accPressure+brakePressure+clutchPressure <= 0:
+#				change_message(default_message)
 
 @rpc("any_peer")
 func brake(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
 	if pressure != brakePressure:
 		brakePressure = pressure
-		if pressure != 0:
-			change_message("brake pressed- player: "+  player_role + " - pressure: " + str(pressure))
-		else:
-			if accPressure+brakePressure+clutchPressure <= 0:
-				change_message(default_message)
-"""		
+#		if pressure != 0:
+#			change_message("brake pressed- player: "+  player_role + " - pressure: " + str(pressure))
+#		else:
+#			if accPressure+brakePressure+clutchPressure <= 0:
+#				change_message(default_message)
+
 		
 		
 func change_degree_value(value):
@@ -173,11 +173,11 @@ func change_degree_value(value):
 func turn(player_role,value):
 	if value != turnValue:
 		turnValue = value
-		if snapped(value,0.1) != 0:
-			var direction = "Left" if value<0 else "Right"
-			change_message("Player: "+player_role+" - Wheel turning: " + str(abs(change_degree_value(value)))+"° "+direction)
-		else:
-			change_message(default_message)
+#		if snapped(value,0.1) != 0:
+#			var direction = "Left" if value<0 else "Right"
+#			change_message("Player: "+player_role+" - Wheel turning: " + str(abs(change_degree_value(value)))+"° "+direction)
+#		else:
+#			change_message(default_message)
 
 
 @rpc("any_peer")
@@ -185,10 +185,10 @@ func set_gear(player_role, cambio: Cambios):
 	if clutchPressure>=GameController.acceptableClutchPressure:
 		if cambio != cambioActual:
 			cambioActual = cambio
-			change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
-			
+			#change_message("switching gears - player: "+  player_role + " - gear: " + str(str_values[cambio]))
 			return true
 	return false
+	
 func isDriving()->bool:
 	if car_speed>0:
 		return true
