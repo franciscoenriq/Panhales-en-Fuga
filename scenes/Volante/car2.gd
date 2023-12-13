@@ -68,5 +68,5 @@ func _physics_process(delta: float) -> void:
 	var collision = get_last_slide_collision()
 	if collision :
 		print("collided with ",collision.get_collider())
-		get_tree().quit() #eliminar esto
+		GameController.fin_de_juego.rpc()
 	
