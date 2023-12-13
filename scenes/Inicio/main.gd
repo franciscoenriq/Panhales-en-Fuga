@@ -4,15 +4,14 @@ extends Node2D
 @onready var driver_scene: PackedScene = preload("res://scenes/Volante/car_2.tscn")
 @onready var pedal_scene: PackedScene = preload("res://scenes/Pedales/pedales.tscn")
 @onready var shift_scene: PackedScene= preload("res://scenes/Cambios/cambios.tscn")
-@onready var shooter_scene: PackedScene= preload("res://scenes/Shooter/shooterPlayer.tscn")
-@onready var mundo_scene = preload("res://scenes/Volante/new_volante.tscn")
+@onready var shooter_scene: PackedScene = preload("res://scenes/Volante/new_volante.tscn")
 
 
 @onready var players: Node2D = $Players
 @onready var root = $"."
 
 func _ready() -> void:
-	var mundo = mundo_scene.instantiate()
+
 	for player_data in Game.players:
 		var player = player_scene.instantiate()
 		players.add_child(player)

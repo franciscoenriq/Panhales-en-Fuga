@@ -244,7 +244,7 @@ func is_duplicated(list):
 	
 func _check_ready() -> void:
 	var roles = []
-	var cantidad_jugadores = 3
+	var cantidad_jugadores = 4
 	for player in Game.players:
 		if not player.role in roles and player.role != Game.Role.NONE:
 			roles.push_back(player.role)
