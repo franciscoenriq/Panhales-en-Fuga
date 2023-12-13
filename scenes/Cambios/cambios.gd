@@ -1,5 +1,6 @@
 extends Node2D
 
+var debug = false
 var isDragging = false
 var mouseInsideAreaPalanca = false
 var mouseInsideAreaCambio = false
@@ -22,7 +23,7 @@ func _ready():
 	setCambio(GameController.Cambios.NEUTRO)
 	########################
 	areaPalanca = %areaPalanca
-	palanca  = $Palanca
+	palanca  = $CanvasLayer/Palanca
 	initialPosition = palanca.global_position
 	
 func _on_area_palanca_mouse_entered():
@@ -37,7 +38,7 @@ func _process(_delta):
 			isDragging = true
 		else:
 			isDragging = false
-	if isDragging and GameController.clutchPressure>=GameController.acceptableClutchPressure:
+	if isDragging and (GameController.clutchPressure>=GameController.acceptableClutchPressure or debug):
 		# el godot se mueve si está arrastrando y el embrague está apretado
 		var newPosition = get_global_mouse_position()
 		
@@ -49,7 +50,7 @@ func _process(_delta):
 			
 func setCambio(cambio):
 	# solo pasamos el cambio si el embrague está presionado
-	if GameController.clutchPressure>=GameController.acceptableClutchPressure:
+	if GameController.clutchPressure>=GameController.acceptableClutchPressure or debug: 
 		estadoCambios[cambio] = true
 		GameController.set_gear.rpc("shift", cambio)
 		for otro_cambio in GameController.Cambios.values():

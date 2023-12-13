@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu3mkddstrlgn"]
+[gd_scene load_steps=15 format=3 uid="uid://bu3mkddstrlgn"]
 
 [ext_resource type="Texture2D" uid="uid://cir4q6lrqof8l" path="res://Assets/road.png" id="1_exgrm"]
 [ext_resource type="PackedScene" uid="uid://yygabw7171gf" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/trash_A.gltf" id="2_d7uym"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dkekb6cs85d6" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_G.gltf" id="11_fb528"]
 [ext_resource type="PackedScene" uid="uid://d0v6dq6qrhlla" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/dumpster.gltf" id="12_oa1qa"]
 [ext_resource type="PackedScene" uid="uid://dm1ai8vxxdbxb" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/building_A_withoutBase.gltf" id="13_k76in"]
-[ext_resource type="PackedScene" uid="uid://w2juyv71cexv" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_police.gltf" id="13_shwen"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6y70"]
 albedo_texture = ExtResource("1_exgrm")
@@ -60,10 +59,6 @@ light_color = Color(0.984314, 1, 0, 1)
 [node name="streetlight4" parent="." instance=ExtResource("9_n1uxg")]
 transform = Transform3D(-3, 0, -4.52987e-07, 0, 3, 0, 4.52987e-07, 0, -3, -10.1709, -0.0796885, -0.252015)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="streetlight4"]
-transform = Transform3D(0.333333, -3.55271e-14, -1.48231e-21, 0, -1.45705e-08, 0.333333, -3.55271e-14, -0.333333, -1.45705e-08, -0.223658, 0.991215, -0.0665152)
-light_color = Color(0.984314, 1, 0, 1)
-
 [node name="streetlight5" parent="." instance=ExtResource("9_n1uxg")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.2314, -0.0796885, -10.0826)
 
@@ -106,9 +101,6 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, -7.644
 [node name="CollisionShape3D" type="CollisionShape3D" parent="auto3"]
 transform = Transform3D(0.502872, 0, 0, 0, 0.127241, 0, 0, 0, 0.483843, 0.0154903, 0.0340796, -0.0408498)
 shape = SubResource("BoxShape3D_hfa41")
-
-[node name="car_police" parent="." instance=ExtResource("13_shwen")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8.37814, 0.2967, -3.75184)
 
 [node name="building_A_withoutBase" parent="." instance=ExtResource("13_k76in")]
 transform = Transform3D(-1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -16.142, 0, 7.26587)

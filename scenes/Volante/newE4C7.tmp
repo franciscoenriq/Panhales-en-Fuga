@@ -1,50 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=24 format=3 uid="uid://bv5x47g72yeou"]
 
-[ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="1_0c040"]
 [ext_resource type="Texture2D" uid="uid://clnq68ag802k4" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/BlueSkySkybox.png" id="1_vo1pk"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
+[ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="3_v83rv"]
 [ext_resource type="PackedScene" uid="uid://b03fwjrmf1jpd" path="res://scenes/Volante/messageBar.tscn" id="4_i5ci0"]
 [ext_resource type="PackedScene" uid="uid://ggu1ki64l4vq" path="res://terrain_blocks/terrain_0.tscn" id="5_s4a7t"]
 [ext_resource type="Script" path="res://scripts/car_generator.gd" id="6_a7of1"]
-[ext_resource type="PackedScene" uid="uid://q1t0hrd8lpt5" path="res://scenes/Shooter/shooterPlayer.tscn" id="6_nhyx4"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1o6cj"]
-size = Vector3(10, 2, 2)
-
-[sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
-inner_radius = 1.272
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_u2tr0"]
-top_radius = 0.1
-bottom_radius = 0.1
-height = 2.2
-
-[sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
-size = Vector3(1.5, 0.5, 2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_o62oy"]
-size = Vector3(5, 0.5, 8)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_meowj"]
-size = Vector2(5, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_1m7n1"]
-size = Vector2(5, 0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_0ob1h"]
-size = Vector3(0.3, 1.7, 0.4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_lcg5k"]
-size = Vector3(0.3, 1.7, 0.4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tqcya"]
-size = Vector3(5, 0.3, 8)
-
-[sub_resource type="BoxMesh" id="BoxMesh_k5uwt"]
-size = Vector3(1, 1.4, 9)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hj2yl"]
-size = Vector3(1, 1.4, 9)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_28d45"]
 sky_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
@@ -85,22 +46,72 @@ func _process(_delta):
 	self.text = GameController.messages[\"driver\"]
 "
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_nhxtw"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_g54x2"]
+inner_radius = 1.272
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_u2tr0"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 2.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_iajsa"]
+size = Vector3(1.5, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o62oy"]
+size = Vector3(5, 0.5, 8)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_meowj"]
+size = Vector2(5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1m7n1"]
+size = Vector2(5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0ob1h"]
+size = Vector3(0.3, 1.7, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lcg5k"]
+size = Vector3(0.3, 1.7, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tqcya"]
+size = Vector3(5, 0.3, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5uwt"]
+size = Vector3(1, 1.4, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hj2yl"]
+size = Vector3(1, 1.4, 9)
+
 [node name="Node3D" type="Node3D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gflx8")
+camera_attributes = SubResource("CameraAttributesPractical_uexqk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 6.98629, 5.6309, -79.194)
+shadow_enabled = true
+
+[node name="InputState" type="Label3D" parent="."]
+transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 2, -2.087)
+visible = false
+text = "testeando"
+script = SubResource("GDScript_7fw4t")
+
 [node name="car2" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6663, 0.11841, -0.531515)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.79779, 0, 0)
 axis_lock_linear_y = true
 axis_lock_linear_z = true
 axis_lock_angular_y = true
 motion_mode = 1
-script = ExtResource("1_0c040")
+script = ExtResource("3_v83rv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="car2"]
-shape = SubResource("BoxShape3D_1o6cj")
-disabled = true
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="car2"]
+shape = SubResource("BoxShape3D_nhxtw")
 
 [node name="Volante" type="StaticBody3D" parent="car2"]
-transform = Transform3D(0.623796, 0, 0, 0, 0.652274, 0, 0, 0, 1, -0.193473, 0.423831, -0.620497)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258702, 0.525607, -0.219965)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="car2/Volante"]
 unique_name_in_owner = true
@@ -151,22 +162,12 @@ mesh = SubResource("BoxMesh_k5uwt")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74776, 0.545981, 2.87424)
 mesh = SubResource("BoxMesh_hj2yl")
 
-[node name="Player" parent="car2" instance=ExtResource("6_nhyx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.89906, 1.26325, 2.77908)
+[node name="pivoteCamera" type="Node3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202343, 1.16545, 0.686534)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gflx8")
-camera_attributes = SubResource("CameraAttributesPractical_uexqk")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 6.98629, 5.6309, -79.194)
-shadow_enabled = true
-
-[node name="InputState" type="Label3D" parent="."]
-transform = Transform3D(1.00839, 0, 0, 0, 1, 0, 0, 0, 1, -0.021, 2, -2.087)
-visible = false
-text = "testeando"
-script = SubResource("GDScript_7fw4t")
+[node name="Camera3D" type="Camera3D" parent="car2/pivoteCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.996318, -0.0857299, 0, 0.0857299, 0.996318, 0, 0, 0)
+current = true
 
 [node name="TerrainController" parent="." instance=ExtResource("3_5y2k5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20)
