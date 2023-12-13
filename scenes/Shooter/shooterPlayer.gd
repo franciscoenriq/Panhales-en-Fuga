@@ -39,6 +39,9 @@ func _physics_process(delta):
 		if !gun_anim.is_playing():
 			gun_anim.play("Shoot")
 			instance = bullet.instantiate()
+			#instance.global_transform.origin = gun_barrel.global_transform.origin
+			#instance.transform.origin = Vector3(0, 0, 0)
+			#instance.transform.basis = Basis.IDENTITY
 			instance.position = gun_barrel.global_position 
 			instance.transform.basis = gun_barrel.global_transform.basis 
 			get_parent().add_child(instance)
