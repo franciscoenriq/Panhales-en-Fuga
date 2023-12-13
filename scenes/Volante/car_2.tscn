@@ -1,6 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://2wmpab3yvmaj"]
+[gd_scene load_steps=17 format=3 uid="uid://2wmpab3yvmaj"]
 
 [ext_resource type="Script" path="res://scenes/Volante/car2.gd" id="1_hv2jl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0dhgr"]
+sky_horizon_color = Color(0.614877, 0.66448, 0.676716, 1)
+sky_energy_multiplier = 2.15
+ground_bottom_color = Color(0.0745098, 0.203922, 0.156863, 1)
+ground_horizon_color = Color(0.614877, 0.66448, 0.676716, 1)
+
+[sub_resource type="Sky" id="Sky_cuig8"]
+sky_material = SubResource("ProceduralSkyMaterial_0dhgr")
+
+[sub_resource type="Environment" id="Environment_hvoxv"]
+background_mode = 2
+sky = SubResource("Sky_cuig8")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nhxtw"]
 
@@ -46,6 +63,13 @@ axis_lock_linear_z = true
 axis_lock_angular_y = true
 motion_mode = 1
 script = ExtResource("1_hv2jl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hvoxv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.492404, 0.0868241, 0, 0.173648, 0.984808, -0.5, 0.852868, -0.150384, 0, 1.41646, 0)
+shadow_enabled = true
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_nhxtw")

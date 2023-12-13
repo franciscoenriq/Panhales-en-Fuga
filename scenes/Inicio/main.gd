@@ -23,18 +23,17 @@ func _ready() -> void:
 	match  current_player.role:
 		Game.Role.DRIVER:			
 			myscene = driver_scene.instantiate()
-			mundo.add_child(myscene)
-			root.add_child(mundo)
+
 		Game.Role.PEDAL:
 			myscene = pedal_scene.instantiate()
-			root.add_child(myscene)
+
 		Game.Role.SHIFT:
 			myscene = shift_scene.instantiate()
-			root.add_child(myscene)
+
 		Game.Role.SHOOTER:
 			myscene = shooter_scene.instantiate()
-			mundo.add_child(myscene)
-			root.add_child(mundo)
+			
+	root.add_child(myscene)
 		
 	
 
