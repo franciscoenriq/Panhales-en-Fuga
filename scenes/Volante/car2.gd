@@ -10,6 +10,14 @@ var turningRate: float = 5.0  # Aumenta la velocidad de giro
 var forceFeedback: float = 3.0
 var maxWheelAngle: float = 90.0
 var wheelRotationValue: float
+@onready var vel_text = $pivoteCamera/Control/Vel
+@onready var bra_text= $pivoteCamera/Control/BRA
+@onready var clu_text = $pivoteCamera/Control/CLU
+@onready var gas_text = $pivoteCamera/Control/GAS
+@onready var gear_text= $pivoteCamera/Control/GEAR
+
+
+
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -24,6 +32,19 @@ func _ready() -> void:
 	wheelRotationValue = 0
 
 func _physics_process(delta: float) -> void:
+	var bra_pressure = GameController.get_bra_pressure()
+	var clu_pressure = GameController.get_clutch_pressure()
+	var gas_pressure = GameController.get_gas_pressure()
+	var gear = GameController.get_gear()
+	var spd=GameController.get_speed()
+	
+	bra_text.text = "BRA : " + bra_pressure
+	clu_text.text = "CLU : " + clu_pressure
+	gas_text.text = "GAS : " + gas_pressure
+	gear_text.text = "GEAR: " + gear
+	vel_text.text = "SPD: " + spd
+	
+	
 	if Input.is_action_pressed("turn_left"):
 		isTurningLeft = true
 		isTurningRight = false
@@ -51,7 +72,9 @@ func _physics_process(delta: float) -> void:
 	
 	#Ahora debemos girar al auto hacia la derecha o izquierda segun corresponda mediante el volante.
 	var turn = -wheelRotationValue
-	if turn:
+	GameController.current_turn = turn
+	
+	if GameController.current_turn:
 		velocity.x = turn*GameController.velocidad_lateral
 	else:
 		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)

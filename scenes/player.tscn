@@ -17,4 +17,3 @@ stream = ExtResource("3_f6gqk")
 [node name="AudioPalanca" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ryp7m")
 volume_db = -10.0
-
