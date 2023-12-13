@@ -39,8 +39,8 @@ const str_values = {
 const fuerza_motor ={
 	Cambios.NONE: 0,
 	Cambios.NEUTRO: 0,
-	Cambios.PRIMERO: 2 , 
-	Cambios.SEGUNDO: 1 , 
+	Cambios.PRIMERO: 1 , 
+	Cambios.SEGUNDO: 0.7 , 
 	Cambios.TERCERO: 0.5 , 
 	Cambios.CUARTO: 0.25, 
 	Cambios.QUINTO: 0.1
@@ -55,6 +55,10 @@ const limite_velocidad ={
 	Cambios.CUARTO: 100, 
 	Cambios.QUINTO: 150
 	}
+
+var distancia_maxima_adelante = 0
+var distancia_maxima_atras = 0
+
 	
 var default_message = "No input received"  # Modificar el mensaje predeterminado para mostrar la distancia recorrida
 var messages = {
@@ -63,6 +67,7 @@ var messages = {
 	"pedal": default_message,
 	"shooter": default_message
 }
+
 
 
 

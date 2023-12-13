@@ -63,11 +63,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)
 
 	#print(global_position)
+	
 	move_and_slide()
-	
-	
 	var collision = get_last_slide_collision()
 	if collision :
 		print("collided with ",collision.get_collider())
-		get_tree().quit()
-
+		get_tree().quit() #eliminar esto
+	
