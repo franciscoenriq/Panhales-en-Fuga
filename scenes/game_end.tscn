@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://c77vklubvcbl8"]
+
+[ext_resource type="FontFile" uid="uid://c4rnol6ks1ww3" path="res://Assets/RaccoonSerif-Fonts-v3.0/fonts/RaccoonSerif-Bold.ttf" id="1_0udmy"]
+[ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="1_vel16"]
+[ext_resource type="Script" path="res://scenes/game_end.gd" id="2_jybey"]
+[ext_resource type="Script" path="res://scenes/volver.gd" id="4_wjehl"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="fondo" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(581, 292)
+scale = Vector2(1.16406, 1.00977)
+texture = ExtResource("1_vel16")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_left = 127.0
+offset_top = 111.0
+offset_right = 1093.0
+offset_bottom = 348.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 149.0
+offset_right = 1017.0
+offset_bottom = 656.0
+alignment = 1
+
+[node name="mensaje" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.866667, 0.866667, 0.866667, 1)
+theme_override_font_sizes/font_size = 35
+text = "Oh no! Chocaron el auto y los atraparon :C
+Puntaje logrado: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="puntaje" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_color = Color(0.0784314, 0.313726, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_0udmy")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_jybey")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+
+[node name="volver" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Volver al Menú de Inicio"
+script = ExtResource("4_wjehl")
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/volver" to="CanvasLayer/VBoxContainer/volver" method="_on_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=23 format=3 uid="uid://bv5x47g72yeou"]
 
 [ext_resource type="Texture2D" uid="uid://clnq68ag802k4" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/BlueSkySkybox.png" id="1_vo1pk"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]

@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://05y6b8mqilti" path="res://Assets/cambios_final.png" id="3_clvsm"]
 [ext_resource type="Texture2D" uid="uid://bw2yy6x48lgps" path="res://Assets/consola.png" id="3_pnk80"]
 [ext_resource type="Texture2D" uid="uid://blmwx118sjous" path="res://Assets/contorno.png" id="4_6443o"]
-[ext_resource type="Script" path="res://scenes/Cambios/InputStateShift.gd" id="4_yv17q"]
 [ext_resource type="Texture2D" uid="uid://geci4jgi45c6" path="res://Assets/chupete.png" id="5_bpqt0"]
+[ext_resource type="PackedScene" uid="uid://cevlivk6fvkdk" path="res://scenes/input_state.tscn" id="6_m6x3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vufvp"]
 radius = 16.0
@@ -44,15 +44,11 @@ position = Vector2(584, 320)
 scale = Vector2(0.8, 0.801)
 texture = ExtResource("3_clvsm")
 
-[node name="InputState" type="Label" parent="CanvasLayer"]
-offset_left = 241.0
-offset_top = 14.0
-offset_right = 920.0
-offset_bottom = 46.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.976471, 0.976471, 0.976471, 1)
-horizontal_alignment = 1
-script = ExtResource("4_yv17q")
+[node name="InputState" parent="CanvasLayer" instance=ExtResource("6_m6x3l")]
+offset_left = -9.0
+offset_top = -1.0
+offset_right = 1142.0
+offset_bottom = 74.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(0.12549, 0.12549, 0.12549, 0.635294)
