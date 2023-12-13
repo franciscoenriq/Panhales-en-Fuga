@@ -20,7 +20,7 @@ var lanes:Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player =get_node("../car_2")
+	player =get_node("../car2")
 	_load_car_scenes(cars_paths)  # Carga la escena de los autos
 	_load_police_scenes(police_path)
 	_init_cars(cars_spawn_limit_per_lane)
