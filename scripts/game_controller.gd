@@ -11,6 +11,10 @@ var car_speed= 1 # velocidad inicial a la que se mueve la pista en km/h
 var velocidad_lateral = car_speed/2  # velocidad para cambiar de pista en km/h
 const debug_print_time = 0.8
 
+var time = 0
+var distance_traveled = 0
+var last_update_time = 0
+
 enum Cambios {
 	NEUTRO,
 	PRIMERO,
@@ -52,12 +56,15 @@ const limite_velocidad ={
 	Cambios.QUINTO: 150
 	}
 	
+var default_message = "No input received"  # Modificar el mensaje predeterminado para mostrar la distancia recorrida
+var messages = {
+	"driver": default_message,
+	"shift": default_message,
+	"pedal": default_message,
+	"shooter": default_message
+}
 
-var default_message = "No input received"
-var messages = {"driver": default_message,
-				"shift": default_message,
-				"pedal": default_message,
-				"shooter": default_message }
+
 
 func calc_aceleracion():
 	var fuerza = fuerza_motor[cambioActual]
@@ -79,6 +86,25 @@ func calc_speed(delta):
 	#self.car_speed += 0.1
 	print("current speed: " + str(car_speed))
 	return self.car_speed #solucion parche
+	
+	return self.car_speed #solucion parche
+
+@rpc("any_peer")
+func calc_distance(delta):
+	var limite = limite_velocidad[cambioActual]
+	var velocidad = max(0, car_speed + calc_aceleracion() * delta)
+	self.car_speed = min(limite, velocidad)
+	self.velocidad_lateral = car_speed / 2
+	
+	var current_time = time # Calcular el tiempo transcurrido desde la última actualización
+	var elapsed_time = current_time - last_update_time
+	# Calcular la distancia recorrida desde la última actualización
+	var distance_since_last_update = (self.car_speed * elapsed_time) / 3600  # Convertir la velocidad de km/h a km/s
+	distance_traveled += distance_since_last_update # Actualizar la distancia total recorrida
+	last_update_time = current_time 
+	print("Distance Traveled: " + str(distance_traveled) + " m")    # Mostrar la distancia recorrida
+	return self.car_speed
+
 
 @rpc("any_peer")
 func test(player_role):
@@ -88,7 +114,7 @@ func change_message(message):
 	for clave in messages.keys():
 		messages[clave] = message
 		
-	
+"""
 @rpc("any_peer")
 func clutch(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores
@@ -100,7 +126,7 @@ func clutch(player_role, pressure):
 			if accPressure+brakePressure+clutchPressure <= 0:
 				change_message(default_message)
 				
-		
+	
 @rpc("any_peer")
 func accelerator(player_role, pressure):
 	# esta funcion printea la presion puesta en el aceleradoro a  los otros jugadores 
@@ -115,7 +141,7 @@ func accelerator(player_role, pressure):
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
 				change_message(default_message)
-		
+
 @rpc("any_peer")
 func brake(player_role, pressure):
 	# esta funcion printea la presion puesta en el freno a  los otros jugadores 
@@ -126,6 +152,7 @@ func brake(player_role, pressure):
 		else:
 			if accPressure+brakePressure+clutchPressure <= 0:
 				change_message(default_message)
+"""		
 		
 		
 func change_degree_value(value):
@@ -146,6 +173,7 @@ func turn(player_role,value):
 			change_message("Player: "+player_role+" - Wheel turning: " + str(abs(change_degree_value(value)))+"° "+direction)
 		else:
 			change_message(default_message)
+
 
 @rpc("any_peer")
 func set_gear(player_role, cambio: Cambios):
