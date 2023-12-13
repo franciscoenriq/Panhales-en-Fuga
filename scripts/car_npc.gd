@@ -8,7 +8,7 @@ var average_speed = 10
 var change_lane_speed=10*1.4
 var tolerancia = 5
 var police_speed
-var target_lane_id
+var target_lane_id=0
 var isCarNearby=false
 var isPolice
 var pista_id
@@ -33,17 +33,26 @@ func _process(delta):
 	var objetivo
 	var new_position
 
-	if isSwitchingLane==true:
+	if isSwitchingLane==true && target_lane_id !=0:
 
 		#Queremos movernos desde la posicion actual hasta la objetivo. El cambio será solo en el eje x
 		var target_position = self.global_transform
 		target_position.origin.x=target_lane_pos.x
-		self.global_transform.origin = self.global_transform.origin.lerp(
-			target_position.origin,delta)
-		if (self.global_transform.origin.x-target_position.origin.x)<abs(0.1):
-			isSwitchingLane=false
-			target_lane_id=pista_id
+		if not isPolice:
 			
+			self.global_transform.origin = self.global_transform.origin.lerp(
+				target_position.origin,delta*5)
+		else:
+			self.global_transform.origin = self.global_transform.origin.lerp(
+				target_position.origin,delta*10)
+			
+		if (self.global_transform.origin.x-target_position.origin.x)<abs(0.1) && isPolice==true:
+			isSwitchingLane=false
+			pista_id=target_lane_id
+			target_lane_id=0
+
+		
+
 
 	if not isPolice : #Si no es policia, se mueve de forma normal
 		if pista_id>0:

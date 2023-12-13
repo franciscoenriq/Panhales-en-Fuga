@@ -129,6 +129,58 @@ mesh = SubResource("BoxMesh_hj2yl")
 [node name="pivoteCamera" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.202343, 0.445208, -0.202462)
 
+[node name="Control" type="Control" parent="pivoteCamera"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 177.0
+offset_bottom = 40.0
+
+[node name="Vel" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 534.0
+offset_right = 635.0
+offset_bottom = 601.0
+text = "SPD
+
+"
+horizontal_alignment = 1
+justification_flags = 171
+
+[node name="BRA" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 595.0
+offset_right = 182.0
+offset_bottom = 627.0
+text = "BRAKES PRESS:
+"
+
+[node name="CLU" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 547.0
+offset_right = 190.0
+offset_bottom = 579.0
+text = "CLUTCH PRESS:"
+
+[node name="GAS" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 509.0
+offset_right = 143.0
+offset_bottom = 541.0
+text = "GAS PRESS:"
+
+[node name="GEAR" type="Label" parent="pivoteCamera/Control"]
+layout_mode = 0
+offset_left = 895.0
+offset_top = 569.0
+offset_right = 1070.0
+offset_bottom = 601.0
+text = "CURRENT GEAR
+"
+
 [node name="Camera3D" type="Camera3D" parent="pivoteCamera"]
 transform = Transform3D(1, 0, 0, 0, 0.996318, -0.0857299, 0, 0.0857299, 0.996318, 0, 0, 0)
 current = true

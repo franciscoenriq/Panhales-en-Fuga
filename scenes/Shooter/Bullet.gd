@@ -17,6 +17,8 @@ func _process(delta):
 		particles.emitting = true 
 		await get_tree().create_timer(1.0).timeout
 		queue_free()
+		var auto = ray.get_collider()
+		print(auto)
 
 
 func _on_timer_timeout():
