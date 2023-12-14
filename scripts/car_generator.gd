@@ -63,7 +63,7 @@ func _process(delta):
 		spawn_car(160,false)
 		
 	if police_spawner_timer<=0 && is_police_in_lane==false && pista_id>0:
-		spawn_car(GameController.distancia_maxima_atras,true)
+		spawn_car(-160,true)
 		is_police_in_lane=true
 		
 func _load_car_scenes(cars_paths):

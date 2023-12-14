@@ -18,8 +18,8 @@ func _init_blocks(number_of_blocks: int) -> void:
 		add_child(block)
 		terrain_belt.append(block)
 		
-		GameController.distancia_maxima_adelante +=block.mesh.size.y*(block_index-num_terrain_blocks/2)
-		GameController.distancia_maxima_atras -=block.mesh.size.y*(block_index-num_terrain_blocks/2)
+
+
 		
 func _process(delta):
 	_progress_terrain(delta)
