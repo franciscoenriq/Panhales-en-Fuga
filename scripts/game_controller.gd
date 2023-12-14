@@ -182,7 +182,7 @@ func set_motor_pitch(delta) -> float:
 
 	return nuevo_pitch
 
-
+@rpc("any_peer")
 func fin_de_juego():
 	gameOver = true
 
