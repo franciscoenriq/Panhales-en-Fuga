@@ -40,21 +40,21 @@ const str_values = {
 const fuerza_motor ={
 	Cambios.NONE: 0,
 	Cambios.NEUTRO: 0,
-	Cambios.PRIMERO: 1 , 
-	Cambios.SEGUNDO: 0.7 , 
-	Cambios.TERCERO: 0.5 , 
-	Cambios.CUARTO: 0.25, 
-	Cambios.QUINTO: 0.1
+	Cambios.PRIMERO: 0.5 , 
+	Cambios.SEGUNDO: 0.3 , 
+	Cambios.TERCERO: 0.2 , 
+	Cambios.CUARTO: 0.1, 
+	Cambios.QUINTO: 0.05
 	}
 	
 const limite_velocidad ={
 	Cambios.NONE: 0,
 	Cambios.NEUTRO: 0,
-	Cambios.PRIMERO: 25 , 
-	Cambios.SEGUNDO: 40 , 
-	Cambios.TERCERO: 65, 
-	Cambios.CUARTO: 100, 
-	Cambios.QUINTO: 150
+	Cambios.PRIMERO: 10 , 
+	Cambios.SEGUNDO: 30 , 
+	Cambios.TERCERO: 50, 
+	Cambios.CUARTO: 70, 
+	Cambios.QUINTO: 90
 	}
 
 
