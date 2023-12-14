@@ -104,10 +104,6 @@ offset_bottom = 125.0
 color = Color(0.105882, 0.105882, 0.105882, 1)
 
 [node name="InputState" parent="CanvasLayer" instance=ExtResource("6_iqhlv")]
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 1155.0
-offset_bottom = 77.0
 
 [connection signal="button_down" from="CanvasLayer/VBoxContainer/pedales/VBoxContainer/EmbBTN" to="." method="_on_emb_btn_button_down"]
 [connection signal="button_up" from="CanvasLayer/VBoxContainer/pedales/VBoxContainer/EmbBTN" to="." method="_on_emb_btn_button_up"]
