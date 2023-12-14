@@ -14,6 +14,7 @@ var gameOver = false
 var time = 0
 var distance_traveled = 0
 var last_update_time = 0
+var puntaje = 0
 
 enum Cambios {
 	NEUTRO,
@@ -177,6 +178,9 @@ func set_motor_pitch(delta) -> float:
 func fin_de_juego():
 	gameOver = true
 
+@rpc("any_peer")
+func set_puntaje(new_puntaje):
+	puntaje = new_puntaje
 	
 func get_speed()->String:
 	return str(car_speed)

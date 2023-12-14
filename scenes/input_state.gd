@@ -10,4 +10,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):	
-	self.text = "Puntaje:"+str(GameController.distance_traveled)
+	self.text = "Puntaje:"+str(GameController.puntaje)
