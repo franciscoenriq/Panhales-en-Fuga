@@ -36,15 +36,11 @@ func _physics_process(delta: float) -> void:
 	if turn:
 		velocity.x = turn*GameController.velocidad_lateral
 	else:
+		print("Moviendo auto")
 		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)
 
 	#print(global_position)
 	
 	move_and_slide()
-	var collision = get_last_slide_collision()
-	if collision :
-		print("collided with ",collision.get_collider())
-
-		GameController.quit_game()
 
 
