@@ -19,7 +19,7 @@ func _process(delta):
 		queue_free()
 		var auto = ray.get_collider()
 		print(auto)
-		print("hola ")
+		print("hola")
 
 
 func _on_timer_timeout():

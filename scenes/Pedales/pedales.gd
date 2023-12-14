@@ -16,11 +16,14 @@ var fre_value
 var progressEmbFillRate = 1.2
 var emb_button_pressed = false
 var emb_value 
+var puntaje =0
 
 func _ready():
 	pass
 	
-func _process(_delta):
+func _process(delta):
+	puntaje+=delta
+	GameController.distance_traveled=puntaje
 	# embrague se puede presionar siempre pero no se puede acelerar y pisar freno a la vez
 	if Input.is_action_pressed("forward") and not Input.is_action_pressed("brake"):
 		acc_button_pressed = true
@@ -70,7 +73,7 @@ func _process(_delta):
 	GameController.brake.rpc("Pedals",fre_value)
 	GameController.clutch.rpc("Pedals",emb_value)
 	
-
+	
 	
 
 	

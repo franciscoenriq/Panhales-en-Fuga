@@ -8,7 +8,7 @@ var areaCambio
 var palanca 
 var initialPosition
 var areaPalanca
-
+var puntaje 
 # CAMBIOS
 var estadoCambios ={
 	GameController.Cambios.NEUTRO:false,
@@ -32,7 +32,9 @@ func _on_area_palanca_mouse_entered():
 func _on_area_palanca_mouse_exited():
 	mouseInsideAreaPalanca = false
 	
-func _process(_delta):
+func _process(delta):
+	puntaje +=delta
+	GameController.distance_traveled=puntaje
 	if mouseInsideAreaPalanca:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			isDragging = true

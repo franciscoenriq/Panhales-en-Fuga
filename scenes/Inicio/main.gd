@@ -40,5 +40,5 @@ func _process(delta):
 	if GameController.gameOver==true:
 		print("cambiando a escena de game over")
 		get_tree().change_scene_to_file("res://scenes/game_end.tscn")
-
-
+	
+	

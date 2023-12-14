@@ -10,7 +10,7 @@ var turningRate: float = 5.0  # Aumenta la velocidad de giro
 var forceFeedback: float = 3.0
 var maxWheelAngle: float = 90.0
 var wheelRotationValue: float
-
+var puntaje
 var bullet = preload("res://scenes/Shooter/Bullet.tscn")
 var instance 
 @onready var head = $Head
@@ -41,8 +41,9 @@ func _ready() -> void:
 	wheelRotationValue = 0
 
 func _physics_process(delta: float) -> void:
+	puntaje+=delta
 	timer -=delta
-	print(timer)
+	GameController.distance_traveled=puntaje
 	if Input.is_action_pressed("shoot"):
 		if !gun_anim.is_playing():
 			gun_anim.play("Shoot")
@@ -54,7 +55,6 @@ func _physics_process(delta: float) -> void:
 	
 	#Ahora debemos girar al auto hacia la derecha o izquierda segun corresponda mediante el volante.
 	var turn = GameController.turnValue
-	print("el giro es:",turn)
 	if turn:
 		velocity.x = turn*GameController.velocidad_lateral
 	else:
