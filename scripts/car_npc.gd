@@ -3,7 +3,7 @@ extends Node
 var isSwitchingLane = false
 var current_lane_pos
 var target_lane_pos
-@onready var player = $car2
+
 var average_speed = 10
 var change_lane_speed=10*1.4
 var tolerancia = 5
