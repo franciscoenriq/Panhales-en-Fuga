@@ -10,5 +10,5 @@ func _process(_delta):
 
 
 func save_highscore():
-	var scoreboard = get_node("res://scenes/Inicio/scoreboard.tscn")
+	var scoreboard = get_node("res://scenes/Inicio/scoreboard.gd")
 	scoreboard.save_score(GameController.puntaje)
