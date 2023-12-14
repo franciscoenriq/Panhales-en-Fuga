@@ -11,9 +11,9 @@ func _ready():
 func _on_button_main_pressed():
 	get_tree().change_scene("res://scenes/Inicio/main_menu.tscn")
 
-func save_score():
+func save_score(score):
 	var file = FileAccess.open(SAVEFILE, FileAccess.WRITE)
-	file.store_32(highest_record)
+	file.store_var(score)
 	file.close()
 
 func load_score():

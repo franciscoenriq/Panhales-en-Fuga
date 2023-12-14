@@ -10,5 +10,5 @@ func _process(_delta):
 
 
 func save_highscore():
-	var scoreboard = get_node("/root/Scoreboard") # Reemplaza "/root/Scoreboard" con la ruta correcta a tu nodo scoreboard
-	scoreboard.save_score()
+	var scoreboard = get_node("res://scenes/Inicio/scoreboard.tscn")
+	scoreboard.save_score(GameController.puntaje)
