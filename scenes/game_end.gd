@@ -1,21 +1,20 @@
 extends Label
-const SAVEFILE = "user://savefile.save"
+const SAVEFILE = "res://file.txt"
 
 func _ready():
-	pass
+	save_score(GameController.puntaje)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):	
+func _process(_delta):
 	self.text = str(GameController.puntaje)
 
 
 func save_highscore():
-	var scoreboard = get_node("res://scenes/Inicio/scoreboard.gd")
-	scoreboard.save_score(GameController.puntaje)
+	save_score(GameController.puntaje)
 
-func save_score(score):
+func save_score(content):
 	var file = FileAccess.open(SAVEFILE, FileAccess.WRITE)
-	file.store_var(score)
+	if file:
+		file.store_string(str(content))
 	file.close()
 

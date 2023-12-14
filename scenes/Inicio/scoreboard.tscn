@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxi8wri8paru7"]
+[gd_scene load_steps=5 format=3 uid="uid://dxi8wri8paru7"]
 
 [ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="1_ksdx7"]
 [ext_resource type="Script" path="res://scenes/Inicio/scoreboard.gd" id="2_jrmm7"]
 [ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="3_4wrsi"]
+[ext_resource type="Script" path="res://scenes/Inicio/record.gd" id="4_thgb3"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -79,6 +80,7 @@ text = "Record: "
 layout_mode = 2
 text = "0
 "
+script = ExtResource("4_thgb3")
 
 [node name="ButtonBack" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

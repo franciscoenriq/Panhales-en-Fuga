@@ -1,5 +1,5 @@
 extends Node
-
+var highest_record = 0
 var brakePressure=0
 var accPressure=0
 var clutchPressure=0
@@ -177,6 +177,10 @@ func set_motor_pitch(delta) -> float:
 @rpc("any_peer")
 func fin_de_juego():
 	gameOver = true
+	
+@rpc("any_peer")
+func set_highest(val):
+	highest_record = val
 
 @rpc("any_peer")
 func set_puntaje(new_puntaje):
