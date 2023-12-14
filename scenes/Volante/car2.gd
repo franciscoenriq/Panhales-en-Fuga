@@ -69,6 +69,7 @@ func _physics_process(delta: float) -> void:
 	# Aplicar la rotación al volante
 	var rotation_angle = maxWheelAngle * wheelRotationValue
 	volante.rotation_degrees.y = rotation_angle
+	
 	GameController.turn.rpc("Driver", -wheelRotationValue)
 	
 	#Ahora debemos girar al auto hacia la derecha o izquierda segun corresponda mediante el volante.
