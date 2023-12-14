@@ -10,7 +10,7 @@ var turningRate: float = 5.0  # Aumenta la velocidad de giro
 var forceFeedback: float = 3.0
 var maxWheelAngle: float = 90.0
 var wheelRotationValue: float
-var puntaje
+var puntaje=0
 var bullet = preload("res://scenes/Shooter/Bullet.tscn")
 var instance 
 @onready var head = $Head

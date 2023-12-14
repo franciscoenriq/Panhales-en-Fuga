@@ -8,7 +8,7 @@ var areaCambio
 var palanca 
 var initialPosition
 var areaPalanca
-var puntaje 
+var puntaje=0
 # CAMBIOS
 var estadoCambios ={
 	GameController.Cambios.NEUTRO:false,
