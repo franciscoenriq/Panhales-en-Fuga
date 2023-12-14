@@ -44,6 +44,8 @@ func _physics_process(delta: float) -> void:
 	puntaje+=int(delta*100)
 	timer -=delta
 	GameController.distance_traveled=puntaje
+	GameController.set_puntaje.rpc(puntaje)
+	GameController.set_puntaje(puntaje)
 	if Input.is_action_pressed("shoot"):
 		if !gun_anim.is_playing():
 			gun_anim.play("Shoot")
@@ -61,11 +63,11 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)
 
 	#print(global_position)
-	
 
 	var collision = get_last_slide_collision()
 	if collision && timer <=0 :
 		print("colisionado con auto")
 		GameController.fin_de_juego()
 		GameController.fin_de_juego.rpc()
+		
 	move_and_slide()
