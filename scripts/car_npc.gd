@@ -34,7 +34,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	var npc_speed
 	var objetivo
 	var new_position
@@ -63,7 +63,8 @@ func _physics_process(delta):
 	if not isPolice : #Si no es policia, se mueve de forma normal
 		if pista_id>0: #mismo sentido
 			#velocidad relativa 
-			npc_speed= randf_range(-0.5, 1.5) * average_speed * 5 -GameController.car_speed
+			print("moviendo auto")
+			npc_speed= randf_range(0.5, 1.5) * average_speed - GameController.car_speed
 			objetivo = -Vector3(0, 0, npc_speed * delta)  #aquí puede que vaya con un menos
 			
 		else:
