@@ -40,9 +40,9 @@ const str_values = {
 const fuerza_motor ={
 	Cambios.NONE: 0,
 	Cambios.NEUTRO: 0,
-	Cambios.PRIMERO: 0.5 , 
-	Cambios.SEGUNDO: 0.3 , 
-	Cambios.TERCERO: 0.2 , 
+	Cambios.PRIMERO: 0.7 , 
+	Cambios.SEGUNDO: 0.5 , 
+	Cambios.TERCERO: 0.3 , 
 	Cambios.CUARTO: 0.1, 
 	Cambios.QUINTO: 0.05
 	}
