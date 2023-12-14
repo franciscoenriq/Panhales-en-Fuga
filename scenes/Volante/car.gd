@@ -20,8 +20,8 @@ var instance
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.3
-
-
+var shoot_cooldown = 0.001
+var inCooldown =false
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -43,14 +43,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	puntaje+=int(delta*100)
 	timer -=delta
+	shoot_cooldown-=delta
+	if shoot_cooldown <=0:
+		inCooldown = false
 	GameController.distance_traveled=puntaje
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") && inCooldown==false:
 		if !gun_anim.is_playing():
 			gun_anim.play("Shoot")
 			instance = bullet.instantiate()
 			instance.position = gun_barrel.global_position 
 			instance.transform.basis = gun_barrel.global_transform.basis 
 			get_parent().add_child(instance)
+			inCooldown = true
+			shoot_cooldown=5
 
 	
 	#Ahora debemos girar al auto hacia la derecha o izquierda segun corresponda mediante el volante.
