@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://q1t0hrd8lpt5"]
 
-[ext_resource type="Script" path="res://scenes/Shooter/shooterPlayer.gd" id="1_3oto8"]
+[ext_resource type="Script" path="res://scenes/Shooter/shooterplayer.gd" id="1_3oto8"]
 [ext_resource type="PackedScene" uid="uid://bvatws8xp3j43" path="res://scenes/Shooter/rifle.tscn" id="2_k0rpt"]
 
 [node name="Player" type="CharacterBody3D"]

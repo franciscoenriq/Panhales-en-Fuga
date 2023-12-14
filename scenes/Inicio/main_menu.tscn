@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2aru1tvsijjl"]
 
 [ext_resource type="Texture2D" uid="uid://brtoi08102wo1" path="res://resources/Pictures/DALLE_2023-09-04_20.57.33_-_babies_driving_a_car_on_fire_digital_art.png" id="1_8o0eg"]
-[ext_resource type="Script" path="res://scripts/Mainmenu.gd" id="2_seneg"]
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="2_seneg"]
 [ext_resource type="Theme" uid="uid://bava10k3vd6b1" path="res://resources/themes/main_menu.tres" id="3_fte0h"]
 
 [node name="MainMenu" type="Control"]
