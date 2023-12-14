@@ -56,7 +56,7 @@ func _process(delta):
 				car.set_target_lane_pos(target_lane_pos)
 				car.set_isSwitchingLane(true)
 				car.set_target_lane_id(random_lane_id)
-		if car.position.z < GameController.distancia_maxima_adelante or car.position.z > GameController.distancia_maxima_atras:
+		if car.position.z < -160 or car.position.z > 160:
 			car.queue_free()
 	if cars_in_lane_count<cars_spawn_limit_per_lane:
 		spawn_car(GameController.distancia_maxima_atras,false)
