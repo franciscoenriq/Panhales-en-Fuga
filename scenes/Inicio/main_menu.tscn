@@ -73,6 +73,7 @@ size_flags_vertical = 3
 text = "Play"
 
 [node name="ButtonSettings" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "Settings"
