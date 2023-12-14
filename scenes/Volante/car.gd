@@ -42,6 +42,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	timer -=delta
+	print(timer)
 	if Input.is_action_pressed("shoot"):
 		if !gun_anim.is_playing():
 			gun_anim.play("Shoot")

@@ -43,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	clu_text.text = "CLU : " + clu_pressure
 	gas_text.text = "GAS : " + gas_pressure
 	gear_text.text = "GEAR: " + gear
-	vel_text.text = "SPD: " + spd
+	vel_text.text = "SPD: " + str(spd)
 	
 	
 	if Input.is_action_pressed("turn_left"):
