@@ -21,9 +21,13 @@ func _init_blocks(number_of_blocks: int) -> void:
 		GameController.distancia_maxima_adelante +=block.mesh.size.y*(block_index-num_terrain_blocks/2)
 		GameController.distancia_maxima_atras -=block.mesh.size.y*(block_index-num_terrain_blocks/2)
 		
+func _process(delta):
+	_progress_terrain(delta)
+
+
 func _progress_terrain(delta: float) -> void:
 	var velocidad = GameController.calc_speed(delta)
-	
+	print("llamando calc_speed")
 	for block in terrain_belt:
 		block.position.z += velocidad * delta
 

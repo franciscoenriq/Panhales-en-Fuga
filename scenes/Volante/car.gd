@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if turn:
 		velocity.x = turn*GameController.velocidad_lateral
 	else:
-		print("Moviendo auto")
+
 		velocity.x = move_toward(velocity.x,0,GameController.velocidad_lateral)
 
 	#print(global_position)
