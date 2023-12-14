@@ -20,6 +20,7 @@ func _ready() -> void:
 	var myscene
 	var current_player = Game.get_current_player()
 	match  current_player.role:
+		
 		Game.Role.DRIVER:			
 			myscene = driver_scene.instantiate()
 
