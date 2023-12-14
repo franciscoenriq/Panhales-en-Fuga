@@ -33,7 +33,7 @@ func _on_area_palanca_mouse_exited():
 	mouseInsideAreaPalanca = false
 	
 func _process(delta):
-	puntaje +=delta
+	puntaje+=int(delta)*100
 	GameController.distance_traveled=puntaje
 	if mouseInsideAreaPalanca:
 		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
