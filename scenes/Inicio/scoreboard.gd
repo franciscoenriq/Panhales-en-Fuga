@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Node
 const SAVEFILE = "user://savefile.save"
 var highest_record = 0
 @onready var record_label = $Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/record
