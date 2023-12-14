@@ -27,6 +27,7 @@ func _process(delta):
 
 func _progress_terrain(delta: float) -> void:
 	var velocidad = GameController.calc_speed(delta)
+	GameController.calc_distance(delta)
 	print("llamando calc_speed")
 	for block in terrain_belt:
 		block.position.z += velocidad * delta
@@ -42,6 +43,8 @@ func _progress_terrain(delta: float) -> void:
 		new_block.position.z = last_terrain.position.z - last_terrain.mesh.size.y
 		add_child(new_block)
 		terrain_belt.append(new_block)
+		GameController.distancia_maxima_adelante +=new_block.mesh.size.y
+		GameController.distancia_maxima_atras -=new_block.mesh.size.y
 
 func _load_terrain_scenes(target_path: String) -> void:
 	var dir = DirAccess.open(target_path)
