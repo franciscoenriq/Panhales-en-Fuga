@@ -29,7 +29,7 @@ func _init_cars(number_of_cars: int) -> void:
 
 		
 	for car_index in range(cars_spawn_limit_per_lane):
-		var pos=randf_range(GameController.distancia_maxima_adelante,0)
+		var pos=randf_range(-160,0)
 		spawn_car(pos,false)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -56,10 +56,11 @@ func _process(delta):
 				car.set_target_lane_pos(target_lane_pos)
 				car.set_isSwitchingLane(true)
 				car.set_target_lane_id(random_lane_id)
-		if car.position.z < GameController.distancia_maxima_adelante or car.position.z > GameController.distancia_maxima_atras:
+		if car.position.z < -160 or car.position.z > 160:
 			car.queue_free()
 	if cars_in_lane_count<cars_spawn_limit_per_lane:
-		spawn_car(GameController.distancia_maxima_atras,false)
+		spawn_car(-160,false)
+		spawn_car(160,false)
 		
 	if police_spawner_timer<=0 && is_police_in_lane==false && pista_id>0:
 		spawn_car(GameController.distancia_maxima_atras,true)

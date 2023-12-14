@@ -36,7 +36,8 @@ func _physics_process(delta: float) -> void:
 	var clu_pressure = GameController.get_clutch_pressure()
 	var gas_pressure = GameController.get_gas_pressure()
 	var gear = GameController.get_gear()
-	var spd=GameController.get_speed()
+	var spd = GameController.car_speed
+	
 	
 	bra_text.text = "BRA : " + bra_pressure
 	clu_text.text = "CLU : " + clu_pressure

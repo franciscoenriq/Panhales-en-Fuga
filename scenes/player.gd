@@ -11,7 +11,7 @@ func setup(player_data: Game.PlayerData):
 	#name = str(player_data.id)
 	var data = player_data.to_dict()
 	current_player_data = data
-	Debug.dprint("Ingresa: " + str(data["name"]) + "- Role: "+ Game.role_str(data["role"]), text_time)
+	#Debug.dprint("Ingresa: " + str(data["name"]) + "- Role: "+ Game.role_str(data["role"]), text_time)
 
 func _input(event: InputEvent) -> void:
 	var role =  str(current_player_data["name"])

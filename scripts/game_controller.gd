@@ -56,8 +56,6 @@ const limite_velocidad ={
 	Cambios.QUINTO: 150
 	}
 
-var distancia_maxima_adelante = 0
-var distancia_maxima_atras = 0
 
 	
 
