@@ -64,7 +64,7 @@ func _process(delta):
 			
 		else:
 			#velocidad relativa
-			npc_speed= -GameController.car_speed-randf_range(-0.3, 1.3) * average_speed * 5
+			npc_speed= -GameController.car_speed+randf_range(-0.3, 1.3) * average_speed * 5
 
 			objetivo = Vector3(0, 0, npc_speed * delta)
 		
