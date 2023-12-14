@@ -59,12 +59,12 @@ func _process(delta):
 	if not isPolice : #Si no es policia, se mueve de forma normal
 		if pista_id>0:
 			#velocidad relativa 
-			npc_speed= GameController.car_speed-randf_range(-0.5, 1.5) * average_speed * 5	
+			npc_speed= (GameController.car_speed-randf_range(-0.5, 1.5)) * average_speed * 5	
 			objetivo = -Vector3(0, 0, npc_speed * delta)
 			
 		else:
 			#velocidad relativa
-			npc_speed= GameController.car_speed+randf_range(-0.3, 1.3) * average_speed * 5
+			npc_speed= (GameController.car_speed+randf_range(-0.3, 1.3) )* average_speed * 5
 
 			objetivo = Vector3(0, 0, npc_speed * delta)
 		
