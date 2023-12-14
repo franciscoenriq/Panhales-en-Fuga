@@ -12,10 +12,8 @@ config_version=5
 
 config/name="Jueguito Cc 5409"
 run/main_scene="res://scenes/Inicio/main_menu.tscn"
-
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://Assets/icon.svg"
-
 
 [autoload]
 

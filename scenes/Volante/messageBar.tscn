@@ -7,13 +7,17 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="InputState" parent="." instance=ExtResource("1_ictv8")]
+offset_left = 0.0
+offset_top = 3.0
+offset_right = 1151.0
+offset_bottom = 78.0
 
 [node name="instrucciones" type="Label" parent="."]
 offset_left = -4.0
 offset_top = 597.0
 offset_right = 1149.0
 offset_bottom = 650.0
-theme_override_colors/font_color = Color(0.992157, 0.992157, 0.992157, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.980392, 0.980392, 0.980392, 1)
 text = "Girar izquierda: Flecha izquierda - Girar derecha: Flecha derecha"
 horizontal_alignment = 1
