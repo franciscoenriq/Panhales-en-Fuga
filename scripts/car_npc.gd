@@ -96,14 +96,14 @@ func _process(delta):
 			target_lane_id=1
 			target_lane_pos=lane.get_target_lane_pos(target_lane_id)
 
-		if pista_id==-1:
+		if pista_id==3:
 			isSwitchingLane=true
-			target_lane_id=-2
+			target_lane_id=4
 			target_lane_pos=lane.get_target_lane_pos(target_lane_id)
 
-		if pista_id==-2:
+		if pista_id==4:
 			isSwitchingLane=true
-			target_lane_id=-1
+			target_lane_id=3
 			target_lane_pos=lane.get_target_lane_pos(target_lane_id)
 
 

@@ -62,7 +62,7 @@ func _process(delta):
 		spawn_car(-160,false)
 		spawn_car(160,false)
 		
-	if police_spawner_timer<=0 && is_police_in_lane==false && pista_id>0:
+	if police_spawner_timer<=0 && is_police_in_lane==false :
 		spawn_car(160,true)
 		is_police_in_lane=true
 		

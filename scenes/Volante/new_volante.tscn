@@ -65,14 +65,14 @@ script = ExtResource("6_a7of1")
 pista_id = 2
 
 [node name="PD1" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -6.82236, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.82236, 0, 0)
 script = ExtResource("6_a7of1")
-pista_id = -1
+pista_id = 3
 
 [node name="PD2" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.99774, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99774, 0, 0)
 script = ExtResource("6_a7of1")
-pista_id = -2
+pista_id = 4
 
 [node name="car2" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05731, 0, 0)
