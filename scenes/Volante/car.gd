@@ -53,8 +53,8 @@ func _physics_process(delta: float) -> void:
 
 	
 	#Ahora debemos girar al auto hacia la derecha o izquierda segun corresponda mediante el volante.
-	var turn = GameController.current_turn
-	print(turn)
+	var turn = GameController.turnValue
+	print("el giro es:",turn)
 	if turn:
 		velocity.x = turn*GameController.velocidad_lateral
 	else:
