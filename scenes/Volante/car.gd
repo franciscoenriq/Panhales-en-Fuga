@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var sensitivity = 1000
 @onready var pivoteCamera := $pivoteCamera
-
+var timer = 2
 var isTurningLeft: bool
 var isTurningRight: bool
 @onready var volante=%MeshInstance3D
@@ -41,6 +41,7 @@ func _ready() -> void:
 	wheelRotationValue = 0
 
 func _physics_process(delta: float) -> void:
+	timer -=delta
 	if Input.is_action_pressed("shoot"):
 		if !gun_anim.is_playing():
 			gun_anim.play("Shoot")
@@ -62,7 +63,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	var collision = get_last_slide_collision()
-	if collision :
+	if collision && timer <=0 :
 		print("colisionado con auto")
 		GameController.fin_de_juego.rpc()
 	move_and_slide()
