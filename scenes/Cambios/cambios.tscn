@@ -45,10 +45,6 @@ scale = Vector2(0.8, 0.801)
 texture = ExtResource("3_clvsm")
 
 [node name="InputState" parent="CanvasLayer" instance=ExtResource("6_m6x3l")]
-offset_left = -9.0
-offset_top = -1.0
-offset_right = 1142.0
-offset_bottom = 74.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(0.12549, 0.12549, 0.12549, 0.635294)
