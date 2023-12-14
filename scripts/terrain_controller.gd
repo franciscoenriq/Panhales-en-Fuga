@@ -34,8 +34,10 @@ func _progress_terrain(delta: float) -> void:
 	GameController.calc_distance(delta)
 	
 	#print("llamando calc_speed")
-	for block in terrain_belt:
-		block.position.z += velocidad * delta
+	#for block in terrain_belt:
+	for block_index in range(num_terrain_blocks):
+		var block = terrain_belt[block_index]
+		block.position.z += velocidad * delta*(block_index-num_terrain_blocks/2)
 
 	var first_terrain = terrain_belt[0]
 	var last_terrain = terrain_belt[-1]
