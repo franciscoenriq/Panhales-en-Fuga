@@ -16,11 +16,6 @@ func _process(delta):
 func _on_button_main_pressed():
 	get_tree().change_scene_to_file("res://scenes/Inicio/main_menu.tscn")
 
-func save_score(score):
-	var file = FileAccess.open(SAVEFILE, FileAccess.WRITE)
-	file.store_var(score)
-	file.close()
-
 func load_score():
 	var file = FileAccess.open(SAVEFILE, FileAccess.READ)
 	if FileAccess.file_exists(SAVEFILE):
