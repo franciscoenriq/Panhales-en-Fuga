@@ -26,7 +26,11 @@ func _ready():
 	deteccion.area_entered.connect(self._on_area_entered)
 	deteccion.area_exited.connect(self._on_area_exited)
 	auto = getMeshInstance()
-	
+	if isPolice:
+		
+		area_derrota=$derrota
+		area_derrota.area_entered.connect(self._on_area_entered)
+		area_derrota.area_exited.connect(self._on_area_exited)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -146,10 +150,17 @@ func _on_area_entered(area):
 	if area.name == "coll_auto":
 		isCarNearby = true
 		emit_signal("car_nearby")  # Emitir la señal
-
+	if isPolice:
+		if area.name=="player_area_cop":
+			GameController.fin_de_juego.rpc()
+			GameController.fin_de_juego()
 func _on_area_exited(area):
 	if area.name == "coll_auto":
 		isCarNearby = false
+	if isPolice:
+		if area.name=="player_area_cop":
+			GameController.fin_de_juego.rpc()
+			GameController.fin_de_juego()			
 
 
 func getMeshInstance():

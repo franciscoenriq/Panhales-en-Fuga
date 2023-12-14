@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bv5x47g72yeou"]
+[gd_scene load_steps=15 format=3 uid="uid://bv5x47g72yeou"]
 
 [ext_resource type="Texture2D" uid="uid://clnq68ag802k4" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/BlueSkySkybox.png" id="1_vo1pk"]
 [ext_resource type="PackedScene" uid="uid://fk4aefrfp3pv" path="res://scripts/TerrainController.tscn" id="3_5y2k5"]
@@ -33,6 +33,9 @@ tonemap_mode = 2
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_uexqk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nrc4k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtcit"]
+size = Vector3(2, 1, 5)
 
 [node name="Node3D" type="Node3D"]
 
@@ -89,3 +92,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05955, 1.68915)
 
 [node name="Rifle" parent="car2/Head/Camera3D" instance=ExtResource("8_8lvdc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.275152, -0.681932)
+
+[node name="player_area_cop" type="Area3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0172977, -0.862294)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="car2/player_area_cop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305663, 0)
+shape = SubResource("BoxShape3D_xtcit")
