@@ -83,8 +83,5 @@ func _physics_process(delta: float) -> void:
 	#print(global_position)
 	
 	move_and_slide()
-	var collision = get_last_slide_collision()
-	if collision :
-		print("collided with ",collision.get_collider())
-		GameController.fin_de_juego.rpc()
+	
 	

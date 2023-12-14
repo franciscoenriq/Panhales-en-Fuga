@@ -28,7 +28,7 @@ func _process(delta):
 func _progress_terrain(delta: float) -> void:
 	var velocidad = GameController.calc_speed(delta)
 	GameController.calc_distance(delta)
-	print("llamando calc_speed")
+	#print("llamando calc_speed")
 	for block in terrain_belt:
 		block.position.z += velocidad * delta
 

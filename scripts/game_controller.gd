@@ -10,7 +10,7 @@ var current_turn
 var car_speed= 1 # velocidad inicial a la que se mueve la pista en km/h
 var velocidad_lateral = car_speed/2  # velocidad para cambiar de pista en km/h
 const debug_print_time = 0.8
-
+var gameOver = false
 var time = 0
 var distance_traveled = 0
 var last_update_time = 0
@@ -77,7 +77,7 @@ func calc_speed(delta):
 	var velocidad = max(0, car_speed + calc_aceleracion()*delta)
 	self.car_speed = min(limite, velocidad)
 	self.velocidad_lateral = car_speed/2
-	print("current speed: " + str(car_speed))
+	#print("current speed: " + str(car_speed))
 	return self.car_speed
 
 @rpc("any_peer")
@@ -89,7 +89,7 @@ func calc_distance(delta):
 	var distance_since_last_update = (self.car_speed * elapsed_time) / 3600  # Convertir la velocidad de km/h a km/s
 	distance_traveled += distance_since_last_update # Actualizar la distancia total recorrida
 	last_update_time = current_time 
-	print("Distance Traveled: " + str(distance_traveled) + " m")    # Mostrar la distancia recorrida
+	#print("Distance Traveled: " + str(distance_traveled) + " m")    # Mostrar la distancia recorrida
 
 
 @rpc("any_peer")
@@ -182,9 +182,10 @@ func set_motor_pitch(delta) -> float:
 
 	return nuevo_pitch
 
-@rpc("any_peer")
+
 func fin_de_juego():
-	get_tree().change_scene_to_file("res://scenes/game_end.tscn")
+	gameOver = true
+
 	
 func get_speed()->String:
 	return str(car_speed)

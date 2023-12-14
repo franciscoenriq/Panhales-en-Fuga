@@ -60,6 +60,9 @@ func _physics_process(delta: float) -> void:
 
 	#print(global_position)
 	
+
+	var collision = get_last_slide_collision()
+	if collision :
+		print("colisionado con auto")
+		GameController.fin_de_juego()
 	move_and_slide()
-
-

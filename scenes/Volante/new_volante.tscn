@@ -72,6 +72,7 @@ script = ExtResource("6_a7of1")
 pista_id = -2
 
 [node name="car2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05731, 0, 0)
 script = ExtResource("6_n3ylf")
 
 [node name="car_sedan" parent="car2" instance=ExtResource("6_vycrg")]
@@ -81,8 +82,6 @@ transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0.2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.213, 0, 0)
 shape = SubResource("BoxShape3D_nrc4k")
 
-
-
 [node name="Head" type="Node3D" parent="car2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05955, 1.68915)
 
@@ -90,4 +89,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05955, 1.68915)
 
 [node name="Rifle" parent="car2/Head/Camera3D" instance=ExtResource("8_8lvdc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.275152, -0.681932)
-
