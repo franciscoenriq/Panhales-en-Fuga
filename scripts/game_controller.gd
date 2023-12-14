@@ -114,15 +114,6 @@ func brake(player_role, pressure):
 	if pressure != brakePressure:
 		brakePressure = pressure
 
-		
-func change_degree_value(value):
-	var originalScale = value
-	var minRange = -1
-	var maxRange = 1
-	var newMin = -90
-	var newMax = 90
-	var scaledValue = ((originalScale - minRange) / (maxRange - minRange)) * (newMax - newMin) + newMin
-	return snapped(scaledValue, 0.1)
 
 @rpc("any_peer")
 func turn(player_role,value):
