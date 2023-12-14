@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ggu1ki64l4vq" path="res://terrain_blocks/terrain_0.tscn" id="5_s4a7t"]
 [ext_resource type="Script" path="res://scripts/car_generator.gd" id="6_a7of1"]
 [ext_resource type="Script" path="res://scenes/Volante/car.gd" id="6_n3ylf"]
-[ext_resource type="PackedScene" uid="uid://q1t0hrd8lpt5" path="res://scenes/Shooter/shooterPlayer.tscn" id="6_nhyx4"]
 [ext_resource type="PackedScene" uid="uid://btg4amtrf8vwh" path="res://Assets/KayKit_City_Builder_Bits_1.0_FREE/Assets/gltf/car_sedan.gltf" id="6_vycrg"]
+[ext_resource type="PackedScene" uid="uid://bvatws8xp3j43" path="res://scenes/Shooter/rifle.tscn" id="8_8lvdc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_28d45"]
 sky_horizon_color = Color(0.647059, 0.654902, 0.670588, 1)
@@ -94,14 +94,19 @@ script = ExtResource("6_a7of1")
 pista_id = -2
 
 [node name="car2" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.58256, 0, 5.26271)
 script = ExtResource("6_n3ylf")
 
-[node name="Player" parent="car2" instance=ExtResource("6_nhyx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.978495, 0.728157)
-
 [node name="car_sedan" parent="car2" instance=ExtResource("6_vycrg")]
-transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0.238696, 0)
+transform = Transform3D(-4, 0, -3.49691e-07, 0, 4, 0, 3.49691e-07, 0, -4, 0, 0.21569, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.213, 0, 0)
 shape = SubResource("BoxShape3D_nrc4k")
+
+[node name="Head" type="Node3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05955, 1.68915)
+
+[node name="Camera3D" type="Camera3D" parent="car2/Head"]
+
+[node name="Rifle" parent="car2/Head/Camera3D" instance=ExtResource("8_8lvdc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.275152, -0.681932)
