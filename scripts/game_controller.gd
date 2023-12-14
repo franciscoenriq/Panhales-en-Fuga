@@ -89,8 +89,8 @@ func calc_distance(delta):
 	var distance_since_last_update = (self.car_speed * elapsed_time) / 3600  # Convertir la velocidad de km/h a km/s
 	distance_traveled += distance_since_last_update # Actualizar la distancia total recorrida
 	last_update_time = current_time 
-	#print("Distance Traveled: " + str(distance_traveled) + " m")    # Mostrar la distancia recorrida
-
+	print("Distance Traveled: " + str(distance_traveled) + " m")    # Mostrar la distancia recorrida
+	
 
 @rpc("any_peer")
 func test(player_role):
