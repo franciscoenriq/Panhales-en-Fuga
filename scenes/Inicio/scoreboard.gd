@@ -1,5 +1,5 @@
 extends CanvasLayer
-
+const SAVEFILE = "user://savefile.save"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +13,6 @@ func _process(delta):
 	
 func _on_button_main_pressed():
 	get_tree().change_scene_to_file("res://scenes/Inicio/main_menu.tscn")
+
+func save_score():
+	
