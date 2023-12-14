@@ -39,6 +39,6 @@ func _on_area_entered(area):
 	if area.name == "coll_auto":
 		var auto = area.get_parent()
 		auto.queue_free()
-		queue_free()
+
 
 	
