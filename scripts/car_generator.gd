@@ -63,7 +63,7 @@ func _process(delta):
 		spawn_car(160,false)
 		
 	if police_spawner_timer<=0 && is_police_in_lane==false && pista_id>0:
-		spawn_car(-160,true)
+		spawn_car(160,true)
 		is_police_in_lane=true
 		
 func _load_car_scenes(cars_paths):
@@ -101,7 +101,15 @@ func spawn_car(position, isPolice):
 	var area3d_det =Area3D.new()
 	area3d_det.name="deteccion"
 	var collision_shape_detec=CollisionShape3D.new()
-	
+	if isPolice:
+		var area3d_derrota=Area3D.new()
+		area3d_derrota.name="derrota"
+		var collision_shape_derrota = CollisionShape3D.new()
+		car.add_child(area3d_derrota)
+		car.add_child(collision_shape_derrota)
+		collision_shape_derrota.global_transform.origin = car.global_transform.origin
+		collision_shape_derrota.shape = SphereShape3D.new()
+		collision_shape_derrota.shape.radius=3
 	car.add_child(area3d_det)
 	area3d_det.add_child(collision_shape_detec)
 	collision_shape_detec.global_transform.origin = car.global_transform.origin

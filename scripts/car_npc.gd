@@ -15,6 +15,7 @@ var pista_id
 var isMoving = true
 signal car_nearby
 var deteccion:Area3D
+var area_derrota:Area3D
 var auto:MeshInstance3D
 @onready var lane = self.get_parent()
 
@@ -25,6 +26,7 @@ func _ready():
 	deteccion.area_entered.connect(self._on_area_entered)
 	deteccion.area_exited.connect(self._on_area_exited)
 	auto = getMeshInstance()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
