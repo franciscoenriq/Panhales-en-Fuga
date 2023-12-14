@@ -41,7 +41,7 @@ func _ready() -> void:
 	wheelRotationValue = 0
 
 func _physics_process(delta: float) -> void:
-	puntaje+=int(delta)*100
+	puntaje+=int(delta*100)
 	timer -=delta
 	GameController.distance_traveled=puntaje
 	if Input.is_action_pressed("shoot"):

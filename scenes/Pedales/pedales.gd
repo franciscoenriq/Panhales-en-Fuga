@@ -22,7 +22,7 @@ func _ready():
 	pass
 	
 func _process(delta):
-	puntaje+=int(delta)*100
+	puntaje+=int(delta*100)
 	GameController.distance_traveled=puntaje
 	# embrague se puede presionar siempre pero no se puede acelerar y pisar freno a la vez
 	if Input.is_action_pressed("forward") and not Input.is_action_pressed("brake"):

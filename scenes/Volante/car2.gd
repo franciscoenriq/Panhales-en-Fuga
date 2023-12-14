@@ -32,7 +32,7 @@ func _ready() -> void:
 	wheelRotationValue = 0
 
 func _physics_process(delta: float) -> void:
-	puntaje+=int(delta)*100
+	puntaje+=int(delta*100)
 	GameController.distance_traveled=puntaje
 	var bra_pressure = GameController.get_bra_pressure()
 	var clu_pressure = GameController.get_clutch_pressure()
