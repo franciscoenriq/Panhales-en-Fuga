@@ -14,7 +14,7 @@ func _ready() -> void:
 func _init_blocks(number_of_blocks: int) -> void:
 	for block_index in range(number_of_blocks):
 		var block = TerrainBlocks.pick_random().instantiate()
-		block.position.z = block.mesh.size.y * (block_index-num_terrain_blocks/2)
+		block.position.z = block.mesh.size.y #* (block_index-num_terrain_blocks/2)
 		add_child(block)
 		terrain_belt.append(block)
 		
@@ -34,10 +34,8 @@ func _progress_terrain(delta: float) -> void:
 	GameController.calc_distance(delta)
 	
 	#print("llamando calc_speed")
-	#for block in terrain_belt:
-	for block_index in range(num_terrain_blocks):
-		var block = terrain_belt[block_index]
-		block.position.z += velocidad * delta*(block_index-num_terrain_blocks/2)
+	for block in terrain_belt:
+		block.position.z += velocidad * delta
 
 	var first_terrain = terrain_belt[0]
 	var last_terrain = terrain_belt[-1]
