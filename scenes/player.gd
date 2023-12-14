@@ -36,6 +36,7 @@ func _input(event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _ready() -> void:
 	$AudioMotor.playing=true;
+	GameController.gameOver=false
 
 func _process(delta: float) -> void:
 	if GameController.isDriving()==true:

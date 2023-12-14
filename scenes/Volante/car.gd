@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @export var sensitivity = 1000
 @onready var pivoteCamera := $pivoteCamera
-var timer = 2
+var timer = 10
 var isTurningLeft: bool
 var isTurningRight: bool
 @onready var volante=%MeshInstance3D
